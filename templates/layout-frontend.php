@@ -14,6 +14,9 @@
 
 <body>
 
+    <!-- inclusion de l'entête du site -->
+    <?php require('../templates/navbar-frontend.php') ?>
+
     <?= $content ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
