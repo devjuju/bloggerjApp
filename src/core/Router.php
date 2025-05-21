@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Controllers\ContactController;
 use App\Controllers\HomeController;
 use App\Controllers\PostsController;
 use App\Core\Request;
@@ -18,6 +19,11 @@ class Router
 
                 $routes = $request->get('action');
                 switch ($routes) {
+
+                    case 'contact':
+                        $home = new ContactController;
+                        $home->contact();
+                        break;
 
                     case 'blog':
                         $home = new PostsController();
