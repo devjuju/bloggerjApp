@@ -11,7 +11,7 @@
 
             <div class="d-flex align-items-center">
                 <div class="d-flex flex-column flex-sm-row">
-                    <a href="#" class="btn btn-primary mb-3 mb-sm-0 me-sm-3">S'inscrire</a>
+                    <a href="index.php?action=register" class="btn btn-primary mb-3 mb-sm-0 me-sm-3">S'inscrire</a>
                     <a href="#" class="btn btn-outline-primary">
                         Se connecter
                     </a>
