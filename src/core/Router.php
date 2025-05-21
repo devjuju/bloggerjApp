@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Controllers\HomeController;
+use App\Controllers\PostsController;
 use App\Core\Request;
 
 class Router
@@ -17,6 +18,11 @@ class Router
 
                 $routes = $request->get('action');
                 switch ($routes) {
+
+                    case 'blog':
+                        $home = new PostsController();
+                        $home->blog();
+                        break;
 
                     case 'home':
                         $home = new HomeController();

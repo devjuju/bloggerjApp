@@ -22,10 +22,10 @@
             <hr class="d-lg-none mt-3 mb-2">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item navigation">
-                    <a href="#" class="nav-link active">Accueil</a>
+                    <a href="index.php?action=home" class="nav-link active">Accueil</a>
                 </li>
                 <li class="nav-item navigation">
-                    <a href="#" class="nav-link">Blog</a>
+                    <a href="index.php?action=blog" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item navigation">
                     <a href="#" class="nav-link">Contact</a>
