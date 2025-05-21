@@ -5,6 +5,7 @@ namespace App\Core;
 use App\Controllers\ContactController;
 use App\Controllers\HomeController;
 use App\Controllers\PostsController;
+use App\Controllers\UsersController;
 use App\Core\Request;
 
 class Router
@@ -28,6 +29,12 @@ class Router
                     case 'blog':
                         $home = new PostsController();
                         $home->blog();
+                        break;
+
+
+                    case 'register':
+                        $home = new UsersController();
+                        $home->register();
                         break;
 
                     case 'home':
