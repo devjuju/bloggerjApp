@@ -1,8 +1,13 @@
 <?php
 
+use App\Core\Auth;
+use App\Core\DateFormatter;
+
 $title = "Blog"; ?>
 <?php ob_start();
 ?>
+
+
 
 <!-- breadcrumb -->
 <section class="container-fluid p-5 bg-light-subtle">
@@ -26,6 +31,70 @@ $title = "Blog"; ?>
 
 
             <div class="row row-cols-lg-2 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+
+                <!-- Item -->
+                <?php foreach ($posts as $post): ?>
+                    <div class="col pb-3">
+                        <article class="card card-article border-0 ">
+                            <div class="position-relative">
+
+
+
+
+                                <?php
+
+
+                                if (Auth::get('auth', 'role')) {
+                                ?>
+
+                                    <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
+                                        <a href="index.php?action=update_post&id=<?= $post->id ?>" class="btn btn-icon-pencil-circle-secondary  position-absolute top-0 end-0 zindex-5 me-3 mt-3">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                    <?php } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } else { ?>
+
+                                <?php } ?>
+
+                                <img src="uploads/<?= $post->image ?>" class="card-img-top" alt="Image">
+                            </div>
+                            <div class="card-body">
+                                <div class="marging-top-20 marging-bottom-10">
+                                    <span class="fs-sm text-primary"><?= $post->category ?></span>
+                                </div>
+                                <h3>
+                                    <a class="card-post-title" href="index.php?action=post&id=<?= $post->id ?>"><?= $post->title ?></a>
+                                </h3>
+                                <div class="d-flex flex-row bd-highlight mb-3">
+                                    <div class="meta-content-blog bd-highlight">
+                                        <i class="bi bi-person-fill fs-base me-1"></i>
+                                        <span class="fs-sm"><?= $post->users_id ?></span>
+                                    </div>
+                                    <div class="meta-content-blog bd-highlight">
+                                        <i class="bi bi-clock-fill fs-base me-1"></i>
+                                        <span class="fs-sm"><?= DateFormatter::enFrancais($post->created_at); ?></span>
+                                    </div>
+                                </div>
+                                <p class="running-text"><?= $post->excerpt ?></p>
+                            </div>
+
+
+                        </article>
+                    </div>
+                <?php endforeach; ?>
+
+
+
+
+
+
+
+
+
+
             </div>
 
         </div>
@@ -56,14 +125,29 @@ $title = "Blog"; ?>
                 <div class="card-body">
                     <h4 class="titre-h4">Votre avis compte !</h4>
                     <p class="running-text pb-4 mb-0 mb-lg-3">Les utilisateurs ont la possibilité de commenter mon blog. Donner un avis utile qui contribue à l'amélioration du contenu du blog.</p>
+                    <?php
+                    $session = &$_SESSION;
+                    if (isset($session['auth']['role'])) {
+                    ?>
 
-                    <a href=" index.php?action=register" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20">
-                        S'inscire
-                    </a>
-                    <a href="index.php?action=login" class="d-grid gap-2 btn btn-outline-primary">
-                        Se connecter
-                    </a>
+                        <?php if ($session['auth']['role'] === 'admin') { ?>
+                            <a href="index.php?action=account" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20"">Mon compte</a>
+            <?php } else { ?>
+              <a href=" index.php?action=account" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20"">Mon compte</a>
 
+
+            <?php } ?>
+
+            <a href=" index.php?action=logout" class="d-grid gap-2 btn btn-outline-primary spacing-element-marging-bottom-20"">Se déconnecter</a>
+
+            <?php } else { ?>
+              <a href=" index.php?action=register" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20">
+                                S'inscire
+                            </a>
+                            <a href="index.php?action=login" class="d-grid gap-2 btn btn-outline-primary">
+                                Se connecter
+                            </a>
+                        <?php } ?>
 
                 </div>
             </div>
