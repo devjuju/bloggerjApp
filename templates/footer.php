@@ -37,13 +37,153 @@
 
                     </li>
 
+                    <?php
 
-                    <li class="list-group-item d-flex align-items-center">
-                        <i class="bi bi-lock fs-xl me-2"></i>
+                    use App\Core\Auth;
 
-                        Espace Administration
+                    if (Auth::get('auth', 'role')) {
+                    ?>
+                        <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-wrench-adjustable-circle fs-xl me-2"></i>
 
-                    </li>
+                                <a class="text-secondary" href="index.php?action=dashboard"> Espace Administration</a>
+
+                            </li>
+                        <?php } else { ?>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-lock fs-xl me-2"></i>
+
+                                <button type="button" class="btn btn-link-light" data-bs-toggle="modal" data-bs-target="#kt_modal_stacked_1">
+                                    Espace Administration
+                                </button>
+
+                                <div class="modal fade" tabindex="-1" id="kt_modal_stacked_1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content modal-alert-danger ">
+                                            <div class="modal-header">
+
+
+
+                                                <!--begin::Close-->
+                                                <div class="btn btn-icon" data-bs-dismiss="modal" aria-label="Close">
+                                                    <i class="bi bi-x"><span class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Close-->
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                                <!--begin::Icon-->
+                                                <div class="d-table position-relative mx-auto icon-box">
+                                                    <i class="bi bi-dash-circle"></i>
+                                                </div>
+                                                <!--end::Icon-->
+
+                                                <!--begin::Wrapper-->
+                                                <div class="text-center">
+                                                    <!--begin::Title-->
+                                                    <h1 class="fw-bold text-danger">Accès interdit</h1>
+                                                    <!--end::Title-->
+
+                                                    <!--begin::Content-->
+                                                    <p class="running-text">
+                                                        Vous ne disposez pas des droits d’administration.
+                                                        L’accès à l’espace d’administration n’est pas autorisé. Pour plus d’infos, contacter l’administrateur.
+                                                    </p>
+                                                    <!--end::Content-->
+
+
+                                                </div>
+                                                <!--end::Wrapper-->
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>
+                                                <a href="index.php?action=contact">
+                                                    <button type="button" class="btn btn-danger">En savoir plus</button>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </li>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="bi bi-lock fs-xl me-2"></i>
+
+                            <button type="button" class="btn btn-link-light" data-bs-toggle="modal" data-bs-target="#kt_modal_stacked_1">
+                                Espace Administration
+                            </button>
+
+                            <div class="modal fade" tabindex="-1" id="kt_modal_stacked_1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content modal-alert-danger ">
+                                        <div class="modal-header">
+
+
+
+                                            <!--begin::Close-->
+                                            <div class="btn btn-icon" data-bs-dismiss="modal" aria-label="Close">
+                                                <i class="bi bi-x"><span class="path1"></span><span class="path2"></span></i>
+                                            </div>
+                                            <!--end::Close-->
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            <!--begin::Icon-->
+                                            <div class="d-table position-relative mx-auto icon-box">
+                                                <i class="bi bi-dash-circle"></i>
+                                            </div>
+                                            <!--end::Icon-->
+
+                                            <!--begin::Wrapper-->
+                                            <div class="text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="fw-bold text-danger">Accès interdit</h1>
+                                                <!--end::Title-->
+
+                                                <!--begin::Content-->
+                                                <p class="running-text">
+                                                    Vous ne disposez pas des droits d’administration.
+                                                    L’accès à l’espace d’administration n’est pas autorisé. Pour plus d’infos, contacter l’administrateur.
+                                                </p>
+                                                <!--end::Content-->
+
+
+                                            </div>
+                                            <!--end::Wrapper-->
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>
+                                            <a href="index.php?action=contact">
+                                                <button type="button" class="btn btn-danger">En savoir plus</button>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </li>
+
+                    <?php } ?>
+
+
+
+
+
+
+
+
+
                 </ul>
             </div>
             <div class="colonne-3 col-md-4 col-lg-3 pb-2 pb-md-0 mb-4 mb-md-0">

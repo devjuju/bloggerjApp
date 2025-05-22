@@ -3,6 +3,8 @@
 namespace App\Core;
 
 use App\Controllers\ContactController;
+
+use App\Controllers\DashboardController;
 use App\Controllers\HomeController;
 use App\Controllers\PostsController;
 use App\Controllers\UsersController;
@@ -40,6 +42,26 @@ class Router
                     case 'login':
                         $home = new UsersController();
                         $home->login();
+                        break;
+
+
+
+                    case 'logout':
+                        $logout = new UsersController();
+                        $logout->logout();
+                        break;
+
+
+
+                    case 'account':
+                        $account = new UsersController;
+                        $account->account();
+                        break;
+
+
+                    case 'dashboard':
+                        $account = new DashboardController;
+                        $account->dashboard();
                         break;
 
 
