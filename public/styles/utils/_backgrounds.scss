@@ -1,0 +1,81 @@
+/* Backgrounds */
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: $colour-primary !important;
+}
+
+
+.bg-primary-subtle {
+    background-color: $colour-light-primary !important;
+}
+
+
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: $colour-secondary !important;
+}
+
+.bg-secondary-subtle {
+    background-color: $colour-light-secondary !important;
+}
+
+.bg-success {
+    --bs-bg-opacity: 1;
+    background-color: $colour-success !important;
+}
+
+.bg-success-subtle {
+    background-color: $colour-light-success !important;
+}
+
+.bg-danger {
+    --bs-bg-opacity: 1;
+    background-color: $colour-danger !important;
+}
+
+.bg-danger-subtle {
+    background-color: $colour-light-danger !important;
+}
+
+.bg-warning {
+    --bs-bg-opacity: 1;
+    background-color: $colour-warning !important;
+}
+
+.bg-warning-subtle {
+    background-color: $colour-light-warning !important;
+}
+
+.bg-info {
+    --bs-bg-opacity: 1;
+    background-color: $colour-primary !important;
+}
+
+
+.bg-info-subtle {
+    background-color: $colour-light-primary !important;
+}
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: $colour-beige !important;
+}
+
+
+.bg-light-subtle {
+    background-color: $colour-background !important;
+}
+
+.bg-extra-light-subtle {
+    background-color: $colour-background-secondary !important;
+}
+
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: $colour-title !important;
+}
+
+
+.bg-primary-subtle {
+    background-color: $colour-light-dark !important;
+}

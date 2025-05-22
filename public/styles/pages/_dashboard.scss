@@ -1,0 +1,53 @@
+
+/* dashboard */
+
+@media (min-width: 992px) {
+    .docs-container {
+        padding-left: 21rem;
+    }
+  }
+  
+  main .docs-container{
+    margin-top: 48px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .offcanvas-header{
+    & img{
+      width: 47px;
+    }
+    & span{
+      font-family: $font-logo;
+      font-size: 30px;
+      color: white;
+      margin-left: 15px;
+    }
+  }
+  
+  
+  .offcanvas-body{
+    & h3{
+      color: #dddfeb;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .offcanvas-lg .offcanvas-body {
+        display: flex;
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        background-color: transparent !important;
+        flex-direction: column-reverse;
+    }
+  }
+  
+  
+  
+  
+  
