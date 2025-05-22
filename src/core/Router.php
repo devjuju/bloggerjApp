@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Controllers\CommentsController;
 use App\Controllers\ContactController;
 
 use App\Controllers\DashboardController;
@@ -77,6 +78,31 @@ class Router
                     case 'desactive_post':
                         $activePost = new PostsController();
                         $activePost->desactivate($request->get('id'));
+                        break;
+
+
+
+                    case 'comments':
+                        $comments = new CommentsController;
+                        $comments->comments();
+                        break;
+
+
+
+                    case 'delete_comment':
+                        $comments = new CommentsController();
+                        $comments->delete($request->get('id'));
+                        break;
+
+                    case 'validate_comment':
+                        $validateComment = new CommentsController();
+                        $validateComment->validate($request->get('id'));
+                        break;
+
+
+                    case 'reject_comment':
+                        $rejectComment = new CommentsController();
+                        $rejectComment->reject($request->get('id'));
                         break;
 
 
