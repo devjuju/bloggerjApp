@@ -33,6 +33,53 @@ class Router
                         $home->blog();
                         break;
 
+                    case 'post':
+                        $post = new PostsController();
+                        $post->post($request->get('id'));
+                        break;
+
+
+                    case 'posts':
+                        $posts = new PostsController();
+                        $posts->posts();
+                        break;
+
+
+                    case 'create_post':
+                        $createPost = new PostsController();
+                        $createPost->create();
+                        break;
+
+
+                    case 'update_image_post':
+                        $updateImagePost = new PostsController();
+                        $updateImagePost->update_image_post($request->get('id'));
+                        break;
+
+
+                    case 'update_post':
+                        $updatePost = new PostsController();
+                        $updatePost->update($request->get('id'));
+                        break;
+
+
+
+                    case 'delete_post':
+                        $deletePost = new PostsController();
+                        $deletePost->delete($request->get('id'));
+                        break;
+
+                    case 'active_post':
+                        $activePost = new PostsController();
+                        $activePost->activate($request->get('id'));
+                        break;
+
+                    case 'desactive_post':
+                        $activePost = new PostsController();
+                        $activePost->desactivate($request->get('id'));
+                        break;
+
+
 
                     case 'register':
                         $home = new UsersController();
