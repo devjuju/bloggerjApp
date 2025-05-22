@@ -3,6 +3,9 @@
 
 ?>
 
+
+
+
 <!-- breadcrumb -->
 <section class="container-fluid p-5 bg-light-subtle">
     <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
@@ -49,43 +52,56 @@
                                                 <img src="images/avatar-image-register.svg" class="img-fluid rounded-circle" width="100" alt="Image">
                                                 <div class="ps-3">
                                                     <label for="image" class="form-label"> Photo de profil</label>
-                                                    <input type="file" id="image" name="image" value="">
+                                                    <input type="file" id="image" name="image" value="<?= isset($registerUser) ? $registerUser->getImage() : '' ?>">
                                                 </div>
                                             </div>
 
                                         </div>
 
                                     </div>
+
+                                    <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
                                 </div>
 
                             </div>
-
+                            <!--begin::Form group-->
                             <div class="col-sm-6 form-group-style">
                                 <label class="form-label fs-base" for="lastname">Nom</label>
-                                <input type="text" id="lastname" name="" placeholder="Entrer un nom" value="">
+                                <input type="text" id="lastname" name="register[lastname]" placeholder="Entrer un nom" value="<?= isset($register) ? $register->getLastname() : '' ?>">
+                                <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
                             </div>
-
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
                             <div class="col-sm-6 form-group-style">
                                 <label class="form-label fs-base" for="firstname">Prénom</label>
-                                <input type="text" id="firstname" name="" placeholder="" value="">
+                                <input type="text" id="firstname" name="register[firstname]" placeholder="" value="<?= isset($register) ? $register->getFirstname() : '' ?>">
+                                <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
                             </div>
 
+                            <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style">
-                                <label class="form-label fs-base" for="username">Pseudo</label>
-                                <input type="text" placeholder="" id="username" name="" value="">
-
+                                <label class="form-label fs-base" for="sujet">Pseudo</label>
+                                <input type="text" placeholder="" id="sujet" name="register[username]" value="<?= isset($register) ? $register->getUsername() : '' ?>">
+                                <?= isset($controle["username"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["username"] . "</p>" : '' ?>
                             </div>
-
+                            <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style">
                                 <label class="form-label fs-base" for="email">Email</label>
-                                <input type="email" placeholder="" id="email" name="">
+                                <input type="email" placeholder="" id="email" name="register[email]" value="<?= isset($register) ? $register->getEmail() : '' ?>">
+                                <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
                             </div>
-
+                            <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style">
                                 <div class="form-group-password"> <label for="password" class="form-label fs-base">Mot de passe</label>
-                                    <input type="password" id="password" name="" value="">
+                                    <input type="password" id="password" name="register[password]" value="<?= isset($register) ? $register->getPassword() : '' ?>">
+                                    <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
                                 </div>
                             </div>
+                            <!--begin::Form group-->
+
+
+
+
 
                             <div class="col-sm-12 pt-4">
                                 <div class="d-grid gap-2">
@@ -95,6 +111,21 @@
                             </div>
                         </div>
                     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
