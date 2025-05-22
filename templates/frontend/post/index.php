@@ -1,6 +1,5 @@
 <?php
 
-use App\Core\Auth;
 use App\Core\DateFormatter;
 
 $title = "Post"; ?>
@@ -90,7 +89,184 @@ $title = "Post"; ?>
                 </div>
             </div>
             <hr class="separateur-page-blog">
+            <div class="bloc-comments mt-5">
+                <div class="d-md-flex align-items-center justify-content-between text-center text-md-start pb-1 pb-lg-0 mb-4 mb-lg-5 mt-5">
+                    <h3 class="titre-h4 mb-md-0">Commentaires</h3>
 
+                </div>
+                <!-- Comment -->
+
+                <hr class="my-2">
+
+                <!-- Comment -->
+                <?php foreach ($comments as $comment): ?>
+                    <div class="py-4">
+                        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
+                            <div class="d-flex align-items-center me-3">
+                                <img src="images/avatar.png" class="rounded-circle" width="48" alt="Avatar">
+                                <div class="ps-3">
+                                    <h6 class="titre-h6 mb-0"><?= $comment->author ?></h6>
+                                    <span class="running-text fs-sm text-muted">
+                                        <?= DateFormatter::enFrancais($comment->created_at); ?>
+                                    </span>
+
+
+
+                                </div>
+                            </div>
+                            <a href="#" class="nav-link fs-sm px-0">
+                                <i class="bi bi-hand-thumbs-up fs-lg me-2 text-primary"></i>
+                                <?= $comment->status ?>
+                            </a>
+
+                        </div>
+                        <p class="running-text mb-0"><?= $comment->content ?></p>
+                    </div>
+
+                <?php endforeach; ?>
+
+
+
+
+
+
+
+                <?php
+
+                use App\Core\Auth;
+
+                if (Auth::get('auth', 'role')) {
+                ?>
+
+                    <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
+
+                        <div class="card-shadow py-3 p-sm-4 p-md-5">
+                            <div class="card-header">
+                                <h3 class="titre-h3">
+                                    Ajouter un commentaire</h3>
+
+                            </div>
+
+                            <div class="card-body">
+
+
+
+
+                                <form method="post" class="needs-validation" novalidate="">
+                                    <input type="hidden" name="add_comment[posts_id]" value="<?= $post->id ?>">
+                                    <div class="row g-4">
+                                        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
+                                            <div class="d-flex align-items-center me-3">
+                                                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                                                <div class="ps-3">
+                                                    <h6 class="titre-h6 mb-0"><?= Auth::get('auth', 'username'); ?></h6>
+                                                    <p>Crée le :
+                                                        <span class="running-text fs-sm text-muted"><?php $today = date('M j Y'); // année, mois et jour actuels
+                                                                                                    $message =  $today;
+                                                                                                    echo $message; ?></span>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!--begin::Form group-->
+                                        <div class="col-sm-12 form-group-style2">
+                                            <label class="form-label fs-base" for="content">Commentaire</label>
+                                            <textarea class="form-control" rows="6" placeholder="" name="add_comment[content]" id="content"><?= isset($addComment) ? $addComment->getContent() : '' ?></textarea>
+                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
+
+                                        </div>
+
+                                        <div class="col-sm-12 pt-4">
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    <?php } else { ?>
+
+                        <div class="card-shadow py-3 p-sm-4 p-md-5">
+                            <div class="card-header">
+                                <h3 class="titre-h3">
+                                    Ajouter un commentaire</h3>
+
+                            </div>
+
+                            <div class="card-body">
+
+
+
+
+                                <form method="post" class="needs-validation" novalidate="">
+                                    <input type="hidden" name="add_comment[posts_id]" value="<?= $post->id ?>">
+                                    <div class="row g-4">
+                                        <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
+                                            <div class="d-flex align-items-center me-3">
+                                                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="">
+                                                <div class="ps-3">
+                                                    <h6 class="titre-h6 mb-0"><?= Auth::get('auth', 'username'); ?></h6>
+                                                    <p>Crée le :
+                                                        <span class="running-text fs-sm text-muted"><?php $today = date('M j Y'); // année, mois et jour actuels
+                                                                                                    $message =  $today;
+                                                                                                    echo $message; ?></span>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!--begin::Form group-->
+                                        <div class="col-sm-12 form-group-style2">
+                                            <label class="form-label fs-base" for="content">Commentaire</label>
+                                            <textarea class="form-control" rows="6" placeholder="" name="add_comment[content]" id="content"><?= isset($addComment) ? $addComment->getContent() : '' ?></textarea>
+                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
+
+                                        </div>
+
+                                        <div class="col-sm-12 pt-4">
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    <?php } ?>
+
+                <?php } else { ?>
+
+                <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
         </div>
         <div class="col-lg-5 col-xl-4 offset-xl-1 border-start-lg">
 
@@ -107,7 +283,7 @@ $title = "Post"; ?>
                                     <p class="blog-postlist-intro">
                                         <?= $relatedPost->excerpt ?>
                                     </p>
-                                    <div class="meta-lists"><span class="meta-date"><i aria-hidden="true" class="bi bi-clock-fill"></i> <?= DateFormatter::enFrancais($relatedPost->created_at); ?></span> </div>
+                                    <div class="meta-lists"><span class="meta-date"><i aria-hidden="true" class="bi bi-clock-fill"></i><?= DateFormatter::enFrancais($relatedPost->created_at); ?></span> </div>
 
                                 </a>
                             </li>
