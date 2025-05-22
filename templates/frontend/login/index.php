@@ -22,11 +22,11 @@
 
     <div class="row gx-5">
         <div class="col-6">
-
+            <!--begin::bloc-->
             <div class="col-left-content">
-                <img src="images/featured-image-login.svg" class="img-fluid featured-image-post" alt="image">
+                <img src="images/bloggerj-img-01.svg" class="img-fluid featured-image-post" alt="image">
             </div>
-
+            <!--end::Title-->
         </div>
         <div class="col-6">
             <div class="card-shadow py-3 p-sm-4 p-md-5">
@@ -43,16 +43,27 @@
 
                     <form method="post" class="needs-validation" novalidate>
                         <div class="row g-4">
+
+
+
+                            <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style">
                                 <label class="form-label fs-base" for="email">Email</label>
-                                <input type="email" placeholder="" id="email" name="" value="">
+                                <input type="email" placeholder="" id="email" name="login[email]" value="<?= isset($login) ? $login->getEmail() : '' ?>">
+                                <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
                             </div>
-
+                            <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style">
                                 <div class="form-group-password"> <label for="password" class="form-label fs-base">Mot de passe</label>
-                                    <input type="password" id="password" name="" value="">
+                                    <input type="password" id="password" name="login[password]" value="<?= isset($login) ? $login->getPassword() : '' ?>">
+                                    <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
                                 </div>
                             </div>
+                            <!--begin::Form group-->
+
+
+
+
 
                             <div class="col-sm-12 pt-4">
                                 <div class="d-grid gap-2">
@@ -61,11 +72,20 @@
 
                                 <br>
 
+
                                 <a href="#" class="btn btn-link btn-lg w-100 text-primary">Oubli du mot de passe ? (x)</a>
 
                             </div>
                         </div>
                     </form>
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
