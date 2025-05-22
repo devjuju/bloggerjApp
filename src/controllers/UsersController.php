@@ -8,4 +8,9 @@ class UsersController
     {
         require('../templates/frontend/register/index.php');
     }
+
+    public function login(): void
+    {
+        require('../templates/frontend/login/index.php');
+    }
 }

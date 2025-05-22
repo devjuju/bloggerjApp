@@ -37,6 +37,12 @@ class Router
                         $home->register();
                         break;
 
+                    case 'login':
+                        $home = new UsersController();
+                        $home->login();
+                        break;
+
+
                     case 'home':
                         $home = new HomeController();
                         $home->home();
