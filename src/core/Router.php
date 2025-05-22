@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Controllers\CommentsController;
 use App\Controllers\ContactController;
 
 use App\Controllers\DashboardController;
@@ -81,6 +82,31 @@ class Router
 
 
 
+                    case 'comments':
+                        $comments = new CommentsController();
+                        $comments->comments();
+                        break;
+
+
+
+                    case 'delete_comment':
+                        $comments = new CommentsController();
+                        $comments->delete($request->get('id'));
+                        break;
+
+                    case 'validate_comment':
+                        $validateComment = new CommentsController();
+                        $validateComment->validate($request->get('id'));
+                        break;
+
+
+                    case 'reject_comment':
+                        $rejectComment = new CommentsController();
+                        $rejectComment->reject($request->get('id'));
+                        break;
+
+
+
                     case 'register':
                         $home = new UsersController();
                         $home->register();
@@ -103,6 +129,36 @@ class Router
                     case 'account':
                         $account = new UsersController;
                         $account->account();
+                        break;
+
+
+
+                    case 'users':
+                        $users = new UsersController();
+                        $users->users();
+                        break;
+
+                    case 'create_user':
+                        $createUser = new UsersController();
+                        $createUser->create();
+                        break;
+
+
+                    case 'update_user':
+                        $updateUser = new UsersController();
+                        $updateUser->update($request->get('id'));
+                        break;
+
+
+                    case 'update_image_user':
+                        $updateImageUser = new UsersController();
+                        $updateImageUser->update_image_user($request->get('id'));
+                        break;
+
+
+                    case 'delete_user':
+                        $deleteUser = new UsersController();
+                        $deleteUser->delete($request->get('id'));
                         break;
 
 

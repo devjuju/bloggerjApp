@@ -2,19 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Core\Auth;
 use App\Core\Request;
-use App\Forms\FormUser;
 use App\Models\Users;
-
-
-require "../src/models/users.php";
-
-
-
+use App\Core\Auth;
+use App\Forms\FormUser;
 
 class UsersController
 {
+    /* Frontend */
+
     public function register(): void
     {
         $request = new Request();
@@ -135,5 +131,246 @@ class UsersController
     {
 
         require('../templates/frontend/account/index.php');
+    }
+
+    public function accountSecurity(): void
+    {
+
+        require('../templates/frontend/accountsecurity/index.php');
+    }
+
+    public function accountSettings($id): void
+    {
+        // On instancie le modèle
+        $userModel = new Users();
+
+        // On va chercher 1 post
+        $user = $userModel->find(Auth::get('auth', 'id') === $id);
+        require('../templates/frontend/accountsettings/index.php');
+    }
+
+
+    /* Backend */
+    public function users(): void
+    {
+
+        // Sécurité
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $userModel = new Users();
+        $username = Auth::get('auth', 'username');
+        $email = Auth::get('auth', 'email');
+
+        $auths = $userModel->findBy([
+            'username' => $username,
+            'email' => $email,
+        ]);
+
+        $users = $userModel->findAll();
+
+
+
+
+
+        require('../templates/backend/users/index.php');
+    }
+
+    public function admin($id): void
+    {
+
+        $user = new Users;
+        $user->setId($id);
+        $user->setStatus('administrateur');
+
+        $user->update();
+
+        header('Location: index.php?action=users');
+    }
+
+
+    public function user($id): void
+    {
+        $user = new Users;
+        $user->setId($id);
+        $user->setStatus('utilisateur');
+
+        $user->update();
+
+        header('Location: index.php?action=users');
+    }
+
+
+
+    public function create(): void
+    {
+        // Sécurité
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+
+        // Ajouter l'utilisateur
+
+        $request = new Request();
+        $submit = $request->post('create_user');
+        if (isset($submit)) {
+            // test image
+            $createUser = new Users($request->post('create_user'));
+            $formCreateUser = new FormUser($createUser);
+            $controle = $formCreateUser->validateCreate();
+
+            //echo '</pre>';
+            //print_r($_FILES);
+            //die;
+            if ($controle === true) {
+
+                // ajouter l'image
+                $img_name = $_FILES['image']['name'];
+                $tmp_name = $_FILES['image']['tmp_name'];
+                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                $img_ex_lc = strtolower($img_ex);
+
+
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = 'uploads/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                // Insert into Database
+                $createUser->setImage($new_img_name);
+                $createUser->setStatus('1');
+
+                // On chiffre le mot de passe
+                $createUser->setPassword(password_hash($createUser->getPassword(), PASSWORD_BCRYPT));
+
+                $createUser->create();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Utilisateur ajouté");
+
+                header('Location: index.php?action=users');
+            }
+        }
+
+        require('../templates/backend/createuser/index.php');
+    }
+
+
+    public function update($id): void
+    {
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find($id);
+
+        $request = new Request();
+        $submit = $request->post('update_user');
+
+        if (isset($submit)) {
+
+
+            $updateUser = new Users($request->post('update_user'));
+            // print_r($updatePost);
+            $formUpdateUser = new FormUser($updateUser);
+            $controle = $formUpdateUser->validateUpdate();
+            //print_r($controle);
+            if ($controle === true) {
+
+                $updateUser->setId($user->id);
+
+                // On chiffre le mot de passe
+                $updateUser->setPassword(password_hash($updateUser->getPassword(), PASSWORD_BCRYPT));
+
+                $updateUser->update();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Utilisateur modifié");
+                header('Location: index.php?action=users');
+                exit();
+            }
+        }
+
+        require('../templates/backend/updateuser/index.php');
+    }
+
+    public function update_image_user($id)
+    {
+
+        // Sécurité
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        // On instancie le modèle
+        $userModel = new Users();
+        // On va chercher 1 annonce
+        $user = $userModel->find($id);
+        $request = new Request();
+        $submit = $request->post('update_image_user');
+        if (isset($submit)) {
+
+            $updateImageUser = new Users();
+            $formCreateUser = new FormUser($updateImageUser);
+            $controle = $formCreateUser->validateUpdateImage();
+
+            if ($controle === true) {
+
+                if (unlink("uploads/$user->image")) {
+                    $img_name = $_FILES['image']['name'];
+                    $tmp_name = $_FILES['image']['tmp_name'];
+                    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                    $img_ex_lc = strtolower($img_ex);
+
+
+
+                    $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                    $img_upload_path = 'uploads/' . $new_img_name;
+
+
+
+                    move_uploaded_file($tmp_name, $img_upload_path);
+                }
+                // Insert into Database
+                $updateImageUser->setImage($new_img_name);
+                $updateImageUser->setId($user->id);
+                $updateImageUser->update();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Photo modifiée");
+
+                header('Location: index.php?action=users');
+                exit();
+            }
+        }
+
+        require('../templates/backend/updateimageuser/index.php');
+    }
+
+
+    public function delete($id): void
+    {
+        // Sécurité
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        // On instancie le modèle
+        $user = new Users();
+        // On va chercher 1 annonce
+        $user->delete($id);
+
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Utilisateur supprimé");
+
+        header('Location: index.php?action=users');
+        exit();
     }
 }
