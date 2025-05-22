@@ -1,0 +1,970 @@
+/* buttons */
+
+.btn-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-primary;
+    border: 1px solid $colour-primary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-primary;
+        border: 1px solid $colour-hover-primary;
+    }
+}
+
+.btn-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-secondary;
+    border: 1px solid $colour-secondary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-secondary;
+        border: 1px solid $colour-hover-secondary;
+    }
+}
+
+.btn-success {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-success;
+    border: 1px solid $colour-success;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-success;
+        border: 1px solid $colour-hover-success;
+    }
+}
+
+.btn-danger {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-danger;
+    border: 1px solid $colour-danger;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-danger;
+        border: 1px solid $colour-hover-danger;
+    }
+}
+
+.btn-warning {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-warning;
+    border: 1px solid $colour-warning;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-warning;
+        border: 1px solid $colour-hover-warning;
+    }
+}
+
+.btn-dark {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-title;
+    border: 1px solid $colour-title;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-title;
+        border: 1px solid $colour-hover-title;
+    }
+}
+
+.btn-white {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-title;
+    background: $colour-body;
+    border: 1px solid $colour-body;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-title;
+        border: 1px solid $colour-title;
+    }
+}
+
+.btn-light {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-title;
+    background: $colour-background;
+    border: 1px solid $colour-background;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-title;
+        background: $colour-background-secondary;
+        border: 1px solid $colour-background-secondary;
+    }
+}
+
+.btn-info {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-primary;
+    border: 1px solid $colour-primary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-primary;
+        border: 1px solid $colour-hover-primary;
+    }
+}
+
+.btn-light-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-primary;
+    background: $colour-light-primary;
+    border: 1px solid $colour-light-primary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-primary;
+        border: 1px solid $colour-primary;
+    }
+}
+
+.btn-light-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-secondary;
+    background: $colour-light-secondary;
+    border: 1px solid $colour-light-secondary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-secondary;
+        border: 1px solid $colour-secondary;
+    }
+}
+
+.btn-light-success {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-success;
+    background: $colour-light-success;
+    border: 1px solid $colour-light-success;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-success;
+        border: 1px solid $colour-success;
+    }
+}
+
+.btn-light-danger {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-danger;
+    background: $colour-light-danger;
+    border: 1px solid $colour-light-danger;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-danger;
+        border: 1px solid $colour-danger;
+    }
+}
+
+.btn-light-warning {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-warning;
+    background: $colour-light-warning;
+    border: 1px solid $colour-light-warning;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-warning;
+        border: 1px solid $colour-warning;
+    }
+}
+
+.btn-light-dark {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-title;
+    background: $colour-light-dark;
+    border: 1px solid $colour-light-dark;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-title;
+        border: 1px solid $colour-title;
+    }
+}
+
+.btn-light-info {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-primary;
+    background: $colour-light-primary;
+    border: 1px solid $colour-light-primary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-primary;
+        border: 1px solid $colour-primary;
+    }
+}
+
+.btn-outline-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-primary;
+    background: $colour-body;
+    border: 1px solid $colour-primary;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-primary;
+        border: 1px solid $colour-primary;
+    }
+}
+
+.btn-outline-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-secondary;
+    background: $colour-body;
+    border: 1px solid $colour-secondary;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-secondary;
+        border: 1px solid $colour-secondary;
+    }
+}
+
+.btn-outline-success {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-success;
+    background: $colour-body;
+    border: 1px solid $colour-success;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-success;
+        border: 1px solid $colour-success;
+    }
+}
+
+.btn-outline-danger {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-danger;
+    background: $colour-body;
+    border: 1px solid $colour-danger;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-danger;
+        border: 1px solid $colour-danger;
+    }
+}
+
+.btn-outline-warning {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-warning;
+    background: $colour-body;
+    border: 1px solid $colour-warning;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-warning;
+        border: 1px solid $colour-warning;
+    }
+}
+
+.btn-outline-dark {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-title;
+    background: $colour-body;
+    border: 1px solid $colour-title;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-title;
+        border: 1px solid $colour-hover-title;
+    }
+}
+
+.btn-outline-white {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-none;
+    border: 1px solid $colour-body;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-title;
+        background: $colour-body;
+        border: 1px solid $colour-body;
+    }
+}
+
+.btn-outline-light {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-background;
+    background: $colour-body;
+    border: 1px solid $colour-background;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-secondary;
+        background: $colour-background;
+        border: 1px solid $colour-background;
+    }
+}
+
+.btn-outline-info {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-primary;
+    background: $colour-body;
+    border: 1px solid $colour-primary;
+    border-radius: 24px;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-primary;
+        border: 1px solid $colour-primary;
+    }
+}
+
+
+.btn-icon-social-secondary {
+    background-color: $colour-secondary;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-primary;
+    }
+
+}
+
+.btn-icon-primary {
+    background-color: $colour-primary;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        font-size: 20px;
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: #8651fa;
+    }
+
+}
+
+.btn-icon-secondary {
+    background-color: $colour-secondary;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        font-size: 20px;
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: #d65a11;
+    }
+
+}
+
+.btn-icon-danger {
+    background-color: $colour-danger;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        font-size: 20px;
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-danger;
+    }
+
+}
+
+.btn-icon-sucess {
+    background-color: $colour-success;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        font-size: 20px;
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-success;
+    }
+
+}
+
+.btn-icon-dark {
+    background-color: $colour-title;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+
+    & i {
+        font-size: 20px;
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-title;
+    }
+
+}
+
+
+
+
+
+
+.btn-icon-outline-dark {
+    background-color: $colour-body;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border: 1px solid $colour-title;
+    font-size: 20px;
+    color: $colour-title;
+
+    &:hover {
+        background-color: $colour-title;
+        color: $colour-body;
+
+    }
+
+}
+
+.btn-icon-outline-primary {
+    background-color: $colour-body;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border: 1px solid $colour-primary;
+    font-size: 20px;
+    color: $colour-primary;
+
+    &:hover {
+        background-color: $colour-primary;
+        color: $colour-body;
+
+    }
+
+}
+
+.btn-icon-outline-danger {
+    background-color: $colour-body;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border: 1px solid $colour-danger;
+    font-size: 20px;
+    color: $colour-danger;
+
+    &:hover {
+        background-color: $colour-danger;
+        color: $colour-body;
+
+    }
+
+}
+
+.btn-icon-outline-success {
+    background-color: $colour-body;
+    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border: 1px solid $colour-success;
+    font-size: 20px;
+    color: $colour-success;
+
+    &:hover {
+        background-color: $colour-success;
+        color: $colour-body;
+
+    }
+
+}
+
+
+.btn-icon-circle-secondary {
+    background-color: $colour-secondary;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border-radius: 50%;
+
+    & i {
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-primary;
+    }
+
+}
+
+.btn-icon-circle-primary {
+    background-color: $colour-primary;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+    border-radius: 50%;
+
+    & i {
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-secondary;
+    }
+
+}
+
+
+
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled .btn {
+    color: $colour-body;
+    pointer-events: none;
+    background-color: $colour-primary;
+    border-color: $colour-primary;
+    opacity: 1;
+}
+
+
+.btn-link-light {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-none;
+    border: 0px solid $colour-none;
+    border-radius: none;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: $colour-secondary;
+        background: $colour-none;
+        border: 0px solid $colour-none;
+    }
+}
+
+
+.btn-icon-pencil-circle-secondary {
+    background-color: $colour-secondary;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    margin-right: 8px;
+    border-radius: 50%;
+
+    & i {
+        color: $colour-body;
+    }
+
+    &:hover {
+        background-color: $colour-primary;
+    }
+
+}
+
+.btn-icon-modal-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-primary;
+    border: 1px solid $colour-primary;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-primary;
+        border: 1px solid $colour-hover-primary;
+    }
+}
+
+
+.btn-icon-modal-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-secondary;
+    border: 1px solid $colour-secondary;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-secondary;
+        border: 1px solid $colour-hover-secondary;
+    }
+}
+
+
+.btn-icon-modal-warning {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-warning;
+    border: 1px solid $colour-warning;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-warning;
+        border: 1px solid $colour-hover-warning;
+    }
+}
+
+.btn-icon-modal-light {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-beige;
+    border: 1px solid $colour-beige;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: #E8AD8D;
+        border: 1px solid #E8AD8D;
+    }
+}
+
+
+
+.btn-icon-modal-circle-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-secondary;
+    border: 1px solid $colour-secondary;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-secondary;
+        border: 1px solid $colour-hover-secondary;
+    }
+}
+
+
+.btn-status-modal-outline-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-primary;
+    background: $colour-body;
+    border: 1px solid $colour-primary;
+    border-radius: 24px;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-primary;
+        border: 1px solid $colour-hover-primary;
+    }
+}

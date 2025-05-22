@@ -1,0 +1,367 @@
+/* modal */
+
+.modal-alert-primary {
+    background-color: $colour-extra-light-primary;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: $colour-primary;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-primary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}
+
+.modal-alert-secondary {
+    background-color: $colour-background-secondary;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: $colour-secondary;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-secondary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}
+
+.modal-alert-danger {
+    background-color: $colour-light-danger;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: #DE506E;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-danger;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}
+
+.modal-alert-warning {
+    background-color: $colour-light-warning;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: $colour-warning;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-warning;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}
+
+.modal-form-light {
+    background-color: $colour-body;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: $colour-primary;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-warning;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}
+
+.modal-form-secondary {
+    background-color: $colour-body;
+    border-radius: 27px;
+
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-bottom: 1px solid $colour-none;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        .btn-icon {
+            padding: 0px;
+
+            & i {
+                font-size: 30px;
+                color: $colour-secondary;
+                padding-top: 2px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-bottom: 2px;
+
+                &:hover {
+                    color: $colour-title;
+                }
+            }
+
+
+        }
+    }
+
+    .modal-body {
+
+
+        .icon-box {
+            background-color: $colour-secondary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+    }
+
+
+}

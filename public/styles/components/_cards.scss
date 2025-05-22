@@ -1,0 +1,293 @@
+/* card */
+
+.card-shadow {
+    border: 0;
+    border-radius: 27px;
+    box-shadow: $box-shadow ;
+    margin-bottom: 50px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+
+    .card-header {
+        margin-bottom: 20px;
+    }
+
+}
+
+
+.card-shadow-contact {
+    border: 0;
+    border-radius: 27px;
+    box-shadow: $box-shadow ;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.card-background {
+    border: 0;
+    border-radius: 27px;
+    margin-bottom: 50px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    background-color: $colour-background;
+
+    .card-body {
+        .meta-content-post {
+
+            margin-right: 20px;
+            color: #a09fac;
+
+            & i {
+                color: $colour-primary;
+            }
+        }
+    }
+}
+
+
+.card-article {
+    .card-img-top {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .card-body {
+        padding: 0;
+
+        .category-blog {
+            margin-right: 20px;
+            color: $colour-primary;
+        }
+
+        .category {
+            font-weight: $font-bold;
+            text-transform: uppercase;
+        }
+
+        .card-post-title {
+            font-family: $font-title;
+            font-size: 22px;
+            color: $colour-title;
+            font-weight: $font-bold;
+            text-decoration: none;
+
+            &:hover {
+                color: $colour-primary;
+            }
+        }
+
+        .meta-content-blog {
+            margin-right: 20px;
+            color: #a09fac;
+        }
+    }
+
+    .card-footer {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        background-color: $colour-body;
+        border-top: 0px solid $colour-none;
+    }
+
+}
+
+
+.card-light {
+
+    border: 0;
+    border-radius: 27px;
+
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    background-color: $colour-body;
+
+    .card-body {
+
+
+
+        .icon-box {
+            background-color: $colour-primary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+
+
+    }
+
+    &:hover {
+        background-color: $colour-primary;
+
+        .card-body {
+
+            .icon-box {
+                background-color: $colour-body;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding-top: 9px;
+                padding-right: 12px;
+                padding-bottom: 9px;
+                padding-left: 12px;
+                transform: rotate(1deg);
+                margin-bottom: 20px;
+
+                & i {
+                    font-size: 32px;
+                    color: $colour-primary;
+                }
+
+            }
+
+            & h3 {
+                color: $colour-body;
+            }
+
+            & p {
+                color: $colour-body;
+            }
+
+
+        }
+    }
+
+
+}
+
+
+.card-light-shadow {
+
+    border: 0;
+    border-radius: 27px;
+    box-shadow: $box-shadow ;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    background-color: $colour-body;
+
+
+
+    .card-header {
+        text-align: center;
+
+        background-color: white;
+        border-bottom: 0px;
+
+        img.card-img-profil {
+            border-radius: 50%;
+            width: 100px;
+        }
+    }
+
+    .card-body {
+        .icon-box {
+            background-color: $colour-primary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
+
+
+    }
+
+
+
+
+}
+
+
+.card-comment {
+    border: 0;
+    border-radius: 27px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    background-color: $colour-background;
+
+    & img {
+        border-radius: 20px;
+    }
+
+    .meta-comment {
+        margin-right: 20px;
+        color: $colour-text;
+
+        & i {
+            color: $colour-primary;
+        }
+    }
+
+
+}
+
+.card-border-gray {
+
+    border: 1px solid #dee2e6;
+    border-radius: 27px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    background-color: $colour-body;
+}
+
+
+/* card - images */
+.bg-repeat-0 {
+    background-repeat: no-repeat !important;
+}
+
+.bg-position-center {
+    background-position: center !important;
+}
+
+.bg-size-cover {
+    background-size: cover !important;
+}
+
+a[class^=bg-]:not(.btn),
+a[class*=bg-]:not(.btn) {
+    transition: background-color .25s ease;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}

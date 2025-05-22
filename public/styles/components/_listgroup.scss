@@ -1,0 +1,137 @@
+/* list group */
+
+.blog-postlist-content{
+    text-decoration: none;
+    .blog-postlist-title{
+        font-family: $font-title;
+        font-size: 18px;
+        color: $colour-title;
+        font-weight: $font-bold;
+    }
+    .blog-postlist-intro{
+        font-family: $font-text;
+        font-size: 16px;
+        color: $colour-text;
+        font-weight: $font-medium;
+    }
+
+    .meta-lists{
+       
+        font-family: $font-text;
+        color: $colour-subtitle;
+        font-weight: $font-regular;
+    }
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding-left: 0px;
+    color: $colour-text;
+    text-decoration: none;
+    background-color: var(--bs-list-group-bg);
+    border: 0px solid $colour-none;
+}
+
+/* list group compte */
+.list-group-flush{
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding-left: 0px;
+        color: $colour-title;
+        text-decoration: none;
+        background-color: $colour-body;
+        border: 0px solid $colour-body;
+        box-shadow: $box-shadow;
+        .box-icon-account{
+            margin-right: 20px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 5px;
+            border-radius: 10px;
+            border: 1px solid $colour-light-secondary;
+            background-color: $colour-light-secondary;
+           & i{
+               font-size: 18px;
+               color: $colour-secondary;
+           }
+       }
+
+       &:hover{
+        color: $colour-secondary;
+        background-color: $colour-light-secondary;
+        border: 0px solid $colour-light-secondary;
+       }
+    }
+    .list-group-item-action {
+        font-family: $font-text;
+        font-size: 18px;
+        margin-bottom: 15px;
+        border: 0;
+        border-radius: 0.5rem;
+        padding-top: 16px;
+        padding-left: 16px;
+        padding-bottom: 16px;
+    }
+
+    .list-group-item.active {
+        z-index: 2;
+        color: $colour-body;
+        background-color: $colour-primary;
+        border-color: $colour-primary;
+        box-shadow: $box-shadow;
+        font-weight: $font-medium;
+
+        .box-icon-account{
+            margin-right: 20px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 5px;
+            border-radius: 10px;
+            border: 1px solid $colour-body;
+            background-color: $colour-body;
+           & i{
+               font-size: 18px;
+               color: $colour-primary;
+           }
+       
+       }
+    }
+
+    .list-group-item.exit-account {
+        z-index: 2;
+        color: $colour-title;
+        background-color: $colour-none;
+        border-color: $colour-primary;
+        box-shadow: none;
+        font-weight: $font-medium;
+
+        .box-icon-account{
+            margin-right: 20px;
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+            border-radius: 0;
+            border: 0px solid $colour-body;
+            background-color: $colour-none;
+           & i{
+               font-size: 18px;
+               font-weight: 700;
+               color: $colour-primary;
+           }
+       
+       }
+       &:hover{
+        color:$colour-primary;
+       }
+    }
+
+
+
+
+}
+

@@ -1,0 +1,23 @@
+/* Alertes */
+
+.display-alerts {
+    margin-top: 250px;
+    margin-left: 150px;
+
+    .alert {
+        width: 250px;
+        text-align: center;
+    }
+
+    .alert-success {
+        color: #177137;
+        border-color: #177137;
+        background-color: #dfffea;
+    }
+
+    .alert-danger {
+        color: #f8285a;
+        border-color: #f8285a;
+        background-color: #ffeef3;
+    }
+}

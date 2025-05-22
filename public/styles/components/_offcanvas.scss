@@ -1,0 +1,49 @@
+/* offcanvas */
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: $colour-title !important;
+  }
+  .offcanvas-aside{
+    width: 21rem; 
+    z-index: 1045;
+  }
+  
+  .offcanvas-header{
+    & img{
+      width: 47px;
+    }
+    & span{
+      font-family: $font-logo;
+      font-size: 30px;
+      color: white;
+      margin-left: 15px;
+    }
+  }
+  
+  
+  .offcanvas-body{
+    .profil-offcanvas{
+      margin-top: 20px;
+      text-align: center;
+      & h5{
+        color: $colour-body;
+      }
+      & p{
+        color: $colour-secondary;
+      }
+  
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .offcanvas-lg .offcanvas-body {
+        display: flex;
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        background-color: transparent !important;
+        flex-direction: column-reverse;
+    }
+  }
+  
+  

@@ -1,0 +1,377 @@
+/* Forms */
+
+.form-group-style {
+    input[type=text] {
+        width: 100%;
+        padding: .825rem 1rem;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: $colour-body;
+        color: $colour-primary;
+        border: 1px solid #ebebeb;
+        border-radius: 1rem;
+        outline-color: $colour-primary;
+    }
+
+    input[type=email] {
+        width: 100%;
+        padding: .825rem 1rem;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: $colour-body;
+        color: $colour-primary;
+        border: 1px solid #ebebeb;
+        border-radius: 1rem;
+        outline-color: $colour-primary;
+    }
+
+    input[type=password] {
+        width: 100%;
+        padding: .825rem 1rem;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: $colour-body;
+        color: $colour-primary;
+        border: 1px solid #ebebeb;
+        border-radius: 1rem;
+        outline-color: $colour-primary;
+    }
+
+    input[type=date] {
+        width: 100%;
+        padding: .825rem 1rem;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: $colour-body;
+        color: $colour-primary;
+        border: 1px solid #ebebeb;
+        border-radius: 1rem;
+        outline-color: $colour-primary;
+    }
+
+
+
+
+    input[type=file] {
+        width: 100%;
+        padding: .825rem 1rem;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: $colour-body;
+        color: $colour-primary;
+        border: 1px solid #ebebeb;
+        border-radius: 1rem;
+        outline-color: $colour-primary;
+
+
+    }
+
+    input::file-selector-button {
+
+        font-family: $font-text;
+        font-size: 18px;
+        font-weight: $font-medium;
+        color: $colour-body;
+        padding: 0.5em;
+        border: thin solid $colour-primary;
+        border-radius: 24px;
+        background: $colour-primary;
+        padding-top: 10px;
+        padding-left: 28px;
+        padding-right: 28px;
+        padding-bottom: 10px;
+
+        &:hover {
+            color: $colour-body;
+            background: $colour-hover-primary;
+            border: 1px solid $colour-hover-primary;
+        }
+    }
+
+
+
+
+
+
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 1px solid #ebebeb;
+        border-radius: 16px;
+        color: $colour-primary;
+        background-color: white;
+        font-size: 16px;
+        resize: none;
+        outline-color: $colour-primary;
+    }
+
+
+
+    & p {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 0;
+
+        & i {
+            margin-right: 3px;
+        }
+
+        color:#d60000;
+        ;
+    }
+
+    .form-check-input:checked {
+        background-color: $colour-primary;
+        border: 0px solid $colour-primary;
+    }
+}
+
+
+.form-group-style2 {
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.825rem 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $colour-primary;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: $colour-body;
+        background-clip: padding-box;
+        border: 1 solid $colour-primary;
+        border-radius: 1rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    }
+
+    .form-select {
+        --bs-form-select-bg-img: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+        display: block;
+        width: 100%;
+        padding: 0.825rem 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $colour-primary;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: $colour-body;
+        background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+        background-repeat: no-repeat;
+        background-position: right .75rem center;
+        background-size: 16px 12px;
+        border: 1 solid $colour-primary;
+        border-radius: 1rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    & p {
+        margin-top: 10px;
+        font-family: $font-text;
+        font-size: 14px;
+        color: #F8285A;
+    }
+
+}
+
+
+/* Ajouter une image */
+#picture__input {
+    display: none;
+}
+
+.picture {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+}
+
+.picture:hover {
+    color: #777;
+    background: #ccc;
+}
+
+.picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+}
+
+.picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.picture__img {
+    max-width: 100%;
+}
+
+
+/* image input 2 */
+.h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-pic-wrapper {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic-holder {
+    text-align: center;
+    position: relative;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pic-holder .pic {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+}
+
+.pic-holder .upload-file-block,
+.pic-holder .upload-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(90, 92, 105, 0.7);
+    color: #f8f9fc;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.pic-holder .upload-file-block {
+    cursor: pointer;
+}
+
+.uploadProfileInput {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+}
+
+.pic-holder:hover .upload-file-block,
+.uploadProfileInput:focus~.upload-file-block {
+    opacity: 1;
+}
+
+.pic-holder.uploadInProgress .upload-file-block {
+    display: none;
+}
+
+.pic-holder.uploadInProgress .upload-loader {
+    opacity: 1;
+}
+
+/* Snackbar css */
+.snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+    transform: translateX(-50%);
+}
+
+.snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

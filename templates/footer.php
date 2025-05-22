@@ -39,9 +39,9 @@
 
 
                     <li class="list-group-item d-flex align-items-center">
-                        <i class="bi bi-wrench-adjustable-circle fs-xl me-2"></i>
+                        <i class="bi bi-lock fs-xl me-2"></i>
 
-                        <a class="text-secondary" href="index.php?action=dashboard"> Espace Administration</a>
+                        Espace Administration
 
                     </li>
                 </ul>
