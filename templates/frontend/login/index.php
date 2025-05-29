@@ -24,7 +24,7 @@
         <div class="col-6">
             <!--begin::bloc-->
             <div class="col-left-content">
-                <img src="images/bloggerj-img-01.svg" class="img-fluid featured-image-post" alt="image">
+                <img src="images/featured-image-login.svg" class="img-fluid featured-image-post" alt="image">
             </div>
             <!--end::Title-->
         </div>
