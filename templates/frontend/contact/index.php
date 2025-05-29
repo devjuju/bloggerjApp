@@ -80,6 +80,10 @@
 
             </div>
 
+
+
+
+            <!-- Contact form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
                 <div class="card-shadow py-3 p-sm-4 p-md-5">
                     <div class="card-header">
@@ -90,33 +94,41 @@
 
                     <div class="card-body">
 
+
+
+
                         <form method="post" class="needs-validation" novalidate>
                             <div class="row g-4">
                                 <!--begin::Form group-->
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
-                                    <input type="text" id="lastname" name="" placeholder="Entrer un nom" value="">
+                                    <input type="text" id="lastname" name="contact[lastname]" placeholder="Entrer un nom" value="<?= isset($contact) ? $contact->getLastname() : '' ?>">
+                                    <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
                                 </div>
                                 <!--end::Form group-->
                                 <!--begin::Form group-->
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
-                                    <input type="text" id="firstname" name="" placeholder="" value="">
+                                    <input type="text" id="firstname" name="contact[firstname]" placeholder="" value="<?= isset($contact) ? $contact->getFirstname() : '' ?>">
+                                    <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
                                 </div>
                                 <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
-                                    <input type="email" placeholder="" id="email" name="" value="">
+                                    <input type="email" placeholder="" id="email" name="contact[email]" value="<?= isset($contact) ? $contact->getEmail() : '' ?>">
+                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
                                 </div>
                                 <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="sujet">Sujet</label>
-                                    <input type="text" placeholder="" id="sujet" name="" value="">
+                                    <input type="text" placeholder="" id="sujet" name="contact[sujet]" value="<?= isset($contact) ? $contact->getSubject() : '' ?>">
+                                    <?= isset($controle["sujet"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["sujet"] . "</p>" : '' ?>
                                 </div>
                                 <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="message">Message</label>
-                                    <textarea rows="6" placeholder="" name="" id="message"></textarea>
+                                    <textarea rows="6" placeholder="Enter your message here..." name="contact[message]" id="message"><?= isset($contact) ? $contact->getMessage() : '' ?></textarea>
+                                    <?= isset($controle["message"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["message"] . "</p>" : '' ?>
                                 </div>
                                 <div class="col-sm-12 pt-4">
                                     <div class="d-grid gap-2">
@@ -126,12 +138,57 @@
                                 </div>
                             </div>
                         </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </section>
+
+
+
+
 
 
 <?php $content = ob_get_clean(); ?>

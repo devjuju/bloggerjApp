@@ -42,7 +42,7 @@ use App\Core\Auth;
             </div>
             <div class="col-md-6 pb-2 pb-md-0 mb-4 mb-md-0">
                 <div class="pe-lg-5">
-                    <img src="images/bloggerj-img-03.svg" class="img-fluid" alt="image">
+                    <img src="images/featured-image-home.svg" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
