@@ -1,6 +1,9 @@
 /* typography */
 
-.heading-home{
+
+/* reponsive mac */
+
+.heading-home {
     font-family: $font-title;
     font-size: 66px;
     color: $colour-title;
@@ -8,14 +11,14 @@
     line-height: 1.1em;
 }
 
-.running-text{
+.running-text {
     font-family: $font-text;
     font-size: 16px;
     color: $colour-text;
     font-weight: $font-regular;
 }
 
-.highlighted-text{
+.highlighted-text {
     font-family: $font-text;
     font-size: 18px;
     color: $colour-text;
@@ -23,7 +26,7 @@
 }
 
 
-.titre-page{
+.titre-page {
     font-family: $font-title;
     font-size: 56px;
     color: $colour-title;
@@ -31,7 +34,7 @@
     line-height: 1.1em;
 }
 
-.titre-section{
+.titre-section {
     font-family: $font-title;
     font-size: 46px;
     color: $colour-title;
@@ -39,7 +42,7 @@
     line-height: 1.1em;
 }
 
-.titre-h3{
+.titre-h3 {
     font-family: $font-title;
     font-size: 26px;
     color: $colour-title;
@@ -47,7 +50,7 @@
 
 }
 
-.titre-h4{
+.titre-h4 {
     font-family: $font-title;
     font-size: 26px;
     color: $colour-title;
@@ -55,14 +58,14 @@
 
 }
 
-.titre-h5{
+.titre-h5 {
     font-family: $font-title;
     font-size: 24px;
     color: $colour-title;
     font-weight: $font-bold;
 }
 
-.titre-h6{
+.titre-h6 {
     font-family: $font-title;
     font-size: 18px;
     color: $colour-title;
@@ -70,19 +73,112 @@
 }
 
 
-.color-link-primary{
+.color-link-primary {
     color: $colour-primary;
     text-decoration: none;
     font-weight: $font-medium;
-    &:hover{
-        text-decoration: underline; 
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 
-.text-category{
+.text-category {
     font-family: $font-text;
     font-size: 16px;
     color: $colour-primary;
     font-weight: $font-bold;
     text-transform: uppercase;
+}
+
+/* responsive tablette */
+@media screen and (max-width: 768px) {
+    .heading-home {
+        font-family: $font-title;
+        font-size: 30px;
+        color: $colour-title;
+        font-weight: $font-bold;
+        line-height: 1.1em;
+    }
+
+    .running-text {
+        font-family: $font-text;
+        font-size: 16px;
+        color: $colour-text;
+        font-weight: $font-regular;
+    }
+
+    .highlighted-text {
+        font-family: $font-text;
+        font-size: 18px;
+        color: $colour-text;
+        font-weight: $font-medium;
+    }
+
+
+    .titre-page {
+        font-family: $font-title;
+        font-size: 30px;
+        color: $colour-title;
+        font-weight: $font-bold;
+        line-height: 1.1em;
+    }
+
+    .titre-section {
+        font-family: $font-title;
+        font-size: 30px;
+        color: $colour-title;
+        font-weight: $font-bold;
+        line-height: 1.1em;
+    }
+
+    .titre-h3 {
+        font-family: $font-title;
+        font-size: 26px;
+        color: $colour-title;
+        font-weight: $font-bold;
+
+    }
+
+    .titre-h4 {
+        font-family: $font-title;
+        font-size: 26px;
+        color: $colour-title;
+        font-weight: $font-bold;
+
+    }
+
+    .titre-h5 {
+        font-family: $font-title;
+        font-size: 24px;
+        color: $colour-title;
+        font-weight: $font-bold;
+    }
+
+    .titre-h6 {
+        font-family: $font-title;
+        font-size: 18px;
+        color: $colour-title;
+        font-weight: $font-bold;
+    }
+
+
+    .color-link-primary {
+        color: $colour-primary;
+        text-decoration: none;
+        font-weight: $font-medium;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .text-category {
+        font-family: $font-text;
+        font-size: 16px;
+        color: $colour-primary;
+        font-weight: $font-bold;
+        text-transform: uppercase;
+    }
+
 }

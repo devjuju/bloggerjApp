@@ -2,7 +2,7 @@
 
 use App\Core\Auth;
 
-$title = "Modifier une image"; ?>
+$title = "Modifier la photo de profil"; ?>
 <?php ob_start();
 ?>
 
@@ -99,16 +99,16 @@ $title = "Modifier une image"; ?>
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=posts">Articles</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Modifier l'image de l'article suivant : <strong> <?= $post->title ?> </strong></li>
+                <li class="breadcrumb-item active" aria-current="page">Modifier la photo de profil de : <strong> <?= $user->username ?> </strong></li>
             </ol>
         </nav>
         <div class="container pb-4 mt-n1 mt-lg-0">
-            <h1 class="title-dasboard">Modifier l'image de l'article suivant : <strong> <?= $post->title ?> </strong></h1>
+            <h1 class="title-dasboard">Modifier la photo de profil de : <strong> <?= $user->username ?> </strong></h1>
         </div>
     </section>
-    <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
+    <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-100">
-            <form action="index.php?action=update_image_post&id=<?= $post->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <form action="index.php?action=update_image_user&id=<?= $user->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="row gy-4">
                     <!-- Content -->
                     <div class="col-lg-7">
@@ -119,9 +119,9 @@ $title = "Modifier une image"; ?>
                             <div class="card card-light-shadow mb-5">
                                 <div class="card-body pt-0">
                                     <div class=" col-sm-12 form-group-style">
-                                        <img src="uploads/<?= $post->image ?>" class="card-img-top img-fluid" alt="Image">
+                                        <img src="uploads/<?= $user->image ?>" class="card-img-top img-fluid" alt="Image">
                                         <br><br>
-                                        <input type="hidden" name="update_image_post[form]" value="ok">
+                                        <input type="hidden" name="update_image_user[form]" value="ok">
                                         <label for="image" class="form-label"> Image mise en avant</label>
                                         <input type="file" id="image" name="image">
                                         <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
@@ -143,10 +143,10 @@ $title = "Modifier une image"; ?>
                                         <h4 class="titre-h4">Mettre à jour</h4>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <a href="index.php?action=update_post&id=<?= $post->id ?>" class="btn btn-outline-primary mb-3">
-                                            Retour à l'article
+                                        <a href="index.php?action=update_user&id=<?= $user->id ?>" class="btn btn-outline-primary mb-3">
+                                            Retour au compte
                                         </a>
-                                        <button type="submit" class="btn btn-primary">Modifier l'image</button>
+                                        <button type="submit" class="btn btn-primary">Modifier la photo de profil</button>
                                     </div>
                                 </div>
                             </div>

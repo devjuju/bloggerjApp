@@ -130,6 +130,36 @@ class Router
                         break;
 
 
+
+                    case 'users':
+                        $users = new UsersController();
+                        $users->users();
+                        break;
+
+                    case 'create_user':
+                        $createUser = new UsersController();
+                        $createUser->create();
+                        break;
+
+
+                    case 'update_user':
+                        $updateUser = new UsersController();
+                        $updateUser->update($request->get('id'));
+                        break;
+
+
+                    case 'update_image_user':
+                        $updateImageUser = new UsersController();
+                        $updateImageUser->update_image_user($request->get('id'));
+                        break;
+
+
+                    case 'delete_user':
+                        $deleteUser = new UsersController();
+                        $deleteUser->delete($request->get('id'));
+                        break;
+
+
                     case 'dashboard':
                         $account = new DashboardController;
                         $account->dashboard();
