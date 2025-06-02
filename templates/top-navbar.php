@@ -1,4 +1,5 @@
 <!-- Top navbar de connection admin -->
+
 <?php
 
 use App\Core\Auth;
