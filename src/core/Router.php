@@ -87,8 +87,6 @@ class Router
                         $comments->comments();
                         break;
 
-
-
                     case 'delete_comment':
                         $comments = new CommentsController();
                         $comments->delete($request->get('id'));
