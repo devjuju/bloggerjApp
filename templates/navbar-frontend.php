@@ -1,87 +1,259 @@
-<!-- Navigation frontend -->
-<header class="navbar navbar-expand-lg bg-light-subtle">
-    <div class="container">
-        <a href="index.php?action=home" class="navbar-brand">
-            <img src="images/logo.png" width="47" alt="Blogger">
-            blogger J
-        </a>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse5" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="nav dropdown d-block order-lg-3 ms-4">
+<?php
+
+use App\Core\Auth;
+
+if (Auth::get('auth', 'role')) {
+?>
+
+    <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
+        <header class="navbar-frontend navbar navbar-expand-lg bg-light-subtle">
+            <div class="container">
+
+                <!-- Navbar brand (Logo) -->
+                <a class="navbar-brand pe-sm-3" href="index.php?action=home">
+                    <img src="images/logo.png" width="47" alt="Blogger">
+                    blogger J
+                </a>
+
+                <div class="d-none d-sm-block order-lg-3">
+                    <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
+
+                        <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                        <div class="ps-2">
+                            <div class="fs-xs lh-1 opacity-60">Hello,</div>
+                            <div class="fs-sm"><?= Auth::get('auth', 'username'); ?></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <a class="btn btn-outline-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="index.php?action=logout">
+
+                    Se déconnecter
+                </a>
+
+
+                <!-- Mobile menu toggler (Hamburger) -->
+                <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation" aria-expanded="true">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar collapse (Main navigation) -->
+                <nav class="navbar-collapse collapse show" id="navbarNav">
+                    <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=home">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=blog">Blog</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=contact">Contact</a>
+                        </li>
 
 
 
 
-            <div class="d-flex align-items-center">
-                <?php
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Compte</a>
 
-                use App\Core\Auth;
+                        </li>
 
-                if (Auth::get('auth', 'role')) {
-                ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=dashboard">Tableau de bord</a>
+                        </li>
+
+
+
+                    </ul>
+                    <hr>
+
+                    <div class="d-sm-none">
+
+
+                        <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
+
+                            <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                            <div class="ps-2">
+                                <p class="fs-sm text-body-secondary mb-0">Hello</p>
+                                <h3 class="h5 mb-1"><?= Auth::get('auth', 'username'); ?></h3>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+
+                        <a class="btn btn-outline-primary w-100 mb-1" href="index.php?action=logout">
+
+                            Se déconnecter
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+    <?php } else { ?>
+
+        <header class="navbar-frontend navbar navbar-expand-lg bg-light-subtle">
+            <div class="container">
+
+                <!-- Navbar brand (Logo) -->
+                <a class="navbar-brand pe-sm-3" href="index.php?action=home">
+                    <img src="images/logo.png" width="47" alt="Blogger">
+                    blogger J
+                </a>
+
+                <div class="d-none d-sm-block order-lg-3">
+                    <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
+
+                        <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                        <div class="ps-2">
+                            <div class="fs-xs lh-1 opacity-60">Hello,</div>
+                            <div class="fs-sm"><?= Auth::get('auth', 'username'); ?></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <a class="btn btn-outline-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="index.php?action=logout">
+
+                    Se déconnecter
+                </a>
+
+
+                <!-- Mobile menu toggler (Hamburger) -->
+                <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation" aria-expanded="true">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar collapse (Main navigation) -->
+                <nav class="navbar-collapse collapse show" id="navbarNav">
+                    <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=home">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=blog">Blog</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=contact">Contact</a>
+                        </li>
+
+
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Compte</a>
+
+                        </li>
+
+
+
+                    </ul>
+                    <hr>
+
+                    <div class="d-sm-none">
+
+
+                        <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
+
+                            <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                            <div class="ps-2">
+                                <p class="fs-sm text-body-secondary mb-0">Hello</p>
+                                <h3 class="h5 mb-1"><?= Auth::get('auth', 'username'); ?></h3>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+
+                        <a class="btn btn-outline-primary w-100 mb-1" href="index.php?action=logout">
+
+                            Se déconnecter
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    <?php } ?>
+
+
+<?php } else { ?>
+    <header class="navbar-frontend navbar navbar-expand-lg bg-light-subtle">
+        <div class="container">
+
+            <!-- Navbar brand (Logo) -->
+            <a class="navbar-brand pe-sm-3" href="index.php?action=home">
+                <img src="images/logo.png" width="47" alt="Blogger">
+                blogger J
+            </a>
+
+
+
+
+            <a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex mb-3 mb-sm-0 me-sm-3" href="index.php?action=register">
+
+                S'incrire
+            </a>
+
+            <a class="btn btn-outline-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="index.php?action=login">
+
+                Se connecter
+            </a>
+
+
+            <!-- Mobile menu toggler (Hamburger) -->
+            <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation" aria-expanded="true">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar collapse (Main navigation) -->
+            <nav class="navbar-collapse collapse show" id="navbarNav">
+                <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+
                     <li class="nav-item">
-                        <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
-
-                            <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
-
-                                <img src="images/profil-user-defaut-img.svg" class="rounded-circle" width="48" alt="Avatar">
-                                <div class="ps-2">
-                                    <div class="fs-xs lh-1 opacity-60">Hello,</div>
-                                    <div class="fs-sm"><?= Auth::get('auth', 'username'); ?></div>
-                                </div>
-
-                            </div>
-
-
-
-
-                        <?php } else { ?>
-
-
-                            <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-3 mb-2">
-
-                                <img src="images/profil-user-defaut-img.svg" class="rounded-circle" width="48" alt="Avatar">
-                                <div class="ps-2">
-                                    <div class="fs-xs lh-1 opacity-60">Hello,</div>
-                                    <div class="fs-sm"><?= Auth::get('auth', 'username'); ?></div>
-                                </div>
-
-                            </div>
-
-
+                        <a class="nav-link" href="index.php?action=home">Accueil</a>
                     </li>
-                <?php } ?>
-                <li class="nav-item">
-                    <a href="index.php?action=logout" class="btn btn-outline-secondary">
-                        Se déconnecter
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=blog">Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=contact">Contact</a>
+                    </li>
+
+                </ul>
+                <hr>
+
+                <div class="d-sm-none">
+
+
+
+
+                    <a class="btn btn-primary w-100 mb-3" href="index.php?action=register">
+
+                        S'inscire
                     </a>
-                </li>
-            <?php } else { ?>
-                <div class="d-flex flex-column flex-sm-row">
-                    <a href="index.php?action=register" class="btn btn-primary mb-3 mb-sm-0 me-sm-3">S'inscrire</a>
-                    <a href="index.php?action=login" class="btn btn-outline-primary">
+
+                    <a class="btn btn-outline-primary w-100 mb-1" href="index.php?action=login">
+
                         Se connecter
                     </a>
                 </div>
-            <?php } ?>
-            </div>
+            </nav>
         </div>
-        <nav id="navbarCollapse5" class="collapse navbar-collapse order-lg-2">
-            <hr class="d-lg-none mt-3 mb-2">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item navigation">
-                    <a href="index.php?action=home" class="nav-link active">Accueil</a>
-                </li>
-                <li class="nav-item navigation">
-                    <a href="index.php?action=blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item navigation">
-                    <a href="index.php?action=contact" class="nav-link">Contact</a>
-                </li>
+    </header>
 
-
-            </ul>
-        </nav>
-    </div>
-</header>
+<?php } ?>

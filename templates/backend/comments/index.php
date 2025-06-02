@@ -104,7 +104,7 @@ $title = "Commentaires"; ?>
     </section>
 
 
-    <section class="container-fluid p-5 ">
+    <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
 
         <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-100">
 

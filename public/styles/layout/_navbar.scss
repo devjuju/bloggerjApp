@@ -1,6 +1,31 @@
 /* Navbar */
 
+
 /* frontend */
+.navbar-frontend {
+  .navbar-brand {
+    color: $colour-title;
+    font-family: $font-logo;
+    font-size: 38px;
+    padding-right: 20px;
+
+    &:hover {
+      color: $colour-primary;
+    }
+  }
+
+  .nav-link {
+    color: $colour-title;
+    font-family: $font-text;
+    font-size: 18px;
+
+    &:hover {
+      color: $colour-primary;
+    }
+  }
+}
+
+
 .navbar {
   .navbar-brand {
     color: $colour-title;
@@ -11,6 +36,8 @@
     &:hover {
       color: $colour-primary;
     }
+
+
   }
 
   .navigation {
@@ -66,7 +93,7 @@
       & span {
         font-family: $font-logo;
         font-size: 30px;
-        color: white;
+        color: rgb(0, 0, 0);
         margin-left: 15px;
       }
     }

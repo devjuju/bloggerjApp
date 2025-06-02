@@ -106,7 +106,7 @@ $title = "Modifier une image"; ?>
             <h1 class="title-dasboard">Modifier l'image de l'article suivant : <strong> <?= $post->title ?> </strong></h1>
         </div>
     </section>
-    <section class="container-fluid p-5 ">
+    <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-100">
             <form action="index.php?action=update_image_post&id=<?= $post->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="row gy-4">

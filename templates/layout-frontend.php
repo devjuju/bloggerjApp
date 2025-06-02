@@ -31,6 +31,9 @@
 <body>
 
     <!-- inclusion de l'entête du site -->
+    <?php require('../templates/top-navbar.php') ?>
+
+    <!-- inclusion de l'entête du site -->
     <?php require('../templates/navbar-frontend.php') ?>
 
     <?= $content ?>
