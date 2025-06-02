@@ -83,7 +83,7 @@ class Router
 
 
                     case 'comments':
-                        $comments = new CommentsController;
+                        $comments = new CommentsController();
                         $comments->comments();
                         break;
 
