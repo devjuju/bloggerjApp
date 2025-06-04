@@ -4,79 +4,81 @@
 ?>
 
 <!-- breadcrumb -->
-<section class="container-fluid p-5 bg-light-subtle">
-    <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
-        <ol class="breadcrumb pt-lg-3 mb-0">
+<section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <nav class="container" aria-label="breadcrumb">
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=home"><i class="bi bi-house-door fs-lg me-1"></i>Accueil</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Contact</li>
         </ol>
     </nav>
-    <div class="container pb-4 mt-n1 mt-lg-0">
+    <div class="container">
         <h1 class="titre-page">Contact</h1>
     </div>
 </section>
 
-
-
-
-<section class="pt-5">
-    <div class="container position-relative zindex-2 pt-5">
+<section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
+    <div class="container">
         <div class="row">
 
             <!-- Contact links -->
-            <div class="col-xl-4 col-lg-5 spacing-col-padding-top-100">
-                <div class="pe-lg-4 pe-xl-0">
-                    <h2 class="titre-section">Entrer en contact</h2>
-                    <p class="running-text">
-                        N'hésitez pas à m'écrire. je vous répondrai dans les plus brefs délais.</p>
+            <div class="col-xl-4 col-lg-5 ">
+                <h2 class="titre-section">
+                    Me contacter</h2>
 
-                    <div class="card card-shadow-contact spacing-content-marging-top-40">
-                        <div class="d-flex align-items-start ">
-                            <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
-                                <i class="bi bi-person"></i>
-                            </div>
-                            <div class="ps-3 ps-sm-4">
-                                <h5 class="titre-h5 mb-2">Justine Leleu</h5>
-                                <p class="running-text mb-2">Développeuse web </p>
-                            </div>
+                <p class="running-text fs-5">
+
+                    N'hésitez pas à m'écrire. je vous répondrai dans les plus brefs délais.
+
+                </p>
+
+
+                <img src="images/featured-image-contact.svg" class="img-fluid featured-image-post" alt="image">
+
+                <div class="card card-shadow-contact spacing-content-marging-top-40">
+                    <div class="d-flex align-items-start ">
+                        <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <div class="ps-3 ps-sm-4">
+                            <h5 class="titre-h5 mb-2">Justine Leleu</h5>
+                            <p class="running-text mb-2">Développeuse web </p>
                         </div>
                     </div>
-                    <div class="card card-shadow-contact spacing-element-marging-top-20">
-                        <div class="d-flex align-items-start ">
-                            <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-                            <div class="ps-3 ps-sm-4">
-                                <h5 class="titre-h5 mb-2">Me contacter</h5>
-                                <p class="running-text">jleleubellpro1994@gmail.com </p>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
-                <div class="d-flex align-items-start spacing-col-padding-top-50">
-                    <h5 class="titre-h5 spacing-element-marging-right-10">Réseaux sociaux :</h5>
+                <div class="card card-shadow-contact spacing-element-marging-top-20">
+                    <div class="d-flex align-items-start ">
+                        <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="ps-3 ps-sm-4">
+                            <h5 class="titre-h5 mb-2">Me contacter</h5>
+                            <p class="running-text">jleleubellpro1994@gmail.com </p>
+                        </div>
+                    </div>
+                </div>
 
 
 
+
+
+                <div class="d-flex spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+                    <h5 class="text-bold spacing-element-marging-right-10">Réseaux sociaux :</h5>
                     <!-- Facebook -->
-                    <a href="#" class="btn btn-icon-secondary btn-facebook" aria-label="Facebook">
+                    <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
                         <i class="bi bi-facebook"></i>
                     </a>
-
                     <!-- Twitter -->
-                    <a href="#" class="btn btn-icon-secondary btn-twitter" aria-label="Twitter">
+                    <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
                         <i class="bi bi-twitter"></i>
                     </a>
-
                     <!-- Instagram -->
-                    <a href="#" class="btn btn-icon-secondary btn-instagram" aria-label="Instagram">
+                    <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
                         <i class="bi bi-instagram"></i>
                     </a>
                 </div>
+
 
             </div>
 
@@ -85,7 +87,7 @@
 
             <!-- Contact form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
-                <div class="card-shadow py-3 p-sm-4 p-md-5">
+                <div class="card-shadow">
                     <div class="card-header">
                         <h3 class="titre-h3">
                             Envoyez-moi un message</h3>
@@ -139,52 +141,16 @@
                             </div>
                         </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
 </section>
+
+
+
 
 
 

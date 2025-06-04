@@ -4,16 +4,16 @@
 ?>
 
 <!-- breadcrumb -->
-<section class="container-fluid p-5 bg-light-subtle">
-    <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
-        <ol class="breadcrumb pt-lg-3 mb-0">
+<section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <nav class="container" aria-label="breadcrumb">
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=home"><i class="bi bi-house-door fs-lg me-1"></i>Accueil</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Se connecter</li>
         </ol>
     </nav>
-    <div class="container pb-4 mt-n1 mt-lg-0">
+    <div class="container">
         <h1 class="titre-page">Se connecter</h1>
     </div>
 </section>
@@ -46,11 +46,11 @@
 
             <!-- Contact form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
-                <div class="card-shadow py-3 p-sm-4 p-md-5">
+                <div class="card-shadow">
                     <div class="card-header">
                         <h2 class="titre-h3">Formulaire de connexion</h2>
 
-                        <p class="text-muted fw-semibold fs-5">
+                        <p class="running-text fs-5">
                             Entrez votre identifiant et votre mot de passe pour vous connectez à votre compte
                         </p>
 

@@ -105,3 +105,18 @@
     font-size: 20px;
     color: $colour-title;
 }
+
+/* responsive portable SM */
+@media screen and (max-width: 320px) {
+
+    .box-icon {
+        background-color: $colour-light-secondary;
+        border-radius: 20px;
+        padding: 15px;
+
+        & i {
+            font-size: 25px;
+            color: $colour-secondary;
+        }
+    }
+}
