@@ -9,106 +9,105 @@ $title = "Modifier un article"; ?>
 
 
 
-<aside>
-    <div id="docsNav" class="offcanvas-aside offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg">
+<aside data-bs-theme="dark">
+    <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
-            <a href="index.php?action=admin" class="navbar-brand d-none d-lg-flex py-0">
+            <a href="index.php?action=dashboard" class="navbar-brand text-dark d-none d-lg-flex py-0">
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
+
         </div>
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="d-lg-none mb-0">Menu</h5>
-                <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#docsNav" aria-label="Close"></button>
+                <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#componentsNav" aria-label="Close"></button>
             </div>
             <div class="list-group list-group-flush mx-n4">
-                <a href="index.php?action=admin" class="list-group-item list-group-item-action d-flex align-items-center border-0 py-2 px-4 active">
-                    <i class="bi bi-speedometer2 fs-lg  me-2"></i>
+                <a href="index.php?action=dashboard" class="list-group-item list-group-item-action active d-flex align-items-center border-0 py-2 px-4">
+                    <i class="bi bi-speedometer2 fs-lg opacity-80 me-2"></i>
                     Tableau de bord
                 </a>
-                <a href="index.php?action=home" class="list-group-item list-group-item-action d-flex align-items-center border-0 py-2 px-4">
-                    <i class="bi bi-display fs-lg  me-2"></i>
-                    Le blog
+                <a href="index.php?action=blog" class="list-group-item list-group-item-action d-flex align-items-center border-0 py-2 px-4">
+                    <i class="bi bi-box-arrow-up-right fs-lg opacity-80 me-2"></i>
+                    Voir le blog en direct
                 </a>
             </div>
         </div>
-        <div class="offcanvas-body p-4">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide h-auto spacing-col-padding-top-100">
+        <div class="offcanvas-body w-100 p-4 ">
 
-                    <div class="d-table position-relative mx-auto avatar-offcanvas">
-                        <img src="images/avatar.png" class="d-block rounded-circle" width="120" alt="John Doe">
-                    </div>
-                    <div class="profil-offcanvas">
+            <div class="list-group list-group-flush">
+                <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+                    <img src="uploads/<?= Auth::get('auth', 'image'); ?>" class="d-block rounded-circle" width="120" alt="">
+                    <div class="avatar-offcanvas">
                         <h5><?= Auth::get('auth', 'username'); ?></h5>
                         <p><?= Auth::get('auth', 'email'); ?></p>
                     </div>
 
-                    <!-- Flush list group -->
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">
-                            <div class="box-icon-account">
-                                <i class="bi bi-pin-fill"></i>
-                            </div>
-
-                            Articles
-                        </a>
-
-                        <a href="index.php?action=comments" class="list-group-item list-group-item-action d-flex align-items-center ">
-                            <div class="box-icon-account">
-                                <i class="bi bi-chat-square-dots-fill"></i>
-                            </div>
-
-                            Commentaires
-                        </a>
-                        <a href="index.php?action=users" class="list-group-item list-group-item-action d-flex align-items-center ">
-                            <div class="box-icon-account">
-                                <i class="bi bi-person-fill"></i>
-                            </div>
-
-                            Utilisateurs
-                        </a>
-
+                </div>
+                <a href="" class="list-group-item list-group-item-action d-flex align-items-center active">
+                    <div class="box-icon-account">
+                        <i class="bi bi-pin-fill"></i>
                     </div>
 
+                    Articles
+                </a>
 
+                <a href="index.php?action=comments" class="list-group-item list-group-item-action d-flex align-items-center">
+                    <div class="box-icon-account">
+                        <i class="bi bi-chat-square-dots-fill"></i>
+                    </div>
 
+                    Commentaires
+                </a>
+                <a href="index.php?action=users" class="list-group-item list-group-item-action d-flex align-items-center ">
+                    <div class="box-icon-account">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
 
-                </div>
+                    Utilisateurs
+                </a>
+
             </div>
-            <div class="swiper-scrollbar end-0">
-            </div>
+
+
+
+
+
+
         </div>
         <div class="offcanvas-header border-top">
-            <a href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/" class="btn btn-primary w-100" target="_blank" rel="noopener">
-                <i class="bi bi-arrow-right me-2"></i>
+            <a href="index.php?action=logout" class="btn btn-primary w-100">
                 Se déconnecter
             </a>
         </div>
     </div>
 </aside>
-
 <main>
 
-    <section class="container-fluid p-5 bg-light-subtle">
-        <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
-            <ol class="breadcrumb pt-lg-3 mb-0">
+    <section class="container-fluid bg-light-subtle px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
+
+        <nav class="container spacing-col-padding-top-50" aria-label="breadcrumb">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=dashboard"><i class="bi bi-speedometer2 fs-lg me-1"></i>Tableau de bord</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a class="breadcrumb-links" href="index.php?action=posts">Articles</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Modifier un article</li>
             </ol>
         </nav>
-        <div class="container pb-4 mt-n1 mt-lg-0">
+        <div class="container spacing-col-padding-bottom-50">
             <h1 class="title-dasboard">Modifier un article</h1>
         </div>
+
     </section>
+
+
+
+
+
+
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
-        <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-100">
+        <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
 
 
 

@@ -10,21 +10,21 @@ $title = "Blog"; ?>
 
 
 <!-- breadcrumb -->
-<section class="container-fluid p-5 bg-light-subtle">
-    <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
-        <ol class="breadcrumb pt-lg-3 mb-0">
+<section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <nav class="container" aria-label="breadcrumb">
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=home"><i class="bi bi-house-door fs-lg me-1"></i>Accueil</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Blog</li>
         </ol>
     </nav>
-    <div class="container pb-4 mt-n1 mt-lg-0">
+    <div class="container">
         <h1 class="titre-page">Blog</h1>
     </div>
 </section>
 
-<section class="container py-5 my-1 my-md-4 my-lg-5">
+<section class="container spacing-col-padding-top-50">
     <div class="row">
         <div class="col-lg-7  mb-lg-0">
 
@@ -99,7 +99,7 @@ $title = "Blog"; ?>
 
         </div>
         <div class="col-lg-5 col-xl-4 offset-xl-1 border-start-lg">
-            <div class="card card-shadow mb-5">
+            <div class="card card-shadow">
                 <div class="card-body">
                     <h4 class="titre-h4">Suivez-moi :</h4>
                     <p class="running-text">Retrouver les dernières nouvelles et inspirations sur le blog.</p>

@@ -738,6 +738,52 @@
 }
 
 
+.btn-icon-rounded-primary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-primary;
+    border: 1px solid $colour-primary;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-primary;
+        border: 1px solid $colour-hover-primary;
+    }
+}
+
+.btn-icon-rounded-secondary {
+    font-family: $font-text;
+    font-size: 18px;
+    font-weight: $font-medium;
+    color: $colour-body;
+    background: $colour-secondary;
+    border: 1px solid $colour-secondary;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: $colour-body;
+        background: $colour-hover-secondary;
+        border: 1px solid $colour-hover-secondary;
+    }
+}
+
+
 .btn-icon-circle-secondary {
     background-color: $colour-secondary;
     padding-top: 10px;

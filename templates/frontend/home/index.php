@@ -18,7 +18,7 @@ use App\Core\Auth;
             <?php endif; ?>
 
             <!-- Contact links -->
-            <div class="col-xl-6 col-lg-5 spacing-col-padding-top-100">
+            <div class="col-xl-6 col-lg-5 spacing-col-padding-top-50">
                 <div class="spacing-content-padding-bottom-40">
                     <h1 class="heading-home">
                         Une développeuse web passionnée et créative en vue d’évolution

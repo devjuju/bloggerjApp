@@ -5,10 +5,7 @@
     border-radius: 27px;
     box-shadow: $box-shadow ;
     margin-bottom: 50px;
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 30px;
+    padding: 50px;
 
     .card-header {
         margin-bottom: 20px;
@@ -21,20 +18,15 @@
     border: 0;
     border-radius: 27px;
     box-shadow: $box-shadow ;
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
+
 }
 
 .card-background {
     border: 0;
     border-radius: 27px;
     margin-bottom: 50px;
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 30px;
+    padding: 50px;
     background-color: $colour-background;
 
     .card-body {
@@ -290,4 +282,240 @@ a[class*=bg-]:not(.btn) {
 
 .overflow-hidden {
     overflow: hidden !important;
+}
+
+
+/* responsive portable Xl */
+@media screen and (max-width: 425px) {
+
+    .card-shadow {
+        border: 0;
+        border-radius: 27px;
+        box-shadow: $box-shadow ;
+        margin-bottom: 50px;
+        padding: 25px;
+
+        .card-header {
+            margin-bottom: 20px;
+        }
+
+    }
+
+
+    .card-background {
+        border: 0;
+        border-radius: 27px;
+        margin-bottom: 50px;
+        padding: 25px;
+        background-color: $colour-background;
+
+        .card-body {
+            .meta-content-post {
+
+                margin-right: 20px;
+                color: #a09fac;
+
+                & i {
+                    color: $colour-primary;
+                }
+            }
+        }
+    }
+
+
+    .card-shadow-contact {
+        border: 0;
+        border-radius: 27px;
+        box-shadow: $box-shadow ;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 11px;
+
+    }
+
+
+    .card-light-shadow {
+
+        border: 0;
+        border-radius: 27px;
+
+        padding-top: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+        background-color: $colour-body;
+
+        .card-body {
+
+
+
+            .icon-box {
+                background-color: $colour-primary;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding-top: 9px;
+                padding-right: 12px;
+                padding-bottom: 9px;
+                padding-left: 12px;
+                transform: rotate(1deg);
+                margin-bottom: 20px;
+
+                & i {
+                    font-size: 32px;
+                    color: $colour-body;
+                }
+
+            }
+
+
+        }
+
+        &:hover {
+            background-color: $colour-primary;
+
+            .card-body {
+
+                .icon-box {
+                    background-color: $colour-body;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    padding-top: 9px;
+                    padding-right: 12px;
+                    padding-bottom: 9px;
+                    padding-left: 12px;
+                    transform: rotate(1deg);
+                    margin-bottom: 20px;
+
+                    & i {
+                        font-size: 32px;
+                        color: $colour-primary;
+                    }
+
+                }
+
+                & h3 {
+                    color: $colour-body;
+                }
+
+                & p {
+                    color: $colour-body;
+                }
+
+
+            }
+        }
+
+
+    }
+
+
+}
+
+/* responsive portable Xl */
+@media screen and (max-width: 320px) {
+
+    .card-background {
+        border: 0;
+        border-radius: 27px;
+        margin-bottom: 50px;
+        padding: 20px;
+        background-color: $colour-background;
+
+        .card-body {
+            .meta-content-post {
+
+                margin-right: 20px;
+                color: #a09fac;
+
+                & i {
+                    color: $colour-primary;
+                }
+            }
+        }
+    }
+
+    .card-light-shadow {
+
+        border: 0;
+        border-radius: 27px;
+
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        background-color: $colour-body;
+
+        .card-body {
+
+
+
+            .icon-box {
+                background-color: $colour-primary;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding-top: 9px;
+                padding-right: 12px;
+                padding-bottom: 9px;
+                padding-left: 12px;
+                transform: rotate(1deg);
+                margin-bottom: 20px;
+
+                & i {
+                    font-size: 32px;
+                    color: $colour-body;
+                }
+
+            }
+
+
+        }
+
+        &:hover {
+            background-color: $colour-primary;
+
+            .card-body {
+
+                .icon-box {
+                    background-color: $colour-body;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    padding-top: 9px;
+                    padding-right: 12px;
+                    padding-bottom: 9px;
+                    padding-left: 12px;
+                    transform: rotate(1deg);
+                    margin-bottom: 20px;
+
+                    & i {
+                        font-size: 32px;
+                        color: $colour-primary;
+                    }
+
+                }
+
+                & h3 {
+                    color: $colour-body;
+                }
+
+                & p {
+                    color: $colour-body;
+                }
+
+
+            }
+        }
+
+
+    }
+
+
 }

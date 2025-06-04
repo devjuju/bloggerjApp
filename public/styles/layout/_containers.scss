@@ -1,2 +1,46 @@
 /* container */
+.container-breadcrumb {
 
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+
+@media (min-width: 425px) {
+
+    .container-breadcrumb {
+
+        padding-top: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+    }
+}
+
+
+@media (min-width: 320px) {
+
+    .container-breadcrumb {
+
+        padding-top: 50px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 25px;
+    }
+}
+
+@media (min-width: 425px) {
+    .d-flex-users {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (min-width: 320px) {
+    .d-flex-users {
+        margin-bottom: 20px;
+    }
+
+}

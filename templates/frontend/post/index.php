@@ -7,9 +7,9 @@ $title = "Post"; ?>
 ?>
 
 <!-- breadcrumb -->
-<section class="container-fluid p-5 bg-light-subtle">
-    <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
-        <ol class="breadcrumb pt-lg-3 mb-0">
+<section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <nav class="container" aria-label="breadcrumb">
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=home"><i class="bi bi-house-door fs-lg me-1"></i>Accueil</a>
             </li>
@@ -19,7 +19,7 @@ $title = "Post"; ?>
             <li class="breadcrumb-item active" aria-current="page"><?= $post->title ?></li>
         </ol>
     </nav>
-    <div class="container pb-4 mt-n1 mt-lg-0">
+    <div class="container">
         <h1 class="titre-page"> <?= $post->title ?></h1>
         <div class="d-flex flex-row bd-highlight mb-3 spacing-content-marging-top-40">
             <div class="meta-list-blog bd-highlight">
