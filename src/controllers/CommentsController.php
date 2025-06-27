@@ -18,6 +18,8 @@ class CommentsController
     }
 
 
+
+
     // Méthode pour supprimer un commentaire
     public function delete(int $id): void
     {
@@ -50,7 +52,7 @@ class CommentsController
         $comment = new Comments();
         $comment->setId($id);
         $comment->setStatus('rejeté');
-        $comment->setIsValid(1);
+        $comment->setIsValid(0);
 
         $comment->update();
 

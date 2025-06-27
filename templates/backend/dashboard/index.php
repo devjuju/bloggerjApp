@@ -48,7 +48,7 @@ use App\Core\Auth;
                     Articles
                 </a>
 
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">
+                <a href="index.php?action=comments" class="list-group-item list-group-item-action d-flex align-items-center">
                     <div class="box-icon-account">
                         <i class="bi bi-chat-square-dots-fill"></i>
                     </div>

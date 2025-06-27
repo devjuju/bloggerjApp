@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Request;
 use App\Models\Users;
 use App\Core\Auth;
+use App\Forms\FormPass;
 use App\Forms\FormUser;
 
 class UsersController
@@ -259,7 +260,7 @@ class UsersController
     }
 
 
-    public function update($id): void
+    public function update(int $id): void
     {
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
@@ -298,6 +299,149 @@ class UsersController
 
         require('../templates/backend/updateuser/index.php');
     }
+
+
+    public function update_user_infos(int $id): void
+    {
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find($id);
+
+        $request = new Request();
+        $submit = $request->post('update_user_infos');
+
+        if (isset($submit)) {
+
+
+            $updateUserInfos = new Users($request->post('update_user_infos'));
+            // print_r($updatePost);
+            $formUpdateUserInfos = new FormUser($updateUserInfos);
+            $controle = $formUpdateUserInfos->validateUpdateInfos();
+            //print_r($controle);
+            if ($controle === true) {
+
+                $updateUserInfos->setId($user->id);
+
+
+
+                $updateUserInfos->update();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Utilisateur modifié");
+                header('Location: index.php?action=users');
+                exit();
+            }
+        }
+        require('../templates/backend/updateuserinfos/index.php');
+    }
+
+
+
+
+    public function update_user_pass($id): void
+    {
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find($id);
+
+        $request = new Request();
+        $submit = $request->post('update_user_pass');
+
+        if (isset($submit)) {
+
+            $updateUserPass = new Users($request->post('update_user_pass'));
+
+            // print_r($updatePost);
+            $formUpdateUserPass = new FormUser($updateUserPass);
+            $controle = $formUpdateUserPass->validateUpdatePass();
+
+            //print_r($controle);
+            if ($controle === true) {
+
+                $updateUserPass->setId($user->id);
+
+
+                // On chiffre le mot de passe
+                $updateUserPass->setPassword(password_hash($updateUserPass->getPassword(), PASSWORD_BCRYPT));
+
+
+                $updateUserPass->setUsername($user->username);
+                $updateUserPass->update();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Mot de passe modifié");
+                header('Location: index.php?action=users');
+                exit();
+            }
+        }
+        require('../templates/backend/updateuserpass/index.php');
+    }
+
+
+
+    public function update_user_avatar($id)
+    {
+
+        // Sécurité
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        // On instancie le modèle
+        $userModel = new Users();
+        // On va chercher 1 annonce
+        $user = $userModel->find($id);
+        $request = new Request();
+        $submit = $request->post('update_user_avatar');
+        if (isset($submit)) {
+
+            $updateUserAvatar = new Users();
+            $formCreateUser = new FormUser($updateUserAvatar);
+            $controle = $formCreateUser->validateUpdateImage();
+
+            if ($controle === true) {
+
+                if (unlink("uploads/$user->image")) {
+                    $img_name = $_FILES['image']['name'];
+                    $tmp_name = $_FILES['image']['tmp_name'];
+                    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                    $img_ex_lc = strtolower($img_ex);
+
+
+
+                    $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                    $img_upload_path = 'uploads/' . $new_img_name;
+
+
+
+                    move_uploaded_file($tmp_name, $img_upload_path);
+                }
+                // Insert into Database
+                $updateUserAvatar->setImage($new_img_name);
+                $updateUserAvatar->setId($user->id);
+                $updateUserAvatar->setUsername($user->username);
+                $updateUserAvatar->update();
+
+                Auth::set('message', 'class', 'success');
+                Auth::set('message', 'content', "Photo modifiée");
+
+                header('Location: index.php?action=users');
+                exit();
+            }
+        }
+
+        require('../templates/backend/updateuseravatar/index.php');
+    }
+
 
     public function update_image_user($id)
     {

@@ -58,4 +58,4 @@ ob_start();
 </section>
 
 <?php $content = ob_get_clean(); ?>
-<?php require '../templates/layout_errors.php'; ?>
+<?php require '../templates/layout-errors.php'; ?>

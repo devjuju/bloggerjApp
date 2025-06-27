@@ -225,9 +225,11 @@ $title = "Modifier l'utilisateur"; ?>
 
                     </div>
                 </div>
-        </div>
 
-        </form>
+
+            </form>
+
+        </div>
 
 
 

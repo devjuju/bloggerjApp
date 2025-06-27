@@ -30,6 +30,23 @@
                 </a>
             </div>
 
+            <div class="display-alerts position-absolute 
+            start-50 translate-middle">
+                <?php
+
+                use App\Core\Auth;
+
+                if (Auth::has('message')) : ?>
+                    <div class="alert alert-<?= Auth::get('message', 'class') ?> " role="alert">
+                        <?php Auth::delete('message', 'class'); ?>
+                        <?php echo Auth::get('message', 'content');
+                        Auth::delete('message', 'content'); ?>
+                    </div>
+                <?php endif; ?>
+
+
+            </div>
+
         </div>
     </div>
 </header>

@@ -43,12 +43,14 @@ class PostsController
         $commentsModels = new Comments();
         $comments = $commentsModels->findBy([
             'posts_id' => $id,
-            'is_valid' => 1
+            'is_valid' => 1,
+
         ]);
 
         // Ajouter un commentaire
         $author = Auth::get('auth', 'username');
         $users_id = Auth::get('auth', 'id');
+        $avatar = Auth::get('auth', 'image');
 
 
 
@@ -63,10 +65,10 @@ class PostsController
             var_dump($controle);
             if ($controle === true) {
 
-
-
                 $addComment->setUsersId($users_id);
+                $addComment->setAvatar($avatar);
                 $addComment->setAuthor($author);
+                $addComment->setTitle($post->title);
 
                 $addComment->setStatus('en cours de validation');
                 $addComment->setIsValid('0');
@@ -169,17 +171,14 @@ class PostsController
 
         $request = new Request();
         $submit = $request->post('update_post');
-        //echo '<pre>';
-        //var_dump($post);
-        // echo '</pre>';
+
         if (isset($submit)) {
 
-
             $updatePost = new Posts($request->post('update_post'));
-            // print_r($updatePost);
+
             $formUpdatePost = new FormPost($updatePost);
             $controle = $formUpdatePost->validate2();
-            //print_r($controle);
+
             if ($controle === true) {
 
                 $updatePost->setId($post->id);
@@ -196,9 +195,6 @@ class PostsController
 
         require('../templates/backend/updatepost/index.php');
     }
-
-
-
 
 
     public function update_image_post(int $id): void
@@ -264,7 +260,6 @@ class PostsController
 
         require('../templates/backend/updateimagepost/index.php');
     }
-
 
 
     public function activate(int $id): void

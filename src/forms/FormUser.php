@@ -73,6 +73,51 @@ class FormUser
         return $result;
     }
 
+    public function validateUpdateInfos(): array|bool
+    {
+        $validator = new ValidatorUser($this->data);
+        $result = $validator->checkDataUpdateInfos();
+        print_r($result);
+
+        foreach ($result as $key => $value) {
+            if ($value === true) {
+                unset($result[array_search($key, $result)]);
+            }
+        }
+        return $result;
+    }
+
+    public function validateUpdatePass(): array|bool
+    {
+        $validator = new ValidatorUser($this->data);
+        $result = $validator->checkDataUpdatePass();
+        print_r($result);
+
+        foreach ($result as $key => $value) {
+            if ($value === true) {
+                unset($result[$key]);
+            }
+        }
+        return $result;
+    }
+
+
+    public function validateUpdatePass2(): array|bool
+    {
+        $validator = new ValidatorUser($this->data);
+        $result = $validator->checkDataUpdatePass2();
+        print_r($result);
+
+        foreach ($result as $key => $value) {
+            if ($value === true) {
+                unset($result[$key]);
+            }
+        }
+        return $result;
+    }
+
+
+
     public function validateUpdateImage(): array|bool
     {
         $validator = new ValidatorUser($this->data);

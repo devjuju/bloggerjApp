@@ -835,6 +835,19 @@ fieldset:disabled .btn {
 }
 
 
+.btn-outline,
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled .btn {
+    color: $colour-body;
+    pointer-events: none;
+    background-color: $colour-primary;
+    border-color: $colour-primary;
+    opacity: 1;
+}
+
+
+
 .btn-link-light {
     font-family: $font-text;
     font-size: 18px;

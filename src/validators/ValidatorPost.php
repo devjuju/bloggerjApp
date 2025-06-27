@@ -57,9 +57,8 @@ class ValidatorPost extends Validator
         $resultContent = $this->checkContent($this->data->getContent());
 
         $resultImage = true;
-        if (!empty($_FILES["image"])) {
-            // L'image est prise directement depuis $_FILES
-        } else {
+
+        if (isset($_FILES["image"])) {
             $resultImage = $this->checkImage($this->data->getImage());
         }
 
@@ -158,8 +157,8 @@ class ValidatorPost extends Validator
     public function checkImage(mixed $image): true|string
     {
         $target_dir = "uploads/";
-        $imagePath = $target_dir . basename($_FILES["image"]["name"]);
-        $img_ex = pathinfo($imagePath, PATHINFO_EXTENSION);
+        $image = $target_dir . basename($_FILES["image"]["name"]);
+        $img_ex = pathinfo($image, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
 
         $allowed_exs = ["jpg", "jpeg", "png"];

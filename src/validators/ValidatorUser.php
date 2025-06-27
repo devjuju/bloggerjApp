@@ -2,16 +2,23 @@
 
 namespace App\Validators;
 
+use App\Core\Request;
 use App\Core\Validator;
 
 class ValidatorUser extends Validator
 {
     public object $data;
 
+
+
     public function __construct(object $data)
     {
         $this->data = $data;
     }
+
+
+
+
 
     // Typage de la méthode pour retourner un tableau d'erreurs ou un booléen
     public function checkDataLogin(): array|bool
@@ -88,7 +95,11 @@ class ValidatorUser extends Validator
         $resultEmail = $this->checkEmail($this->data->getEmail());
         $resultPassword = $this->checkPassword($this->data->getPassword());
 
-        $resultImage = !empty($_FILES["image"]) ? null : $this->checkImage($this->data->getImage());
+        $resultImage = true;
+
+        if (isset($_FILES["image"])) {
+            $resultImage = $this->checkImage($this->data->getImage());
+        }
 
         if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true) {
             return true;
@@ -100,6 +111,104 @@ class ValidatorUser extends Validator
                 'firstname' => $resultFirstname,
                 'email' => $resultEmail,
                 'password' => $resultPassword,
+                'image' => $resultImage,
+            ];
+        }
+    }
+
+
+    public function checkDataUpdatePass(): bool|array
+    {
+        $resultPassword = $this->checkPassword($this->data->getPassword());
+
+        // Récupérer le champ confirm_password depuis le POST
+        $request = new Request();
+        $confirmPassword = $request->post('confirm_password');
+
+        $resultConfirm = true;
+
+
+        // Vérifie si les mots de passe correspondent
+        if ($this->data->getPassword() !== $confirmPassword) {
+            $resultConfirm = "Les mots de passe ne correspondent pas.";
+        }
+
+
+
+        $resultImage = true;
+
+        if (isset($_FILES["image"])) {
+            $resultImage = $this->checkImage($this->data->getImage());
+        }
+
+        if ($resultPassword === true && $resultConfirm === true) {
+            return true;
+        } else {
+            return [
+
+                'password' => $resultPassword,
+                'confirm_password' => $resultConfirm,
+                'image' => $resultImage,
+            ];
+        }
+    }
+
+
+    public function checkDataUpdatePass2(): bool|array
+    {
+        $resultPassword = $this->checkPassword($this->data->getPassword());
+        $resultConfirm = $this->confirmField('password', 'confirm_password');
+
+        if ($resultPassword === true && $resultConfirm === true) {
+            return true;
+        } else {
+            return [
+                'password' => $resultPassword,
+                'confirm_password' => $resultConfirm,
+            ];
+        }
+    }
+
+
+    public function checkDataUpdateInfos(): bool|array
+    {
+        $resultRole = $this->checkRole($this->data->getRole());
+        $resultUsername = $this->checkUsername($this->data->getUsername());
+        $resultLastname = $this->checkLastname($this->data->getLastName());
+        $resultFirstname = $this->checkFirstname($this->data->getFirstname());
+        $resultEmail = $this->checkEmail($this->data->getEmail());
+
+        $resultImage = true;
+
+        if (isset($_FILES["image"])) {
+            $resultImage = $this->checkImage($this->data->getImage());
+        }
+
+        if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true) {
+            return true;
+        } else {
+            return [
+                'role' => $resultRole,
+                'username' => $resultUsername,
+                'lastname' => $resultLastname,
+                'firstname' => $resultFirstname,
+                'email' => $resultEmail,
+
+                'image' => $resultImage,
+            ];
+        }
+    }
+
+
+    public function checkDataUpdateAvatar(): bool|array
+    {
+        $resultImage = $this->checkImage($this->data->getImage());
+
+        if ($resultImage === true) {
+            echo 'ok';
+            return true;
+        } else {
+            return [
                 'image' => $resultImage,
             ];
         }
@@ -176,6 +285,9 @@ class ValidatorUser extends Validator
         }
     }
 
+
+    // Confirmer le mot de passe
+
     public function checkPassword(string $password): string|bool
     {
         if (empty($password)) {
@@ -187,29 +299,53 @@ class ValidatorUser extends Validator
         }
     }
 
-    public function checkImage($image): string|bool
+
+
+    public function confirmField(string $field1, string $field2): string|bool
     {
+        $request = new Request();
+        $value1 = $request->post($field1);
+        $value2 = $request->post($field2);
+
+        if ($value1 !== $value2) {
+            return "Les champs $field1 et $field2 ne correspondent pas.";
+        }
+
+        return true;
+    }
+
+
+
+
+
+
+
+
+    public function checkImage(mixed $image): string|bool
+    {
+
         $target_dir = "uploads/";
         $image = $target_dir . basename($_FILES["image"]["name"]);
         $img_ex = pathinfo($image, PATHINFO_EXTENSION);
         $img_ex_lc = strtolower($img_ex);
 
         $allowed_exs = ["jpg", "jpeg", "png"];
-        $img_size = $_FILES['image']['size'];
-        $error = $_FILES['image']['error'];
+
+        $img_size = $_FILES['image']['size'] ?? 0;
+        $error = $_FILES['image']['error'] ?? 4;
 
         if ($error === 4) {
-            return "Choisir une photo de profil";
+            return "Veillez choisir une image";
         } elseif ($error === 0) {
             if ($img_size > 500000) {
                 return "Désolé, votre fichier est trop volumineux.";
             } elseif (!in_array($img_ex_lc, $allowed_exs)) {
                 return "Désolé, seuls les fichiers JPG, JPEG, et PNG sont autorisés.";
-            } else {
-                return true;
             }
-        } else {
-            return "erreur lors de l'upload du fichier";
+
+            return true;
         }
+
+        return "erreur lors de l'upload du fichier";
     }
 }
