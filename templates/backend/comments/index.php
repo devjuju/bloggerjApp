@@ -117,10 +117,14 @@ $title = "Commentaires"; ?>
                             <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3  spacing-content-padding-top-40">
                                 <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
                                     <div class="d-flex align-items-center me-3">
-                                        <img src="images/avatar.png" class="rounded-circle" width="48" alt="Avatar">
+                                        <img src="uploads/<?= $comment->avatar ?>" class="rounded-circle" width="48" alt="Avatar">
                                         <div class="ps-3">
-                                            <h6 class="titre-h6 mb-0"><?= $comment->users_id ?></h6>
-                                            <span class="running-text">voir le profil</span>
+                                            <h6 class="titre-h6 mb-0"><?= $comment->author ?></h6>
+                                            <div class="meta-comment bd-highlight ">
+                                                <i class="bi bi-clock-fill fs-base me-1"></i>
+                                                <span class="fs-sm"><?= DateFormatter::enFrancais($comment->created_at); ?></span>
+
+                                            </div>
                                         </div>
                                     </div>
 
@@ -169,19 +173,7 @@ $title = "Commentaires"; ?>
                                 <div class="row g-0">
                                     <div class="col-md-12">
                                         <div class="card-body">
-                                            <div class="d-flex flex-row bd-highlight mb-3">
-                                                <div class="meta-comment bd-highlight">
-                                                    <i class="bi bi-pin-fill fs-base me-1"></i>
-                                                    <a href="index.php?action=register" class="color-link-primary"><?= $comment->posts_id ?></a>
 
-                                                </div>
-                                                <div class="meta-comment bd-highlight ">
-                                                    <i class="bi bi-clock-fill fs-base me-1"></i>
-                                                    <span class="fs-sm">Publié le: <?= DateFormatter::enFrancais($comment->created_at); ?></span>
-
-                                                </div>
-
-                                            </div>
                                             <p class="running-text"><?= $comment->content ?></p>
                                             <hr>
                                             <p class="running-text">Le commentaire est : <strong><?= $comment->status ?> </strong> </p>

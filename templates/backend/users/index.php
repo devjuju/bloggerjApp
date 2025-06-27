@@ -129,7 +129,7 @@ $title = "Utilisateurs"; ?>
                                 <?php endif; ?>
 
 
-                                <a href="index.php?action=update_user&id=<?= $user->id ?>" class="btn btn-icon-rounded-primary  me-2 mb-2"> <i class="bi bi-pencil-fill"></i></a>
+                                <a href="index.php?action=update_user_infos&id=<?= $user->id ?>" class="btn btn-icon-rounded-primary  me-2 mb-2"> <i class="bi bi-pencil-fill"></i></a>
                                 <a href="index.php?action=delete_user&id=<?= $user->id ?>" class="btn btn-icon-rounded-secondary  me-2 mb-2"> <i class="bi bi-trash3-fill"></i></a>
 
                             </div>
@@ -169,6 +169,9 @@ $title = "Utilisateurs"; ?>
                                     <h5><?= Auth::get('auth', 'username'); ?></h5>
                                     <p><?= Auth::get('auth', 'email'); ?></p>
                                 </div>
+
+
+
 
                                 <a href="index.php?action=account" class="d-grid gap-2 btn btn-outline-primary mb-3">
                                     Voir mon compte

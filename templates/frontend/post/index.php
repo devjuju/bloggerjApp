@@ -24,7 +24,7 @@ $title = "Post"; ?>
         <div class="d-flex flex-row bd-highlight mb-3 spacing-content-marging-top-40">
             <div class="meta-list-blog bd-highlight">
                 <i class="bi bi-person-fill fs-base me-1"></i>
-                <span class="fs-sm"><?= $post->users_id ?></span>
+                <span class="fs-sm"><?= $post->author ?></span>
             </div>
             <div class="meta-list-blog bd-highlight">
                 <i class="bi bi-clock-fill fs-base me-1"></i>
@@ -39,7 +39,10 @@ $title = "Post"; ?>
 
 <section class="container py-5 my-1 my-md-4 my-lg-5">
     <div class="row">
+
         <div class="col-lg-7  mb-lg-0">
+
+
             <img src="uploads/<?= $post->image ?>" class="img-fluid featured-image-post" alt="image">
 
             <div class="content-post-blog spacing-content-padding-top-40">
@@ -50,11 +53,6 @@ $title = "Post"; ?>
                 <p class="running-text"><?= $post->content ?></p>
 
             </div>
-
-
-
-
-
 
             <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3  spacing-content-padding-top-40">
                 <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
@@ -71,6 +69,8 @@ $title = "Post"; ?>
                 </div>
                 <div class="d-flex align-items-center position-relative ps-md-3  mb-2">
                     <h5 class="titre-h6 me-3">Partager avec :</h5>
+
+
                     <div class="d-flex">
 
                         <!-- Facebook -->
@@ -86,6 +86,8 @@ $title = "Post"; ?>
                             <i class="bi bi-instagram"></i>
                         </a>
                     </div>
+
+
                 </div>
             </div>
             <hr class="separateur-page-blog">
@@ -96,6 +98,7 @@ $title = "Post"; ?>
                 </div>
                 <!-- Comment -->
 
+
                 <hr class="my-2">
 
                 <!-- Comment -->
@@ -103,7 +106,7 @@ $title = "Post"; ?>
                     <div class="py-4">
                         <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
                             <div class="d-flex align-items-center me-3">
-                                <img src="images/avatar.png" class="rounded-circle" width="48" alt="Avatar">
+                                <img src="uploads/<?= $comment->avatar ?>" class="rounded-circle" width="48" alt="Avatar">
                                 <div class="ps-3">
                                     <h6 class="titre-h6 mb-0"><?= $comment->author ?></h6>
                                     <span class="running-text fs-sm text-muted">
@@ -114,22 +117,42 @@ $title = "Post"; ?>
 
                                 </div>
                             </div>
-                            <a href="#" class="nav-link fs-sm px-0">
-                                <i class="bi bi-hand-thumbs-up fs-lg me-2 text-primary"></i>
-                                <?= $comment->status ?>
-                            </a>
+
+                            <div class="d-flex align-items-center position-relative ps-md-3  mb-2">
+
+
+
+                                <?php if ($comment->status  === "approuvé"): ?>
+                                    <p class="square-icon-primary">
+                                        <i class="bi bi-hand-thumbs-up"></i>
+                                    </p>
+                                <?php else: ?>
+                                    <p class="square-icon-outline-primary">
+                                        <i class="bi bi-hand-thumbs-up"></i>
+                                    </p>
+                                <?php endif; ?>
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
 
                         </div>
-                        <p class="running-text mb-0"><?= $comment->content ?></p>
+                        <p class="running-text mb-0"><?= $comment->content ?></p><br>
+
+
                     </div>
 
                 <?php endforeach; ?>
-
-
-
-
-
-
 
                 <?php
 
@@ -149,9 +172,6 @@ $title = "Post"; ?>
 
                             <div class="card-body">
 
-
-
-
                                 <form method="post" class="needs-validation" novalidate="">
                                     <input type="hidden" name="add_comment[posts_id]" value="<?= $post->id ?>">
                                     <div class="row g-4">
@@ -160,11 +180,7 @@ $title = "Post"; ?>
                                                 <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
                                                 <div class="ps-3">
                                                     <h6 class="titre-h6 mb-0"><?= Auth::get('auth', 'username'); ?></h6>
-                                                    <p>Crée le :
-                                                        <span class="running-text fs-sm text-muted"><?php $today = date('M j Y'); // année, mois et jour actuels
-                                                                                                    $message =  $today;
-                                                                                                    echo $message; ?></span>
-                                                    </p>
+
 
                                                 </div>
                                             </div>

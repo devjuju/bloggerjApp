@@ -9,7 +9,9 @@ class Comments extends Model
     protected int|string|null $id = null;
     protected int|string|null $users_id = null;
     protected int|string|null $posts_id = null;
+    protected ?string $avatar = null;
     protected ?string $author = null;
+    protected ?string $title = null;
     protected ?string $content = null;
     protected ?string $created_at = null;
     protected int|bool|null $is_valid = null;
@@ -22,7 +24,9 @@ class Comments extends Model
         $this->setId($data['id'] ?? null);
         $this->setUsersId($data['users_id'] ?? null);
         $this->setPostsId($data['posts_id'] ?? null);
+        $this->setAvatar($data['avatar'] ?? null);
         $this->setAuthor($data['author'] ?? null);
+        $this->setTitle($data['title'] ?? null);
         $this->setContent($data['content'] ?? null);
         $this->setCreatedAt($data['created_at'] ?? null);
         $this->setIsValid($data['is_valid'] ?? null);
@@ -59,6 +63,16 @@ class Comments extends Model
         $this->posts_id = $posts_id;
     }
 
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
     public function getAuthor(): ?string
     {
         return $this->author;
@@ -67,6 +81,16 @@ class Comments extends Model
     public function setAuthor(?string $author): void
     {
         $this->author = $author;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
     }
 
     public function getContent(): ?string

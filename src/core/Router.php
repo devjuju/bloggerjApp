@@ -25,13 +25,13 @@ class Router
                 switch ($routes) {
 
                     case 'contact':
-                        $home = new ContactController;
-                        $home->contact();
+                        $contact = new ContactController;
+                        $contact->contact();
                         break;
 
                     case 'blog':
-                        $home = new PostsController();
-                        $home->blog();
+                        $blog = new PostsController();
+                        $blog->blog();
                         break;
 
                     case 'post':
@@ -87,6 +87,8 @@ class Router
                         $comments->comments();
                         break;
 
+
+
                     case 'delete_comment':
                         $comments = new CommentsController();
                         $comments->delete($request->get('id'));
@@ -111,8 +113,8 @@ class Router
                         break;
 
                     case 'login':
-                        $home = new UsersController();
-                        $home->login();
+                        $login = new UsersController();
+                        $login->login();
                         break;
 
 
@@ -147,11 +149,25 @@ class Router
                         $updateUser->update($request->get('id'));
                         break;
 
-
-                    case 'update_image_user':
-                        $updateImageUser = new UsersController();
-                        $updateImageUser->update_image_user($request->get('id'));
+                    case 'update_user_infos':
+                        $updateUser = new UsersController();
+                        $updateUser->update_user_infos($request->get('id'));
                         break;
+
+
+                    case 'update_user_pass':
+                        $updateUser = new UsersController();
+                        $updateUser->update_user_pass($request->get('id'));
+                        break;
+
+
+                    case 'update_user_avatar':
+                        $updateUser = new UsersController();
+                        $updateUser->update_user_avatar($request->get('id'));
+                        break;
+
+
+
 
 
                     case 'delete_user':
