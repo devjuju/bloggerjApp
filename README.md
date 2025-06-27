@@ -11,7 +11,7 @@ Cloner le repository
 Importer le fichier SQL dans votre base de donnée MySQL :
 
 bloggerj.sql dans le fichier config/ est une base de donnée avec un jeu de données (plusieurs posts, utilisateurs, et commentaires)
-Modifier le fichier config/config.php avec vos informations de connexion.
+Modifier le fichier core/Db.php avec vos informations de connexion.
 
 Démarrage du projet en local en pointant sur le dossier racine public/ puis php -S localhost:8008 -t public/
 
@@ -20,5 +20,3 @@ Accès administrateur. Identifiez-vous sur le frontend avec les identifiants sui
 mail : admin@gmail.com
 pwd : codeadminpass
 
-Pour accéder à la base de données, changer le mot de passe du fichier Db.php
-se trouvant dans le dossier core par le vôtre.
