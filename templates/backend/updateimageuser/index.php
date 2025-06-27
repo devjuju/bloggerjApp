@@ -5,8 +5,6 @@ use App\Core\Auth;
 $title = "Modifier la photo de profil"; ?>
 <?php ob_start();
 ?>
-
-
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
