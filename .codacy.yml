@@ -1,0 +1,10 @@
+engines:
+
+php-codesniffer:
+
+enabled: true
+exclude_paths:
+
+- tests/*
+excluded_rules:
+- WordPress.Security.EscapeOutput.OutputNotEscaped
