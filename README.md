@@ -1,16 +1,10 @@
+1. Install dependencies:
+  ```bash
+git clone https://github.com/your-username/professional-blog-php.git
 
-# 📦 Installation
+2. Create the database:
+Use blog_schema.sql to initialize your database using phpMyAdmin or MySQL CLI.
 
-## 🔍 5. Voir les packages installés
-
-## Installation
-
-```bash
-# Cloner le dépôt
-git clone https://github.com/ton-utilisateur/ton-projet.git
-
-# Se déplacer dans le dossier
-cd ton-projet
-
-# Lancer le script d'installation
-./install.sh
+3. installe
+  ```bash
+git clone https://github.com/your-username/professional-blog-php.git
