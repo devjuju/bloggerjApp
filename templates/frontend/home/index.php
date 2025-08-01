@@ -32,10 +32,23 @@ use App\Core\Auth;
                 </div>
                 <div class="d-flex flex-column flex-sm-row">
                     <a href="index.php?action=blog" class="btn btn-primary mb-3 mb-sm-0 me-sm-3">Voir le blog</a>
-                    <a href="index.php?action=contact" class="btn btn-outline-primary">
 
-                        Me contacter
+                    <?php
+                    $file = __DIR__ . '/uploads/cv.pdf';
+                    if (file_exists($file)) {
+                        header('Content-Type: application/pdf');
+                        header('Content-Disposition: attachment; filename="CV.pdf"');
+                        readfile($file);
+                        exit;
+                    } ?>
+                    <a download="CV" href="/uploads/cv.pdf" target="_blank" class="btn btn-outline-primary">
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        Télécharger mon CV
                     </a>
+
+
+
+
                 </div>
 
 
