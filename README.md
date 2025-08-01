@@ -7,4 +7,4 @@ Use blog_schema.sql to initialize your database using phpMyAdmin or MySQL CLI.
 
 3. installe
   ```bash
-git clone https://github.com/your-username/professional-blog-php.git
+composer install
