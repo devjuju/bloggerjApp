@@ -12,7 +12,7 @@ en offrant une plateforme sécurisée et réactive pour la publication de conten
   - Page d’accueil avec image de marque personnelle (photo, slogan, téléchargement de CV)  
  -  Liste des articles de blog (triés par date)  
   - Détail de l’article de blog avec commentaires (validé avant publication)  
-  - Formulaire de contact (email envoyé via PHPMailer)
+  - Formulaire de contact
   - Formulaire d’inscription
    - Formulaire de connexion
 
