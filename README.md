@@ -44,7 +44,7 @@ en offrant une plateforme sécurisée et réactive pour la publication de conten
 
 ### 1. Cloner le repository
 ```bash
-git clone https://github.com/your-username/professional-blog.git
+git clone https://github.com/devjuju/bloggerjApp.git
 ```
 
 ### 2. Installer les dépendances
