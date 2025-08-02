@@ -19,6 +19,7 @@ en offrant une plateforme sécurisée et réactive pour la publication de conten
 - **Section Admin:**
   - Authentification sécurisée (basée sur les rôles)
   - CRUD pour les articles de blog  
+  - CRUD pour les utilisateurs 
   -  Système de validation et de suppression des commentaires
 
 - **Securité:**
