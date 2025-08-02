@@ -32,8 +32,6 @@ en offrant une plateforme sécurisée et réactive pour la publication de conten
 - **Language:** PHP 8.x
 - **Database:** MySQL
 - **Frontend:** HTML5, CSS3, Bootstrap 5
-- **Libraries:**
-  - [PHPMailer](https://github.com/PHPMailer/PHPMailer) for sending emails
 - **Dependency Manager:** Composer
 - **Version Control:** Git & GitHub
 - **Quality Analysis:**  Codacy B
