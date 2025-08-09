@@ -9,6 +9,26 @@
 
     .card-header {
         margin-bottom: 20px;
+
+        .icon-box {
+            background-color: $colour-primary;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-top: 9px;
+            padding-right: 12px;
+            padding-bottom: 9px;
+            padding-left: 12px;
+            transform: rotate(1deg);
+            margin-bottom: 20px;
+
+            & i {
+                font-size: 32px;
+                color: $colour-body;
+            }
+
+        }
     }
 
 }
@@ -21,6 +41,103 @@
     padding: 20px;
 
 }
+
+
+a.card-shadow-account {
+
+    background-color: white;
+    border: 0;
+    border-radius: 27px;
+    box-shadow: $box-shadow ;
+    padding: 20px;
+
+    text-decoration: none;
+
+    .box-icon {
+        background-color: #ffe5da;
+        border-radius: 20px;
+        padding: 15px;
+
+        i {
+            font-size: 36px;
+            color: $colour-secondary;
+        }
+
+    }
+
+    h5 {
+        color: #19154b;
+    }
+
+    p {
+        color: #5b5a67;
+    }
+
+    &:hover {
+        background-color: #ffe5da;
+
+        .box-icon {
+            background-color: $colour-secondary;
+            border-radius: 20px;
+            padding: 15px;
+
+            i {
+                font-size: 36px;
+                color: white;
+            }
+
+        }
+
+        h5 {
+            color: $colour-secondary;
+        }
+
+        p {
+            color: $colour-secondary;
+        }
+
+    }
+
+
+
+}
+
+
+.card-shadow-account-active {
+
+    background-color: $colour-primary;
+    border: 0;
+    border-radius: 27px;
+    box-shadow: $box-shadow ;
+    padding: 20px;
+
+
+    .box-icon {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 15px;
+
+        i {
+            font-size: 36px;
+            color: $colour-primary;
+        }
+
+    }
+
+    h5 {
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+
+
+
+}
+
+
+
 
 .card-background {
     border: 0;

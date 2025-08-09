@@ -1,4 +1,6 @@
-<?php $title = "Se connecter"; ?>
+<?php
+
+$title = "Se connecter"; ?>
 <?php ob_start();
 
 ?>
@@ -24,6 +26,8 @@
 <section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
     <div class="container">
         <div class="row">
+
+
 
             <!-- Contact links -->
             <div class="col-xl-4 col-lg-5 ">
@@ -84,13 +88,12 @@
 
                                 <div class="col-sm-12 pt-4">
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                                        <button type="submit" class="btn btn-primary">Se connecter</button>
                                     </div>
 
-                                    <br>
 
 
-                                    <a href="#" class="btn btn-link btn-lg w-100 text-primary">Oubli du mot de passe ? (x)</a>
+
 
                                 </div>
                             </div>

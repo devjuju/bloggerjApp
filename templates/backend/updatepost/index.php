@@ -38,10 +38,10 @@ $title = "Modifier un article"; ?>
 
             <div class="list-group list-group-flush">
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-                    <img src="uploads/<?= Auth::get('auth', 'image'); ?>" class="d-block rounded-circle" width="120" alt="">
+                    <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
                     <div class="avatar-offcanvas">
-                        <h5><?= Auth::get('auth', 'username'); ?></h5>
-                        <p><?= Auth::get('auth', 'email'); ?></p>
+                        <h5><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8'); ?></h5>
+                        <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
 
                 </div>
@@ -149,6 +149,12 @@ $title = "Modifier un article"; ?>
 
                                 <?= isset($controle["excerpt"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["excerpt"] . "</p>" : '' ?>
                             </div>
+
+
+
+
+
+
                             <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="content">Description</label>

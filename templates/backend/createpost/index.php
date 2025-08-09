@@ -36,10 +36,10 @@ $title = "Ajouter un article"; ?>
 
             <div class="list-group list-group-flush">
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-                    <img src="uploads/<?= Auth::get('auth', 'image'); ?>" class="d-block rounded-circle" width="120" alt="">
+                    <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
                     <div class="avatar-offcanvas">
-                        <h5><?= Auth::get('auth', 'username'); ?></h5>
-                        <p><?= Auth::get('auth', 'email'); ?></p>
+                        <h5><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8'); ?></h5>
+                        <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
 
                 </div>
@@ -130,46 +130,41 @@ $title = "Ajouter un article"; ?>
                             <h3 class="titre-h5">Informations principales</h3>
 
 
-
-
                             <div class="col-sm-12 form-group-style2">
-
-
                                 <label class="form-label fs-base" for="category">Catégorie</label>
-                                <select class="form-select" id="category" name="create_post[category]" value="<?= isset($createPost) ? $createPost->getCategory() : '' ?>">
-
-
+                                <select class="form-select" id="category" name="create_post[category]">
                                     <option>Développement de sites web</option>
                                     <option>Développement d'application web</option>
-                                    <?= isset($controle["category"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["category"] . "</p>" : '' ?>
-
                                 </select>
-
-
-
-
+                                <?= isset($controle["category"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["category"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
+
 
 
                             <div class="col-sm-12 form-group-style2">
+
+
                                 <label class="form-label fs-base" for="title">Titre</label>
-                                <input class="form-control" type="text" placeholder="" id="title" name="create_post[title]" value="<?= isset($createPost) ? $createPost->getTitle() : '' ?>">
-                                <?= isset($controle["title"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["title"] . "</p>" : '' ?>
+                                <input class="form-control" type="text" id="title" name="create_post[title]" value="<?= isset($createPost) ? htmlspecialchars($createPost->getTitle(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                <?= isset($controle["title"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["title"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
+
+
+
+
 
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="excerpt">Extrait</label>
-                                <input class="form-control" type="text" placeholder="" id="excerpt" name="create_post[excerpt]" value="<?= isset($createPost) ? $createPost->getExcerpt() : '' ?>">
-                                <?= isset($controle["excerpt"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["excerpt"] . "</p>" : '' ?>
+                                <input class="form-control" type="text" id="excerpt" name="create_post[excerpt]" value="<?= isset($createPost) ? htmlspecialchars($createPost->getExcerpt(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                <?= isset($controle["excerpt"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["excerpt"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
 
 
                             <!--begin::Form group-->
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="content">Description</label>
-                                <textarea class="form-control" rows="6" placeholder="" name="create_post[content]" id="content"><?= isset($createPost) ? $createPost->getContent() : '' ?></textarea>
-                                <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
-
+                                <textarea class="form-control" rows="6" name="create_post[content]" id="content"><?= isset($createPost) ? htmlspecialchars($createPost->getContent(), ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+                                <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["content"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
 
 
@@ -207,15 +202,13 @@ $title = "Ajouter un article"; ?>
 
                                     <div class="col-sm-12 form-group-style">
                                         <img src="images/featured-image-post.svg" class="card-img-top" alt="Image">
-
                                         <label for="image" class="form-label"> Image mise en avant</label>
-                                        <input type="file" id="image" name="image" value="<?= isset($createPost) ? $createPost->getImage() : '' ?>">
-                                        <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
+                                        <input type="file" id="image" name="image">
+                                        <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         <br><br>
-                                        <!--begin::Description-->
                                         <div class="running-text">
-                                            Définissez l’image miniature de l'article. De préférence en format 742 × 599. Seuls les fichiers image *.png, *.jpg et *.jpeg sont acceptés</div>
-                                        <!--end::Description-->
+                                            Définissez l’image miniature de l'article. De préférence en format 742 × 599. Seuls les fichiers image *.png, *.jpg et *.jpeg sont acceptés
+                                        </div>
                                     </div>
 
 

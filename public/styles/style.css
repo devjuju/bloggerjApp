@@ -2048,12 +2048,94 @@ fieldset:disabled .btn {
 .card-shadow .card-header {
   margin-bottom: 20px;
 }
+.card-shadow .card-header .icon-box {
+  background-color: #986df8;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding-top: 9px;
+  padding-right: 12px;
+  padding-bottom: 9px;
+  padding-left: 12px;
+  transform: rotate(1deg);
+  margin-bottom: 20px;
+}
+.card-shadow .card-header .icon-box i {
+  font-size: 32px;
+  color: white;
+}
 
 .card-shadow-contact {
   border: 0;
   border-radius: 27px;
   box-shadow: rgba(231, 111, 13, 0.2) 0px 7px 29px 0px;
   padding: 20px;
+}
+
+a.card-shadow-account {
+  background-color: white;
+  border: 0;
+  border-radius: 27px;
+  box-shadow: rgba(231, 111, 13, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+  text-decoration: none;
+}
+a.card-shadow-account .box-icon {
+  background-color: #ffe5da;
+  border-radius: 20px;
+  padding: 15px;
+}
+a.card-shadow-account .box-icon i {
+  font-size: 36px;
+  color: #fc7629;
+}
+a.card-shadow-account h5 {
+  color: #19154b;
+}
+a.card-shadow-account p {
+  color: #5b5a67;
+}
+a.card-shadow-account:hover {
+  background-color: #ffe5da;
+}
+a.card-shadow-account:hover .box-icon {
+  background-color: #fc7629;
+  border-radius: 20px;
+  padding: 15px;
+}
+a.card-shadow-account:hover .box-icon i {
+  font-size: 36px;
+  color: white;
+}
+a.card-shadow-account:hover h5 {
+  color: #fc7629;
+}
+a.card-shadow-account:hover p {
+  color: #fc7629;
+}
+
+.card-shadow-account-active {
+  background-color: #986df8;
+  border: 0;
+  border-radius: 27px;
+  box-shadow: rgba(231, 111, 13, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+.card-shadow-account-active .box-icon {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 15px;
+}
+.card-shadow-account-active .box-icon i {
+  font-size: 36px;
+  color: #986df8;
+}
+.card-shadow-account-active h5 {
+  color: white;
+}
+.card-shadow-account-active p {
+  color: white;
 }
 
 .card-background {

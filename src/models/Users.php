@@ -17,6 +17,8 @@ class Users extends Model
     protected ?string $password = null;
     protected ?string $status = null;
 
+
+
     public function __construct(?array $data = null)
     {
         $this->table = 'users';

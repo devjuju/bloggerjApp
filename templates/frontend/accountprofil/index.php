@@ -2,7 +2,7 @@
 
 use App\Core\Auth;
 
-$title = "Mon compte"; ?>
+$title = "Profil du compte"; ?>
 <?php ob_start();
 ?>
 
@@ -31,7 +31,7 @@ $title = "Mon compte"; ?>
             <div class="col-xl-4 col-lg-5">
 
 
-                <div class="card card-shadow-account-active spacing-content-marging-top-40">
+                <a href="index.php?action=account" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-eye"></i>
@@ -41,19 +41,19 @@ $title = "Mon compte"; ?>
                             <p class="running-text mb-2">Détails du compte</p>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <a href="index.php?action=account_profil&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <div class="card card-shadow-account-active spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-person-circle"></i>
                         </div>
                         <div class="ps-3 ps-sm-4">
                             <h5 class="titre-h5 mb-2">Profil du compte</h5>
-                            <p class="running-text mb-2">Modifier la photo de profil</p>
+                            <p class="running-text mb-2">Modifier votre photo de profil</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <a href="index.php?action=account_settings&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
@@ -74,7 +74,7 @@ $title = "Mon compte"; ?>
                         </div>
                         <div class="ps-3 ps-sm-4">
                             <h5 class="titre-h5 mb-2">Sécurité du compte</h5>
-                            <p class="running-text mb-2">Modifier le mot de passe</p>
+                            <p class="running-text mb-2">Modifier votre mot de passe</p>
                         </div>
                     </div>
                 </a>
@@ -89,55 +89,66 @@ $title = "Mon compte"; ?>
             <!-- Contact form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
                 <div class="card-shadow">
-                    <div class="card-header padding-bottom-20">
+                    <div class="card-header">
 
 
                         <div class="d-table flex-shrink-0 icon-box">
-                            <i class="bi bi-eye"></i>
+                            <i class="bi bi-person-circle"></i>
                         </div>
-                        <h2 class="titre-h3">Aperçu du compte</h2>
+                        <h2 class="titre-h3">Profil du compte</h2>
                         <p class="running-text fs-5">
 
-                            Détails du compte
+                            Modifier la photo de profil
 
                         </p>
                     </div>
                     <div class="card-body">
 
-                        <div class="d-sm-flex align-items-center spacing-content-padding-bottom-40">
-                            <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="d-block rounded-circle" width="80" alt="John Doe">
+                        <form method="post" class="needs-validation" enctype="multipart/form-data" novalidate="">
+                            <div class="row g-4">
 
-                            <div class="pt-3 pt-sm-0 ps-sm-3">
-                                <h3 class="h5 mb-2"><?= Auth::get('auth', 'username'); ?><i class="ai-circle-check-filled fs-base text-success ms-2"></i></h3>
-                                <div class="text-body-secondary fw-medium d-flex flex-wrap flex-sm-nowrap align-iteems-center">
-                                    <div class="d-flex align-items-center me-3">
+                                <div class="col-sm-12 form-group-style">
 
-                                        <?= Auth::get('auth', 'role'); ?>
+                                    <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3  spacing-content-padding-top-40">
+                                        <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
+                                            <div class="d-flex align-items-center me-3">
+                                                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="img-fluid rounded-circle" width="100" alt="Image">
+                                                <div class="ps-3">
+                                                    <input type="hidden" name="account_profil[form]" value="ok">
+                                                    <label for="image" class="form-label"> Photo de profil</label>
+                                                    <input type="file" id="image" name="image">
+                                                </div>
+                                            </div>
+                                            <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
+
+                                        </div>
+
+
+
                                     </div>
 
                                 </div>
+
+
+
+
+
+                                <div class="col-sm-12">
+
+                                    <div class="d-grid gap-2">
+                                        <a href="index.php?action=account" class="btn btn-outline-primary mb-3">
+                                            Annuler
+                                        </a>
+                                        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                    </div>
+
+                                </div>
+
+
+
+
                             </div>
-                        </div>
-                        <table class="table mb-0">
-                            <tbody>
-                                <tr>
-                                    <td class="border-0 text-body-secondary py-1 px-0">Nom</td>
-                                    <td class="border-0 text-dark fw-medium py-1 ps-3"><?= Auth::get('auth', 'lastname'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="border-0 text-body-secondary py-1 px-0">Prénom</td>
-                                    <td class="border-0 text-dark fw-medium py-1 ps-3"><?= Auth::get('auth', 'firstname'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="border-0 text-body-secondary py-1 px-0">Email</td>
-                                    <td class="border-0 text-dark fw-medium py-1 ps-3"><?= Auth::get('auth', 'email'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="border-0 text-body-secondary py-1 px-0">Pseudo</td>
-                                    <td class="border-0 text-dark fw-medium py-1 ps-3"><?= Auth::get('auth', 'username'); ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        </form>
 
 
 
@@ -161,8 +172,6 @@ $title = "Mon compte"; ?>
 
 
 </section>
-
-
 
 
 

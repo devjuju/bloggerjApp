@@ -38,6 +38,8 @@ class ValidatorUser extends Validator
     }
 
 
+
+
     public function checkDataRegister(): bool|array
     {
         $resultUsername = $this->checkUsername($this->data->getUsername());
@@ -85,6 +87,8 @@ class ValidatorUser extends Validator
             ];
         }
     }
+
+
 
     public function checkDataUpdate(): bool|array
     {
@@ -169,6 +173,31 @@ class ValidatorUser extends Validator
         }
     }
 
+    public function checkDataUpdateSettings(): bool|array
+    {
+        $resultUsername = $this->checkUsername($this->data->getUsername());
+        $resultLastname = $this->checkLastname($this->data->getLastName());
+        $resultFirstname = $this->checkFirstname($this->data->getFirstname());
+        $resultEmail = $this->checkEmail($this->data->getEmail());
+
+        $resultImage = true;
+
+        if (isset($_FILES["image"])) {
+            $resultImage = $this->checkImage($this->data->getImage());
+        }
+
+        if ($resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true) {
+            return true;
+        } else {
+            return [
+                'username' => $resultUsername,
+                'lastname' => $resultLastname,
+                'firstname' => $resultFirstname,
+                'email' => $resultEmail,
+                'image' => $resultImage,
+            ];
+        }
+    }
 
     public function checkDataUpdateInfos(): bool|array
     {

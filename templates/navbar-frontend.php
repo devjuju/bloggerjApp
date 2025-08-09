@@ -58,7 +58,7 @@ if (Auth::get('auth', 'role')) {
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Compte</a>
+                            <a class="nav-link" href="index.php?action=account">Compte</a>
 
                         </li>
 
@@ -153,7 +153,7 @@ if (Auth::get('auth', 'role')) {
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Compte</a>
+                            <a class="nav-link" href="index.php?action=account">Compte</a>
 
                         </li>
 

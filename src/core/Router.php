@@ -126,11 +126,34 @@ class Router
 
 
 
+
+
+
+
+
+
+
                     case 'account':
                         $account = new UsersController;
                         $account->account();
                         break;
 
+                    case 'account_settings':
+                        $accountSettings = new UsersController;
+                        $accountSettings->accountSettings($request->get('id'));
+                        break;
+
+
+                    case 'account_profil':
+                        $accountProfil = new UsersController;
+                        $accountProfil->accountProfil($request->get('id'));
+                        break;
+
+
+                    case 'account_security':
+                        $accountSecurity = new UsersController;
+                        $accountSecurity->accountSecurity($request->get('id'));
+                        break;
 
 
                     case 'users':
@@ -167,7 +190,15 @@ class Router
                         break;
 
 
+                    case 'change_role_user':
+                        $changeRoleUser = new UsersController();
+                        $changeRoleUser->changeRoleUser($request->get('id'));
+                        break;
 
+                    case 'change_role_admin':
+                        $changeRoleUser = new UsersController();
+                        $changeRoleUser->changeRoleAdmin($request->get('id'));
+                        break;
 
 
                     case 'delete_user':

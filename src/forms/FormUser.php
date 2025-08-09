@@ -30,6 +30,8 @@ class FormUser
         return $result;
     }
 
+
+
     public function validateRegister(): array|bool
     {
         $validator = new ValidatorUser($this->data);
@@ -72,6 +74,21 @@ class FormUser
         }
         return $result;
     }
+
+    public function validateUpdateSettings(): array|bool
+    {
+        $validator = new ValidatorUser($this->data);
+        $result = $validator->checkDataUpdateSettings();
+        print_r($result);
+
+        foreach ($result as $key => $value) {
+            if ($value === true) {
+                unset($result[array_search($key, $result)]);
+            }
+        }
+        return $result;
+    }
+
 
     public function validateUpdateInfos(): array|bool
     {

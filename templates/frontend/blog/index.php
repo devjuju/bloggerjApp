@@ -71,7 +71,7 @@ $title = "Blog"; ?>
                                 <div class="d-flex flex-row bd-highlight mb-3">
                                     <div class="meta-content-blog bd-highlight">
                                         <i class="bi bi-person-fill fs-base me-1"></i>
-                                        <span class="fs-sm"><?= $post->users_id ?></span>
+                                        <span class="fs-sm"><?= $post->author ?></span>
                                     </div>
                                     <div class="meta-content-blog bd-highlight">
                                         <i class="bi bi-clock-fill fs-base me-1"></i>

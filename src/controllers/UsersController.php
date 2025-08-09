@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Core\Request;
 use App\Models\Users;
 use App\Core\Auth;
-use App\Forms\FormPass;
+
 use App\Forms\FormUser;
 
 class UsersController
@@ -89,6 +89,14 @@ class UsersController
                             Auth::set('auth', 'email', $user->email);
                             Auth::set('auth', 'username', $user->username);
 
+
+
+
+
+
+
+
+
                             Auth::set('message', 'class', 'success');
                             Auth::set('message', 'content', "Vous êtes connecté");
 
@@ -128,27 +136,178 @@ class UsersController
         header('Location: index.php');
     }
 
+
+
     public function account(): void
     {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'utilisateur') {
+            header('Location: index.php');
+            return;
+        }
 
         require('../templates/frontend/account/index.php');
     }
 
-    public function accountSecurity(): void
+
+
+    public function accountSettings($id): void
     {
+
+
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'utilisateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find(Auth::get('auth', 'id') === $id);
+
+        $settings = new Users();
+        $settings = $settings->find($id);
+
+
+
+
+
+
+        $request = new Request();
+        $submit = $request->post('account_settings');
+
+        if (isset($submit)) {
+
+
+            $updateUserSettings = new Users($request->post('account_settings'));
+            // print_r($updatePost);
+            $formUpdateUserSettings = new FormUser($updateUserSettings);
+            $controle = $formUpdateUserSettings->validateUpdateSettings();
+            //print_r($controle);
+            if ($controle === true) {
+
+                $updateUserSettings->setId($settings->id);
+
+
+
+                $updateUserSettings->update();
+
+
+
+                Auth::destroy(); //unset($_SESSION);  session_destroy();
+                header('Location: index.php?action=login');
+                exit();
+            }
+        }
+
+        require('../templates/frontend/accountsettings/index.php');
+    }
+
+    public function accountProfil($id): void
+    {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'utilisateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find(Auth::get('auth', 'id') === $id);
+
+        $profil = new Users();
+
+        $profil = $profil->find($id);
+
+
+        $request = new Request();
+        $submit = $request->post('account_profil');
+        if (isset($submit)) {
+
+            $updateAccountProfil = new Users();
+            $formAccountProfil = new FormUser($updateAccountProfil);
+            $controle = $formAccountProfil->validateUpdateImage();
+
+            if ($controle === true) {
+
+                if (unlink("uploads/$profil->image")) {
+                    $img_name = $_FILES['image']['name'];
+                    $tmp_name = $_FILES['image']['tmp_name'];
+                    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                    $img_ex_lc = strtolower($img_ex);
+
+
+
+                    $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                    $img_upload_path = 'uploads/' . $new_img_name;
+
+
+
+                    move_uploaded_file($tmp_name, $img_upload_path);
+                }
+                // Insert into Database
+                $updateAccountProfil->setImage($new_img_name);
+                $updateAccountProfil->setId($user->id);
+                $updateAccountProfil->setUsername($user->username);
+                $updateAccountProfil->update();
+
+
+
+                Auth::destroy(); //unset($_SESSION);  session_destroy();
+                header('Location: index.php?action=login');
+                exit();
+            }
+        }
+
+
+
+
+        require('../templates/frontend/accountprofil/index.php');
+    }
+
+
+    public function accountSecurity($id): void
+    {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'utilisateur') {
+            header('Location: index.php');
+            return;
+        }
+
+        $users = new Users();
+        $user = $users->find(Auth::get('auth', 'id') === $id);
+
+        $security = new Users();
+        $security = $security->find($id);
+
+        $request = new Request();
+        $submit = $request->post('account_security');
+
+        if (isset($submit)) {
+
+            $updateAccountSecurity = new Users($request->post('account_security'));
+
+            // print_r($updatePost);
+            $formUpdateUserPass = new FormUser($updateAccountSecurity);
+            $controle = $formUpdateUserPass->validateUpdatePass();
+
+            //print_r($controle);
+            if ($controle === true) {
+
+                $updateAccountSecurity->setId($security->id);
+
+                // On chiffre le mot de passe
+                $updateAccountSecurity->setPassword(password_hash($updateAccountSecurity->getPassword(), PASSWORD_BCRYPT));
+
+                $updateAccountSecurity->setUsername($security->username);
+                $updateAccountSecurity->update();
+
+
+
+                Auth::destroy(); //unset($_SESSION);  session_destroy();
+                header('Location: index.php?action=login');
+                exit();
+            }
+        }
 
         require('../templates/frontend/accountsecurity/index.php');
     }
 
-    public function accountSettings($id): void
-    {
-        // On instancie le modèle
-        $userModel = new Users();
 
-        // On va chercher 1 post
-        $user = $userModel->find(Auth::get('auth', 'id') === $id);
-        require('../templates/frontend/accountsettings/index.php');
-    }
 
 
     /* Backend */
@@ -173,34 +332,7 @@ class UsersController
         $users = $userModel->findAll();
 
 
-
-
-
         require('../templates/backend/users/index.php');
-    }
-
-    public function admin($id): void
-    {
-
-        $user = new Users;
-        $user->setId($id);
-        $user->setStatus('administrateur');
-
-        $user->update();
-
-        header('Location: index.php?action=users');
-    }
-
-
-    public function user($id): void
-    {
-        $user = new Users;
-        $user->setId($id);
-        $user->setStatus('utilisateur');
-
-        $user->update();
-
-        header('Location: index.php?action=users');
     }
 
 
@@ -497,6 +629,62 @@ class UsersController
         require('../templates/backend/updateimageuser/index.php');
     }
 
+
+    public function changeRoleAdmin(int $id): void
+    {
+
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+
+        // On instancie le modèle
+        $user = new Users();
+        // On va chercher 1 annonce
+        $user = $user->find($id);
+
+        $updateUserRole = new Users();
+
+        $updateUserRole->setId($user->id);
+        $updateUserRole->setRole('administrateur');
+        $updateUserRole->setUsername($user->username);
+        $updateUserRole->update();
+
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Rôle administrateur");
+
+        header('Location: index.php?action=users');
+        exit();
+    }
+
+    public function changeRoleUser(int $id): void
+    {
+
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
+
+        // On instancie le modèle
+        $user = new Users();
+        // On va chercher 1 annonce
+        $user = $user->find($id);
+
+        $updateUserRole = new Users();
+
+        $updateUserRole->setId($user->id);
+        $updateUserRole->setRole('utilisateur');
+        $updateUserRole->setUsername($user->username);
+        $updateUserRole->update();
+
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Rôle utilisateur");
+
+        header('Location: index.php?action=users');
+        exit();
+    }
 
     public function delete($id): void
     {
