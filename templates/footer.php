@@ -11,27 +11,19 @@
                 <br>
                 <br>
                 <p>Une développeuse web passionnée et créative en vue d’évolution </p>
-
-
                 <div class="d-flex">
-                    <!-- Facebook -->
                     <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <!-- Twitter -->
                     <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
                         <i class="bi bi-twitter"></i>
                     </a>
-                    <!-- Instagram -->
                     <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
                         <i class="bi bi-instagram"></i>
                     </a>
                 </div>
-
-
             </div>
             <div class="colonne-2 col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0">
-
                 <ul class="list-group">
                     <li class="list-group-item d-flex align-items-center">
                         <i class="bi bi-person fs-xl me-2"></i>
@@ -40,9 +32,7 @@
                     <li class="list-group-item d-flex align-items-center">
                         <i class="bi bi-envelope fs-xl me-2"></i>
                         jleleubellpro1994@gmail.com
-
                     </li>
-
                     <div class="d-flex align-items-center">
                         <?php
 
@@ -57,36 +47,17 @@
                                         <i class="bi bi-lock fs-xl me-2"></i>
                                         Espace Administration
                                     </a>
-
-
                                 <?php } else { ?>
-
-
-
-
                             </li>
                         <?php } ?>
-
-
                     <?php } else { ?>
                         <li class="list-group-item d-flex align-items-center">
                             <i class="bi bi-lock fs-xl me-2"></i>
                             Espace Administration
-
                         </li>
-
-
                     <?php } ?>
                     </div>
-
-
-
-
-
-
                 </ul>
-
-
             </div>
         </div>
         <p class="nav fs-sm mb-0">

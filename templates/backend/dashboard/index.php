@@ -4,6 +4,8 @@ use App\Core\Auth;
 ?>
 <?php ob_start();
 ?>
+
+
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
@@ -11,7 +13,6 @@ use App\Core\Auth;
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
-
         </div>
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -30,7 +31,6 @@ use App\Core\Auth;
             </div>
         </div>
         <div class="offcanvas-body w-100 p-4 ">
-
             <div class="list-group list-group-flush">
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
                     <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
@@ -38,38 +38,26 @@ use App\Core\Auth;
                         <h5><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8'); ?></h5>
                         <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
-
                 </div>
                 <a href="index.php?action=posts" class="list-group-item list-group-item-action d-flex align-items-center">
                     <div class="box-icon-account">
                         <i class="bi bi-pin-fill"></i>
                     </div>
-
                     Articles
                 </a>
-
                 <a href="index.php?action=comments" class="list-group-item list-group-item-action d-flex align-items-center">
                     <div class="box-icon-account">
                         <i class="bi bi-chat-square-dots-fill"></i>
                     </div>
-
                     Commentaires
                 </a>
                 <a href="index.php?action=users" class="list-group-item list-group-item-action d-flex align-items-center ">
                     <div class="box-icon-account">
                         <i class="bi bi-person-fill"></i>
                     </div>
-
                     Utilisateurs
                 </a>
-
             </div>
-
-
-
-
-
-
         </div>
         <div class="offcanvas-header border-top">
             <a href="index.php?action=logout" class="btn btn-primary w-100">
@@ -82,33 +70,18 @@ use App\Core\Auth;
 
 
 <main>
-
     <section class="container-fluid p-5 bg-light-subtle ">
-
-
-
         <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-150">
-
             <div class="d-table position-relative mx-auto spacing-element-marging-bottom-20">
                 <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="d-block rounded-circle" width="100" alt="">
             </div>
             <div class="text-center spacing-content-marging-bottom-40">
-                <!-- Page title -->
                 <h1 class="titre-section">Bienvenue <?= Auth::get('auth', 'username'); ?></h1>
-
-
-
                 <h2 class="titre-h3">Outils pour gérer votre blog</h2>
                 <p class="running-text pb-4 mb-2 mb-lg-3">Mise en place d’une interface vous accordant la possibilité de gérer
                     tout le contenu publié du blog.</p>
-
             </div>
-
-
-            <!-- Services grid -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 pb-sm-3 pb-md-4 pb-xl-5">
-
-                <!-- Item -->
                 <div class="col">
                     <a class="card card-light  border-0 h-100 text-decoration-none" href="index.php?action=posts">
                         <div class="card-body pb-0">
@@ -121,7 +94,6 @@ use App\Core\Auth;
 
                     </a>
                 </div>
-                <!-- Item -->
                 <div class="col">
                     <a class="card card-light border-0 h-100 text-decoration-none" href="index.php?action=comments">
                         <div class="card-body pb-0">
@@ -134,8 +106,6 @@ use App\Core\Auth;
 
                     </a>
                 </div>
-
-                <!-- Item -->
                 <div class="col">
                     <a class="card card-light border-0 h-100 text-decoration-none" href="index.php?action=users">
                         <div class="card-body pb-0">
@@ -144,23 +114,12 @@ use App\Core\Auth;
                             </div>
                             <h3 class="titre-h5 mt-0">Utilisateurs</h3>
                             <p class="running-text">Créer, supprimer et gérer vos utilisateurs</p>
-
                         </div>
-
                     </a>
                 </div>
-
-
             </div>
-
         </div>
-
-
-
     </section>
-
-
-
 </main>
 
 

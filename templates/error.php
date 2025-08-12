@@ -11,13 +11,8 @@ ob_start();
             </div>
         </div>
         <div class="col-xl-6 col-lg-5 position-relative py-5">
-
             <div class="position-relative zindex-5 text-center text-lg-start px-3 px-lg-0 py-xl-4 py-xxl-5 mt-lg-3 mx-auto mx-lg-0" style="max-width: 530px;">
-
                 <h1 class="heading-home">Une erreur est survenue !</h1>
-
-
-
                 <div class="d-flex align-items-start spacing-content-padding-top-40 spacing-element-marging-bottom-20">
                     <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                         <i class="bi bi-exclamation-triangle"></i>
@@ -27,9 +22,6 @@ ob_start();
                         <p class="running-text mb-2"><strong class="text-primary">Erreur :</strong> <?= $message ?></p>
                     </div>
                 </div>
-
-
-
                 <div class="d-flex align-items-start spacing-content-marging-bottom-40">
                     <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                         <i class="bi bi-search"></i>
@@ -59,7 +51,6 @@ ob_start();
                 </div>
             </div>
         </div>
-
 </section>
 
 <?php $content = ob_get_clean(); ?>

@@ -8,8 +8,6 @@ $title = "Blog"; ?>
 ?>
 
 
-
-<!-- breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -27,38 +25,22 @@ $title = "Blog"; ?>
 <section class="container spacing-col-padding-top-50">
     <div class="row">
         <div class="col-lg-7  mb-lg-0">
-
-
-
             <div class="row row-cols-lg-2 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
-
-                <!-- Item -->
                 <?php foreach ($posts as $post): ?>
                     <div class="col pb-3">
                         <article class="card card-article border-0 ">
                             <div class="position-relative">
-
-
-
-
                                 <?php
-
-
                                 if (Auth::get('auth', 'role')) {
                                 ?>
-
                                     <?php if (Auth::get('auth', 'role') === 'administrateur') { ?>
                                         <a href="index.php?action=update_post&id=<?= $post->id ?>" class="btn btn-icon-pencil-circle-secondary  position-absolute top-0 end-0 zindex-5 me-3 mt-3">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
                                     <?php } else { ?>
-
                                     <?php } ?>
-
                                 <?php } else { ?>
-
                                 <?php } ?>
-
                                 <img src="uploads/<?= $post->image ?>" class="card-img-top" alt="Image">
                             </div>
                             <div class="card-body">
@@ -80,23 +62,10 @@ $title = "Blog"; ?>
                                 </div>
                                 <p class="running-text"><?= $post->excerpt ?></p>
                             </div>
-
-
                         </article>
                     </div>
                 <?php endforeach; ?>
-
-
-
-
-
-
-
-
-
-
             </div>
-
         </div>
         <div class="col-lg-5 col-xl-4 offset-xl-1 border-start-lg">
             <div class="card card-shadow">
@@ -104,15 +73,12 @@ $title = "Blog"; ?>
                     <h4 class="titre-h4">Suivez-moi :</h4>
                     <p class="running-text">Retrouver les dernières nouvelles et inspirations sur le blog.</p>
                     <div class="d-flex">
-                        <!-- Facebook -->
                         <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <!-- Twitter -->
                         <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <!-- Instagram -->
                         <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
@@ -120,7 +86,6 @@ $title = "Blog"; ?>
 
                 </div>
             </div>
-            <!-- Basic card example -->
             <div class="card card-background">
                 <div class="card-body">
                     <h4 class="titre-h4">Votre avis compte !</h4>
@@ -129,17 +94,13 @@ $title = "Blog"; ?>
                     $session = &$_SESSION;
                     if (isset($session['auth']['role'])) {
                     ?>
-
                         <?php if ($session['auth']['role'] === 'admin') { ?>
                             <a href="index.php?action=account" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20"">Mon compte</a>
             <?php } else { ?>
               <a href=" index.php?action=account" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20"">Mon compte</a>
-
-
             <?php } ?>
 
             <a href=" index.php?action=logout" class="d-grid gap-2 btn btn-outline-primary spacing-element-marging-bottom-20"">Se déconnecter</a>
-
             <?php } else { ?>
               <a href=" index.php?action=register" class="d-grid gap-2 btn btn-primary spacing-element-marging-bottom-20">
                                 S'inscire
@@ -148,7 +109,6 @@ $title = "Blog"; ?>
                                 Se connecter
                             </a>
                         <?php } ?>
-
                 </div>
             </div>
         </div>

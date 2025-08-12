@@ -3,7 +3,6 @@
 <?php ob_start();
 ?>
 
-<!-- breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -21,19 +20,12 @@
 <section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
     <div class="container">
         <div class="row">
-
-            <!-- Contact links -->
             <div class="col-xl-4 col-lg-5 ">
                 <h2 class="titre-section">
                     Me contacter</h2>
-
                 <p class="running-text fs-5">
-
                     N'hésitez pas à m'écrire. je vous répondrai dans les plus brefs délais.
-
                 </p>
-
-
                 <img src="images/featured-image-contact.svg" class="img-fluid featured-image-post" alt="image">
 
                 <div class="card card-shadow-contact spacing-content-marging-top-40">
@@ -58,75 +50,48 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
                 <div class="d-flex spacing-col-padding-top-50 spacing-col-padding-bottom-50">
                     <h5 class="text-bold spacing-element-marging-right-10">Réseaux sociaux :</h5>
-                    <!-- Facebook -->
                     <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <!-- Twitter -->
                     <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
                         <i class="bi bi-twitter"></i>
                     </a>
-                    <!-- Instagram -->
                     <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
                         <i class="bi bi-instagram"></i>
                     </a>
                 </div>
-
-
             </div>
-
-
-
-
-            <!-- Contact form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
                 <div class="card-shadow">
                     <div class="card-header">
                         <h3 class="titre-h3">
                             Envoyez-moi un message</h3>
-
                     </div>
-
                     <div class="card-body">
-
-
-
-
                         <form method="post" class="needs-validation" novalidate>
                             <div class="row g-4">
-                                <!--begin::Form group-->
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
                                     <input type="text" id="lastname" name="contact[lastname]" placeholder="Entrer un nom" value="<?= isset($contact) ? $contact->getLastname() : '' ?>">
                                     <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
                                 </div>
-                                <!--end::Form group-->
-                                <!--begin::Form group-->
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
                                     <input type="text" id="firstname" name="contact[firstname]" placeholder="" value="<?= isset($contact) ? $contact->getFirstname() : '' ?>">
                                     <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
                                 </div>
-                                <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
                                     <input type="email" placeholder="" id="email" name="contact[email]" value="<?= isset($contact) ? $contact->getEmail() : '' ?>">
                                     <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
                                 </div>
-                                <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="sujet">Sujet</label>
                                     <input type="text" placeholder="" id="sujet" name="contact[sujet]" value="<?= isset($contact) ? $contact->getSubject() : '' ?>">
                                     <?= isset($controle["sujet"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["sujet"] . "</p>" : '' ?>
                                 </div>
-                                <!--begin::Form group-->
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="message">Message</label>
                                     <textarea rows="6" placeholder="Enter your message here..." name="contact[message]" id="message"><?= isset($contact) ? $contact->getMessage() : '' ?></textarea>
@@ -136,17 +101,14 @@
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Envoyer</button>
                                     </div>
-
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 
 

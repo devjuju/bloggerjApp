@@ -6,7 +6,9 @@ $title = "Mon compte"; ?>
 <?php ob_start();
 ?>
 
-<!-- breadcrumb -->
+<!-- ===================================================== -->
+<!-- =============== 1. BREADCRUMB / HEADER =============== -->
+<!-- ===================================================== -->
 <section class="container-fluid p-5 bg-light-subtle">
     <nav class="container py-4 mb-lg-2" aria-label="breadcrumb">
         <ol class="breadcrumb pt-lg-3 mb-0">
@@ -22,15 +24,17 @@ $title = "Mon compte"; ?>
     </div>
 </section>
 
-
+<!-- ===================================================== -->
+<!-- =============== 2. MAIN CONTENT ===================== -->
+<!-- ===================================================== -->
 <section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
     <div class="container">
         <div class="row">
-
-            <!-- Contact links -->
+            <!-- ================================================= -->
+            <!-- ====== 2.1 Sidebar / Navigation ================= -->
+            <!-- ================================================= -->
             <div class="col-xl-4 col-lg-5">
-
-
+                <!-- ====== 2.1.1 Card block Account ====== -->
                 <div class="card card-shadow-account-active spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
@@ -43,6 +47,7 @@ $title = "Mon compte"; ?>
                     </div>
                 </div>
 
+                <!-- ====== 2.1.2 Card block profil ====== -->
                 <a href="index.php?action=account_profil&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
@@ -55,6 +60,7 @@ $title = "Mon compte"; ?>
                     </div>
                 </a>
 
+                <!-- ====== 2.1.3 Card block settings ====== -->
                 <a href="index.php?action=account_settings&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
@@ -66,7 +72,7 @@ $title = "Mon compte"; ?>
                         </div>
                     </div>
                 </a>
-
+                <!-- ====== 2.1.4 Card block security ====== -->
                 <a href="index.php?action=account_security&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
@@ -78,46 +84,35 @@ $title = "Mon compte"; ?>
                         </div>
                     </div>
                 </a>
-
-
-
             </div>
 
-
-
-
-            <!-- Contact form -->
+            <!-- ================================================= -->
+            <!-- ====== 2.2 Main content area ==================== -->
+            <!-- ================================================= -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
+                <!-- ====== 2.2.1 Section title and description ====== -->
                 <div class="card-shadow">
                     <div class="card-header padding-bottom-20">
-
-
                         <div class="d-table flex-shrink-0 icon-box">
                             <i class="bi bi-eye"></i>
                         </div>
                         <h2 class="titre-h3">Aperçu du compte</h2>
-                        <p class="running-text fs-5">
-
-                            Détails du compte
-
-                        </p>
+                        <p class="running-text fs-5">Détails du compte</p>
                     </div>
+                    <!-- ====== 2.2.2 Main body content ====== -->
                     <div class="card-body">
-
                         <div class="d-sm-flex align-items-center spacing-content-padding-bottom-40">
                             <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="d-block rounded-circle" width="80" alt="John Doe">
-
                             <div class="pt-3 pt-sm-0 ps-sm-3">
                                 <h3 class="h5 mb-2"><?= Auth::get('auth', 'username'); ?><i class="ai-circle-check-filled fs-base text-success ms-2"></i></h3>
                                 <div class="text-body-secondary fw-medium d-flex flex-wrap flex-sm-nowrap align-iteems-center">
                                     <div class="d-flex align-items-center me-3">
-
                                         <?= Auth::get('auth', 'role'); ?>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
+                        <!-- ====== 2.2.3 Information table ====== -->
                         <table class="table mb-0">
                             <tbody>
                                 <tr>
@@ -138,38 +133,12 @@ $title = "Mon compte"; ?>
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </section>
-
-
-
-
-
-
-
-
-
 
 
 <?php $content = ob_get_clean(); ?>
