@@ -6,7 +6,55 @@ $title = "Modifier les infos de l'utilisateur"; ?>
 <?php ob_start();
 ?>
 
+<!-- 
+Page : Modifier les infos de l'utilisateur
+│
+├── Variables / Préparation
+│   ├── use App\Core\Auth
+│   ├── $title = "Modifier les infos..."
+│   └── ob_start()
+│
+├── <aside> : Menu latéral (navigation)
+│   ├── Logo & lien vers le tableau de bord
+│   ├── Menu responsive (mobile & desktop)
+│   ├── Profil connecté
+│   │   ├── Avatar (Auth::get image)
+│   │   ├── Nom d'utilisateur
+│   │   └── Email
+│   ├── Liens de navigation
+│   │   ├── Articles
+│   │   ├── Commentaires
+│   │   └── Utilisateurs (actif)
+│   └── Bouton déconnexion
+│
+├── <main>
+│   ├── Section 1 : En-tête / Breadcrumb
+│   │   ├── Fil d’Ariane (tableau de bord → page actuelle)
+│   │   └── Titre de page
+│   │
+│   ├── Section 2 : Formulaire de modification
+│       ├── Onglets / liens vers autres modifs
+│       │   ├── Infos (actif)
+│       │   ├── Sécurité (mot de passe)
+│       │   └── Avatar
+│       │
+│       ├── Bloc "Informations principales"
+│       │   ├── Champ : rôle (select)
+│       │   ├── Champ : nom
+│       │   ├── Champ : prénom
+│       │   ├── Champ : pseudo
+│       │   └── Champ : email
+│       │
+│       └── Bloc latéral (à droite)
+│           ├── Bouton annuler
+│           └── Bouton soumettre (modifier infos)
+│
+└── Pied de page
+    ├── ob_get_clean()
+    └── require('../templates/layout-backend.php')
 
+
+-->
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -76,11 +124,11 @@ $title = "Modifier les infos de l'utilisateur"; ?>
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=dashboard"><i class="bi bi-speedometer2 fs-lg me-1"></i>Tableau de bord</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Modifier les infos de l'utilisateur <strong><?= $user->username ?></strong></li>
+                <li class="breadcrumb-item active" aria-current="page">Modifier les infos de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></li>
             </ol>
         </nav>
         <div class="container spacing-col-padding-bottom-50">
-            <h1 class="title-dasboard">Modifier les infos de l'utilisateur <strong><?= $user->username ?></strong></h1>
+            <h1 class="title-dasboard">Modifier les infos de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></h1>
         </div>
     </section>
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
@@ -95,10 +143,10 @@ $title = "Modifier les infos de l'utilisateur"; ?>
                                 <a href="#" class="btn btn-dark me-2 mb-2 disabled">
                                     <i class="bi bi-info-circle-fill fs-lg me-2"></i>
                                     infos</a>
-                                <a href="index.php?action=update_user_pass&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_user_pass&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-lock-fill fs-lg me-2"></i>
                                     Sécurité</a>
-                                <a href="index.php?action=update_user_avatar&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_user_avatar&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-person-circle fs-lg me-2"></i>
                                     Avatar</a>
                             </div>
@@ -108,43 +156,48 @@ $title = "Modifier les infos de l'utilisateur"; ?>
                                         Informations principales</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" class="needs-validation" novalidate="">
-                                        <div class="row g-4">
-                                            <div class="col-sm-12 form-group-style2">
-                                                <label class="form-label fs-base" for="role">Role</label>
-                                                <select class="form-select" id="role" name="update_user_infos[role]" value="<?= isset($updateUserInfos) ? $updateUserInfos->getRole() : $user->role ?>">
-                                                    <?php if ($user->role  === "utilisateur"): ?>
-                                                        <option>utilisateur</option>
-                                                        <option>administrateur</option>
-                                                    <?php else: ?>
-                                                        <option>administrateur</option>
-                                                        <option>utilisateur</option>
-                                                    <?php endif; ?>
 
-                                                </select>
-                                                <?= isset($controle['role']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["role"] . "</p>" : '' ?>
-                                            </div>
-                                            <div class="col-sm-6 form-group-style">
-                                                <label class="form-label fs-base" for="lastname">Nom</label>
-                                                <input class="form-control" type="text" id="lastname" name="update_user_infos[lastname]" value="<?= isset($updateUserInfos) ? $updateUserInfos->getLastname() : $user->lastname ?>">
-                                                <?= isset($controle['lastname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
-                                            </div>
-                                            <div class="col-sm-6 form-group-style">
-                                                <label class="form-label fs-base" for="firstname">Prénom</label>
-                                                <input class="form-control" type="text" id="firstname" name="update_user_infos[firstname]" value="<?= isset($updateUserInfos) ? $updateUserInfos->getFirstname() : $user->firstname ?>">
-                                                <?= isset($controle['firstname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
-                                            </div>
-                                            <div class="col-sm-12 form-group-style2">
-                                                <label class="form-label fs-base" for="username">Pseudo</label>
-                                                <input class="form-control" type="text" id="username" name="update_user_infos[username]" value="<?= isset($updateUserInfos) ? $updateUserInfos->getUsername() : $user->username ?>">
-                                                <?= isset($controle['username']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["username"] . "</p>" : '' ?>
-                                            </div>
-                                            <div class="col-sm-12 form-group-style">
-                                                <label class="form-label fs-base" for="email">Email</label>
-                                                <input class="form-control" type="email" id="email" name="update_user_infos[email]" value="<?= isset($updateUserInfos) ? $updateUserInfos->getEmail() : $user->email ?>">
-                                                <?= isset($controle['email']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
-                                            </div>
+                                    <div class="row g-4">
+                                        <div class="col-sm-12 form-group-style2">
+                                            <label class="form-label fs-base" for="role">Rôle</label>
+                                            <select class="form-select" id="role" name="update_user_infos[role]">
+                                                <?php
+                                                $roles = ['utilisateur', 'administrateur'];
+                                                $currentRole = isset($updateUserInfos) ? $updateUserInfos->getRole() : $user->role;
+                                                foreach ($roles as $roleOption):
+                                                ?>
+                                                    <option value="<?= htmlspecialchars($roleOption, ENT_QUOTES, 'UTF-8') ?>"
+                                                        <?= $currentRole === $roleOption ? 'selected' : '' ?>>
+                                                        <?= htmlspecialchars(ucfirst($roleOption), ENT_QUOTES, 'UTF-8') ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <?= isset($controle['role']) ? '<p class="text-danger"><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["role"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         </div>
+                                        <div class="col-sm-6 form-group-style">
+                                            <label class="form-label fs-base" for="lastname">Nom</label>
+
+                                            <input class="form-control" type="text" id="lastname" name="update_user_infos[lastname]" value="<?= isset($updateUserInfos) ? htmlspecialchars($updateUserInfos->getLastname(), ENT_QUOTES, 'UTF-8') : htmlspecialchars($user->lastname, ENT_QUOTES, 'UTF-8') ?>">
+
+                                            <?= isset($controle['lastname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["lastname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                        </div>
+
+                                        <div class="col-sm-6 form-group-style">
+                                            <label class="form-label fs-base" for="firstname">Prénom</label>
+                                            <input class="form-control" type="text" id="firstname" name="update_user_infos[firstname]" value="<?= isset($updateUserInfos) ? htmlspecialchars($updateUserInfos->getFirstname(), ENT_QUOTES, 'UTF-8') : htmlspecialchars($user->firstname, ENT_QUOTES, 'UTF-8') ?>">
+                                            <?= isset($controle['firstname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["firstname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                        </div>
+                                        <div class="col-sm-12 form-group-style2">
+                                            <label class="form-label fs-base" for="username">Pseudo</label>
+                                            <input class="form-control" type="text" id="username" name="update_user_infos[username]" value="<?= isset($updateUserInfos) ? htmlspecialchars($updateUserInfos->getUsername(), ENT_QUOTES, 'UTF-8') : htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?>">
+                                            <?= isset($controle['username']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["username"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                        </div>
+                                        <div class="col-sm-12 form-group-style">
+                                            <label class="form-label fs-base" for="email">Email</label>
+                                            <input class="form-control" type="email" id="email" name="update_user_infos[email]" value="<?= isset($updateUserInfos) ? htmlspecialchars($updateUserInfos->getEmail(), ENT_QUOTES, 'UTF-8') : htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8') ?>">
+                                            <?= isset($controle['email']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,42 @@ $title = "Modifier un article"; ?>
 
 ?>
 
+<!--
+PAGE "Modifier un article"
+│
+├── 1. Initialisation PHP
+│     ├── $title = "Modifier un article"
+│     └── ob_start()
+│
+├── 2. Menu latéral (aside)
+│     ├── En-tête (logo, lien dashboard)
+│     ├── Menu mobile
+│     │     ├── Tableau de bord
+│     │     └── Voir le blog
+│     ├── Profil utilisateur (photo, nom, email)
+│     ├── Navigation
+│     │     ├── Articles (actif)
+│     │     ├── Commentaires
+│     │     └── Utilisateurs
+│     └── Bouton déconnexion
+│
+├── 3. Contenu principal (main)
+│     ├── 3.1 En-tête page
+│     │     ├── Fil d’Ariane
+│     │     └── Titre : "Modifier un article"
+│     └── 3.2 Formulaire modification
+│           ├── Colonne gauche : champs article
+│           │     ├── Catégorie
+│           │     ├── Titre
+│           │     ├── Extrait
+│           │     └── Description
+│           └── Colonne droite : actions
+│                 ├── Bouton annuler / modifier
+│                 └── Image actuelle + bouton modifier image
+│
+└── 4. Inclusion du layout backend
 
+-->
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -86,7 +121,7 @@ $title = "Modifier un article"; ?>
     </section>
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-            <form action="index.php?action=update_post&id=<?= $post->id ?>" method="post" class="needs-validation" novalidate>
+            <form action="index.php?action=update_post&id=<?= (int)$post->id ?>" method="post" class="needs-validation" novalidate>
                 <div class="row gy-4">
                     <div class="col-lg-7">
                         <h2 class="titre-h3">Formulaire de modification</h2>
@@ -95,31 +130,33 @@ $title = "Modifier un article"; ?>
                             <h3 class="titre-h5">Informations principales</h3>
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="category">Catégorie</label>
-                                <select class="form-select" id="category" name="update_post[category]" value="<?= isset($updatePost) ? $updatePost->getCategory() : $post->category ?>">
-                                    <?php if ($post->category  === "Développement d'applications web"): ?>
-                                        <option>Développement d'applications web</option>
-                                        <option>Développement de sites web</option>
-                                    <?php else: ?>
-                                        <option>Développement de sites web</option>
-                                        <option>Développement d'applications web</option>
-                                    <?php endif; ?>
+                                <select class="form-select" id="category" name="update_post[category]">
+                                    <option <?= $post->category === "Développement d'applications web" ? 'selected' : '' ?>>
+                                        Développement d'applications web
+                                    </option>
+                                    <option <?= $post->category === "Développement de sites web" ? 'selected' : '' ?>>
+                                        Développement de sites web
+                                    </option>
                                 </select>
-                                <?= isset($controle['category']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["category"] . "</p>" : '' ?>
+                                <?= isset($controle['category']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["category"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
+
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="title">Titre</label>
-                                <input class="form-control" type="text" placeholder="Entrer un titre" id="title" name="update_post[title]" value="<?= isset($updatePost) ? $updatePost->getTitle() : $post->title ?>">
-                                <?= isset($controle['title']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["title"] . "</p>" : '' ?>
+                                <input class="form-control" type="text" placeholder="Entrer un titre" id="title" name="update_post[title]" value="<?= htmlspecialchars(isset($updatePost) ? $updatePost->getTitle() : $post->title, ENT_QUOTES, 'UTF-8') ?>">
+                                <?= isset($controle['title']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["title"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
+
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="excerpt">Extrait</label>
-                                <input class="form-control" type="text" placeholder="" id="excerpt" name="update_post[excerpt]" value="<?= isset($updatePost) ? $updatePost->getExcerpt() : $post->excerpt ?>">
-                                <?= isset($controle["excerpt"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["excerpt"] . "</p>" : '' ?>
+                                <input class="form-control" type="text" id="excerpt" name="update_post[excerpt]" value="<?= htmlspecialchars(isset($updatePost) ? $updatePost->getExcerpt() : $post->excerpt, ENT_QUOTES, 'UTF-8') ?>">
+                                <?= isset($controle["excerpt"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["excerpt"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
+
                             <div class="col-sm-12 form-group-style2">
                                 <label class="form-label fs-base" for="content">Description</label>
-                                <textarea class="form-control" rows="6" placeholder="" name="update_post[content]" id="content"><?= isset($updatePost) ? $updatePost->getContent() : $post->content ?></textarea>
-                                <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
+                                <textarea class="form-control" rows="6" name="update_post[content]" id="content"><?= htmlspecialchars(isset($updatePost) ? $updatePost->getContent() : $post->content, ENT_QUOTES, 'UTF-8') ?></textarea>
+                                <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["content"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
                         </div>
                     </div>
@@ -142,11 +179,11 @@ $title = "Modifier un article"; ?>
                                 <div class="card-body text-center pt-0">
 
                                     <div class="col-sm-12 form-group-style">
-                                        <img src="uploads/<?= $post->image ?>" class="card-img-top" alt="Image">
+                                        <img src="uploads/<?= htmlspecialchars($post->image, ENT_QUOTES, 'UTF-8') ?>" class="card-img-top" alt="Image">
                                         <br><br>
                                         <div class="d-grid gap-2">
-                                            <a href="index.php?action=update_image_post&id=<?= $post->id ?>" class="btn btn-outline-primary mb-3">
-                                                modifier l'image
+                                            <a href="index.php?action=update_image_post&id=<?= (int)$post->id ?>" class="btn btn-outline-primary mb-3">
+                                                Modifier l'image
                                             </a>
                                         </div>
                                     </div>

@@ -6,7 +6,39 @@ $title = "Modifier le mot de passe de l'utilisateur"; ?>
 <?php ob_start();
 ?>
 
+<!--
+Page complète
+│
+├─ <aside>  (Menu latéral)
+│   ├─ Header menu (grand écran)
+│   ├─ Header menu (petit écran)
+│   ├─ Corps du menu
+│   │   ├─ Profil utilisateur (image, nom, email)
+│   │   └─ Liens (Articles, Commentaires, Utilisateurs)
+│   └─ Bouton déconnexion
+│
+├─ <main>  (Contenu principal)
+│   ├─ Section 1 : Bandeau / fil d'Ariane + Titre
+│   │
+│   ├─ Section 2 : Formulaire
+│       ├─ <form> méthode POST
+│       │
+│       ├─ Partie gauche (col-lg-7)
+│       │   ├─ Titre + consignes
+│       │   ├─ Boutons de navigation (Infos / Sécurité / Avatar)
+│       │   └─ Carte "Sécurité du compte"
+│       │       ├─ Nouveau mot de passe (input)
+│       │       └─ Confirmation mot de passe (input)
+│       │
+│       └─ Partie droite (col-lg-5)
+│           ├─ Carte utilisateur sticky
+│           │   ├─ Avatar utilisateur
+│           │   ├─ Nom & email
+│           │   └─ Boutons "Annuler" et "Modifier le mot de passe"
+│
+└─ Inclusion du template layout-backend.php avec le contenu généré
 
+-->
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -76,11 +108,11 @@ $title = "Modifier le mot de passe de l'utilisateur"; ?>
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=dashboard"><i class="bi bi-speedometer2 fs-lg me-1"></i>Tableau de bord</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Modifier le mot de passe de l'utilisateur</li>
+                <li class="breadcrumb-item active" aria-current="page">Modifier le mot de passe de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></li>
             </ol>
         </nav>
         <div class="container spacing-col-padding-bottom-50">
-            <h1 class="title-dasboard">Modifier le mot de passe de l'utilisateur</h1>
+            <h1 class="title-dasboard">Modifier le mot de passe de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></h1>
         </div>
     </section>
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
@@ -92,13 +124,13 @@ $title = "Modifier le mot de passe de l'utilisateur"; ?>
                         <p class="running-text mb-4 pb-2">Veillez remplir le formulaire pour mettre à jour le mot de passe de l'utilisateur.</p>
                         <div class="row g-4">
                             <div>
-                                <a href="index.php?action=update_user_infos&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_user_infos&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-info-circle-fill fs-lg me-2"></i>
                                     infos</a>
                                 <a href="#" class="btn btn-primary me-2 mb-2 disabled">
                                     <i class="bi bi-lock-fill fs-lg me-2"></i>
                                     Sécurité</a>
-                                <a href="index.php?action=update_user_avatar&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_user_avatar&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-person-circle fs-lg me-2"></i>
                                     Avatar</a>
                             </div>
@@ -108,20 +140,20 @@ $title = "Modifier le mot de passe de l'utilisateur"; ?>
                                         Sécurité du compte</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" class="needs-validation" novalidate="">
-                                        <div class="row my-5">
-                                            <div class="col-12 mb-4 form-group-style">
-                                                <label for="password" class="form-label fs-base">Nouveau mot de passe</label>
-                                                <input type="password" id="password" name="update_user_pass[password]" value="">
-                                                <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
-                                            </div>
-                                            <div class="col-12 mb-4 form-group-style">
-                                                <label for="confirm_password" class="form-label fs-base">Confirmer le mot de passe</label>
-                                                <input type="password" id="confirm_password" name="confirm_password">
-                                                <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["confirm_password"] . "</p>" : '' ?>
-                                            </div>
+
+                                    <div class="row my-5">
+                                        <div class="col-12 mb-4 form-group-style">
+                                            <label for="password" class="form-label fs-base">Nouveau mot de passe</label>
+                                            <input type="password" id="password" name="update_user_pass[password]" value="">
+                                            <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         </div>
-                                    </form>
+                                        <div class="col-12 mb-4 form-group-style">
+                                            <label for="confirm_password" class="form-label fs-base">Confirmer le mot de passe</label>
+                                            <input type="password" id="confirm_password" name="confirm_password">
+                                            <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["confirm_password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -130,14 +162,7 @@ $title = "Modifier le mot de passe de l'utilisateur"; ?>
                         <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
                             <div class="card card-background">
                                 <div class="card-body">
-                                    <div class="d-table position-relative mx-auto">
-                                        <img src="uploads/<?= $user->image ?>" class="d-block rounded-circle" width="90" alt="John Doe">
-                                    </div>
-                                    <br>
-                                    <div class="text-center">
-                                        <h5><?= $user->username ?></h5>
-                                        <p><?= $user->email ?></p>
-                                    </div>
+
                                     <div class="d-grid gap-2">
                                         <a href="index.php?action=posts" class="btn btn-outline-primary mb-3">
                                             Annuler

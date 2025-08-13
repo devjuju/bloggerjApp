@@ -6,6 +6,56 @@ $title = "Modifier la photo de profil de l'utilisateur"; ?>
 <?php ob_start();
 ?>
 
+<!--
+PAGE "Modifier la photo de profil de l'utilisateur"
+│
+├── 1. Initialisation PHP
+│     ├── use App\Core\Auth
+│     ├── $title = "Modifier la photo de profil de l'utilisateur"
+│     └── ob_start()
+│
+├── 2. <aside> Menu latéral (offcanvas)
+│     ├── En-tête desktop (logo + lien Dashboard)
+│     ├── Menu mobile
+│     │     ├── Bouton fermer
+│     │     ├── Lien Tableau de bord (actif)
+│     │     └── Lien Voir le blog
+│     ├── Corps du menu
+│     │     ├── Profil utilisateur connecté
+│     │     │     ├── Photo de profil (Auth::get image)
+│     │     │     ├── Nom (Auth::get username)
+│     │     │     └── Email (Auth::get email)
+│     │     └── Navigation
+│     │           ├── Articles
+│     │           ├── Commentaires
+│     │           └── Utilisateurs (actif)
+│     └── Pied du menu : bouton "Se déconnecter"
+│
+├── 3. <main> Contenu principal
+│     ├── 3.1 Section en-tête
+│     │     ├── Fil d’Ariane : Dashboard → Modifier photo de profil
+│     │     └── Titre h1 : "Modifier la photo de profil de l'utilisateur"
+│     │
+│     └── 3.2 Section formulaire de modification
+│           ├── Formulaire POST multipart/form-data
+│           │     ├── Boutons navigation rapide :
+│           │     │     ├── Infos
+│           │     │     ├── Sécurité
+│           │     │     └── Avatar (désactivé)
+│           │     ├── Carte "La photo de profil"
+│           │     │     ├── Aperçu de l’avatar actuel ($user->image)
+│           │     │     ├── Input file "image"
+│           │     │     └── Message d'erreur si $controle["image"]
+│           ├── Colonne droite sticky
+│           │     ├── Carte "Mettre à jour"
+│           │     │     ├── Bouton retour aux infos
+│           │     │     └── Bouton "Modifier la photo de profil"
+│
+└── 4. Fin de page
+      ├── $content = ob_get_clean()
+      └── require('../templates/layout-backend.php')
+
+-->
 
 
 <aside data-bs-theme="dark">
@@ -76,26 +126,26 @@ $title = "Modifier la photo de profil de l'utilisateur"; ?>
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=dashboard"><i class="bi bi-speedometer2 fs-lg me-1"></i>Tableau de bord</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Modifier la photo de profil de l'utilisateur</li>
+                <li class="breadcrumb-item active" aria-current="page">Modifier la photo de profil de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></li>
             </ol>
         </nav>
         <div class="container spacing-col-padding-bottom-50">
-            <h1 class="title-dasboard">Modifier la photo de profil de l'utilisateur</h1>
+            <h1 class="title-dasboard">Modifier la photo de profil de l'utilisateur <strong><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></strong></h1>
         </div>
     </section>
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-            <form action="index.php?action=update_user_avatar&id=<?= $user->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate="">
+            <form action="index.php?action=update_user_avatar&id=<?= (int)$user->id  ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate="">
                 <div class="row gy-4">
                     <div class="col-lg-7">
                         <h2 class="titre-h3">Formulaire de modification</h2>
                         <p class="running-text mb-4 pb-2">Veillez remplir le formulaire pour mettre à jour le profil de l'utilisateur.</p>
                         <div class="row g-4">
                             <div>
-                                <a href="index.php?action=update_user_infos&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2 ">
+                                <a href="index.php?action=update_user_infos&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2 ">
                                     <i class="bi bi-info-circle-fill fs-lg me-2"></i>
                                     infos</a>
-                                <a href="index.php?action=update_user_pass&id=<?= $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_user_pass&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-lock-fill fs-lg me-2"></i>
                                     Sécurité</a>
                                 <a href="#" class="btn btn-outline-primary me-2 mb-2 disabled">
@@ -108,22 +158,25 @@ $title = "Modifier la photo de profil de l'utilisateur"; ?>
                                         La photo de profil</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="index.php?action=update_user_avatar&id=<?= $user->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-                                        <div class="row g-4">
-                                            <div class=" col-sm-12 form-group-style">
-                                                <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
-                                                    <div class="d-flex align-items-center me-3">
-                                                        <img src="uploads/<?= $user->image ?>" class="rounded-circle img-fluid" width="100" alt="Avatar">
-                                                        <div class="ps-3">
-                                                            <input type="hidden" name="update_user_avatar[form]" value="ok">
-                                                            <label for="image" class="form-label"> Image mise en avant</label>
-                                                            <input type="file" id="image" name="image">
-                                                        </div>
+
+                                    <div class="row g-4">
+                                        <div class=" col-sm-12 form-group-style">
+                                            <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
+                                                <div class="d-flex align-items-center me-3">
+                                                    <img src="uploads/<?= htmlspecialchars($user->image, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle img-fluid" width="100" alt="Avatar">
+                                                    <div class="ps-3">
+                                                        <input type="hidden" name="update_user_avatar[form]" value="ok">
+                                                        <label for="image" class="form-label"> Photo de profil</label>
+                                                        <input type="file" id="image" name="image">
                                                     </div>
                                                 </div>
-                                                <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
                                             </div>
+                                            <?= isset($controle["image"])
+                                                ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . '</p>'
+                                                : ''
+                                            ?>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,6 +185,7 @@ $title = "Modifier la photo de profil de l'utilisateur"; ?>
                         <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
                             <div class="card card-background">
                                 <div class="card-body">
+
                                     <div class="text-center spacing-element-marging-bottom-20">
                                         <h4 class="titre-h4">Mettre à jour</h4>
                                     </div>

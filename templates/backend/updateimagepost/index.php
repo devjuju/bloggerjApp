@@ -6,7 +6,50 @@ $title = "Modifier une image"; ?>
 <?php ob_start();
 ?>
 
+<!-- 
+PAGE "Modifier une image"
+│
+├── 1. Initialisation PHP
+│     ├── $title = "Modifier une image"
+│     ├── use App\Core\Auth
+│     └── ob_start()
+│
+├── 2. <aside> Menu latéral (offcanvas Bootstrap)
+│     ├── En-tête desktop
+│     │     └── Logo + lien tableau de bord
+│     ├── Menu mobile
+│     │     ├── Bouton fermer
+│     │     ├── Lien "Tableau de bord" (actif)
+│     │     └── Lien "Voir le blog"
+│     ├── Corps du menu
+│     │     ├── Profil utilisateur (image + nom + email depuis Auth)
+│     │     ├── Navigation
+│     │     │     ├── Articles (actif)
+│     │     │     ├── Commentaires
+│     │     │     └── Utilisateurs
+│     └── Pied du menu
+│           └── Bouton "Se déconnecter"
+│
+├── 3. <main> Contenu principal
+│     ├── 3.1 Section en-tête (breadcrumb + titre)
+│     │     ├── Fil d’Ariane : Dashboard → Modifier image article
+│     │     └── Titre h1 avec nom de l’article
+│     │
+│     └── 3.2 Section formulaire de modification
+│           ├── Formulaire POST multipart/form-data
+│           │     ├── Aperçu image actuelle
+│           │     ├── Champ file pour nouvelle image
+│           │     ├── Message d'erreur éventuel ($controle["image"])
+│           ├── Colonne latérale droite (sticky)
+│           │     ├── Carte "Mettre à jour"
+│           │     │     ├── Bouton retour à l’article
+│           │     │     └── Bouton "Modifier l'image"
+│
+└── 4. Fin de page
+      ├── $content = ob_get_clean()
+      └── require('../templates/layout-backend.php')
 
+-->
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -77,17 +120,17 @@ $title = "Modifier une image"; ?>
                 <li class="breadcrumb-item">
                     <a class="breadcrumb-links" href="index.php?action=dashboard"><i class="bi bi-speedometer2 fs-lg me-1"></i>Tableau de bord</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Modifier l'image de l'article suivant : <strong> <?= $post->title ?></li>
+                <li class="breadcrumb-item active" aria-current="page">Modifier l'image de l'article suivant : <strong> <?= htmlspecialchars($post->title, ENT_QUOTES, 'UTF-8') ?></li>
             </ol>
         </nav>
         <div class="container spacing-col-padding-bottom-50">
-            <h1 class="title-dasboard">Modifier l'image de l'article suivant : <strong> <?= $post->title ?></h1>
+            <h1 class="title-dasboard">Modifier l'image de l'article suivant : <strong> <?= htmlspecialchars($post->title, ENT_QUOTES, 'UTF-8') ?></h1>
         </div>
     </section>
 
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-            <form action="index.php?action=update_image_post&id=<?= $post->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <form action="index.php?action=update_image_post&id=<?= (int)$post->id ?>" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="row gy-4">
                     <div class="col-lg-7">
                         <h2 class="titre-h3">Formulaire de modification</h2>
@@ -97,12 +140,15 @@ $title = "Modifier une image"; ?>
                             <div class="card card-light-shadow mb-5">
                                 <div class="card-body pt-0">
                                     <div class=" col-sm-12 form-group-style">
-                                        <img src="uploads/<?= $post->image ?>" class="card-img-top img-fluid" alt="Image">
+                                        <img src="uploads/<?= htmlspecialchars($post->image, ENT_QUOTES, 'UTF-8') ?>" class="card-img-top img-fluid" alt="Image">
                                         <br><br>
                                         <input type="hidden" name="update_image_post[form]" value="ok">
                                         <label for="image" class="form-label"> Image mise en avant</label>
                                         <input type="file" id="image" name="image">
-                                        <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
+                                        <?= isset($controle["image"])
+                                            ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . '</p>'
+                                            : ''
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +165,7 @@ $title = "Modifier une image"; ?>
                                         <h4 class="titre-h4">Mettre à jour</h4>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <a href="index.php?action=update_post&id=<?= $post->id ?>" class="btn btn-outline-primary mb-3">
+                                        <a href="index.php?action=update_post&id=<?= (int)$post->id ?>" class="btn btn-outline-primary mb-3">
                                             Retour à l'article
                                         </a>
                                         <button type="submit" class="btn btn-primary">Modifier l'image</button>

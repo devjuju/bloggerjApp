@@ -7,14 +7,56 @@ $title = "Commentaires"; ?>
 <?php ob_start();
 ?>
 
+<!--
+PAGE COMMENTAIRES (back-office)
+│
+├── MENU LATÉRAL (<aside>)
+│   ├── Logo + Titre
+│   ├── Menu mobile
+│   ├── Avatar + Infos utilisateur
+│   ├── Liens de navigation
+│   └── Bouton déconnexion
+│
+└── CONTENU PRINCIPAL (<main>)
+    │
+    ├── Bandeau titre
+    │   └── Fil d’Ariane (breadcrumb)
+    │
+    └── Section "Liste des commentaires"
+        │
+        ├── Colonne de gauche (commentaires)
+        │   ├── Boucle sur $comments
+        │   │   ├── Carte commentaire
+        │   │   │   ├── En-tête
+        │   │   │   │   ├── Avatar auteur
+        │   │   │   │   ├── Nom auteur
+        │   │   │   │   ├── Date formatée
+        │   │   │   │   └── Boutons (rejeter, approuver, supprimer)
+        │   │   │   └── Contenu du commentaire + statut
+        │   │   └── (répété pour chaque commentaire)
+        │
+        └── Colonne de droite (informations)
+            ├── Carte descriptive (titre, icône, texte)
+            └── Carte infos supplémentaires
+                ├── Texte explicatif
+                ├── Bouton "Voir le blog"
+                └── Bouton "Voir les utilisateurs"
+
+PIED DE PAGE
+└── Inclusion du layout backend avec $content
+-->
+
+<!-- ===================== MENU LATÉRAL ===================== -->
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
+        <!-- Logo + titre -->
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
             <a href="index.php?action=dashboard" class="navbar-brand text-dark d-none d-lg-flex py-0">
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
         </div>
+        <!-- Menu mobile -->
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="d-lg-none mb-0">Menu</h5>
@@ -31,6 +73,7 @@ $title = "Commentaires"; ?>
                 </a>
             </div>
         </div>
+        <!-- Avatar + liens de navigation -->
         <div class="offcanvas-body w-100 p-4 ">
             <div class="list-group list-group-flush">
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
@@ -60,6 +103,7 @@ $title = "Commentaires"; ?>
                 </a>
             </div>
         </div>
+        <!-- Bouton déconnexion -->
         <div class="offcanvas-header border-top">
             <a href="index.php?action=logout" class="btn btn-primary w-100">
                 Se déconnecter
@@ -68,7 +112,9 @@ $title = "Commentaires"; ?>
     </div>
 </aside>
 
+<!-- ===================== CONTENU PRINCIPAL ===================== -->
 <main>
+    <!-- Bandeau titre + breadcrumb -->
     <section class="container-fluid bg-light-subtle px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <nav class="container spacing-col-padding-top-50" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -82,18 +128,20 @@ $title = "Commentaires"; ?>
             <h1 class="title-dasboard">Les commentaires</h1>
         </div>
     </section>
+    <!-- Liste des commentaires -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container spacing-col-padding-top-50 spacing-col-padding-bottom-50">
             <div class="row gy-4">
+                <!-- Colonne commentaires -->
                 <div class="col-lg-7">
                     <?php foreach ($comments as $comment): ?>
                         <div class="py-4">
                             <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3  spacing-content-padding-top-40">
                                 <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
                                     <div class="d-flex align-items-center me-3">
-                                        <img src="uploads/<?= $comment->avatar ?>" class="rounded-circle" width="48" alt="Avatar">
+                                        <img src="uploads/<?= htmlspecialchars($comment->avatar, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
                                         <div class="ps-3">
-                                            <h6 class="titre-h6 mb-0"><?= $comment->author ?></h6>
+                                            <h6 class="titre-h6 mb-0"><?= htmlspecialchars($comment->author, ENT_QUOTES, 'UTF-8') ?></h6>
                                             <div class="meta-comment bd-highlight ">
                                                 <i class="bi bi-clock-fill fs-base me-1"></i>
                                                 <span class="fs-sm"><?= DateFormatter::enFrancais($comment->created_at); ?></span>
@@ -108,7 +156,7 @@ $title = "Commentaires"; ?>
                                                 <i class="bi bi-hand-thumbs-down"></i>
                                             </a>
                                         <?php else: ?>
-                                            <a href="index.php?action=reject_comment&id=<?= $comment->id ?>" class="btn btn-icon-outline-primary">
+                                            <a href="index.php?action=reject_comment&id=<?= (int) $comment->id ?>" class="btn btn-icon-outline-primary">
                                                 <i class="bi bi-hand-thumbs-down"></i>
                                             </a>
                                         <?php endif; ?>
@@ -117,11 +165,11 @@ $title = "Commentaires"; ?>
                                                 <i class="bi bi-hand-thumbs-up"></i>
                                             </a>
                                         <?php else: ?>
-                                            <a href="index.php?action=validate_comment&id=<?= $comment->id ?>" class="btn btn-icon-outline-primary">
+                                            <a href="index.php?action=validate_comment&id=<?= (int) $comment->id ?>" class="btn btn-icon-outline-primary">
                                                 <i class="bi bi-hand-thumbs-up"></i>
                                             </a>
                                         <?php endif; ?>
-                                        <a href="index.php?action=delete_comment&id=<?= $comment->id ?>" class="btn btn-icon-secondary">
+                                        <a href="index.php?action=delete_comment&id=<?= (int) $comment->id ?>" class="btn btn-icon-secondary">
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </div>
@@ -131,9 +179,9 @@ $title = "Commentaires"; ?>
                                 <div class="row g-0">
                                     <div class="col-md-12">
                                         <div class="card-body">
-                                            <p class="running-text"><?= $comment->content ?></p>
+                                            <p class="running-text"><?= htmlspecialchars($comment->content, ENT_QUOTES, 'UTF-8') ?></p>
                                             <hr>
-                                            <p class="running-text">Le commentaire est : <strong><?= $comment->status ?> </strong> </p>
+                                            <p class="running-text">Le commentaire est : <strong><?= htmlspecialchars($comment->status, ENT_QUOTES, 'UTF-8') ?> </strong> </p>
                                         </div>
                                     </div>
                                 </div>
@@ -141,8 +189,10 @@ $title = "Commentaires"; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
+                <!-- Colonne d'infos -->
                 <div class="col-lg-5 position-relative">
                     <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
+                        <!-- Carte descriptive -->
                         <div class="card card-light-shadow mb-5">
                             <div class="card-body pb-0">
                                 <div class="d-table flex-shrink-0 icon-box">
@@ -152,6 +202,7 @@ $title = "Commentaires"; ?>
                                 <p class="running-text">Supprimer ou valider les commentaires de vos utilisateurs</p>
                             </div>
                         </div>
+                        <!-- Carte infos supplémentaires -->
                         <div class="card card-background">
                             <div class="card-body">
                                 <h4 class="titre-h4">Infos</h4>
@@ -173,16 +224,7 @@ $title = "Commentaires"; ?>
     </section>
 </main>
 
-
-
-
-
-
-
-
-
-
-
+<!-- ===================== PIED DE PAGE ===================== -->
 
 <?php $content = ob_get_clean(); ?>
 <?php require('../templates/layout-backend.php') ?>

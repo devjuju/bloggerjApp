@@ -5,6 +5,59 @@ use App\Core\Auth;
 <?php ob_start();
 ?>
 
+<!--
+PAGE "Tableau de bord"
+│
+├── 1. Initialisation PHP
+│     ├── $title = "Tableau de bord"
+│     ├── use App\Core\Auth
+│     └── ob_start()
+│
+├── 2. <aside> Menu latéral (offcanvas Bootstrap)
+│     ├── En-tête desktop
+│     │     └── Logo + lien "index.php?action=dashboard"
+│     ├── Menu mobile
+│     │     ├── Bouton fermer
+│     │     ├── Lien "Tableau de bord" (actif)
+│     │     └── Lien "Voir le blog en direct"
+│     ├── Corps du menu (offcanvas-body)
+│     │     ├── Profil utilisateur
+│     │     │     ├── Image (Auth::get('image'))
+│     │     │     ├── Nom utilisateur (Auth::get('username'))
+│     │     │     └── Email utilisateur (Auth::get('email'))
+│     │     ├── Navigation principale
+│     │     │     ├── Articles
+│     │     │     ├── Commentaires
+│     │     │     └── Utilisateurs
+│     └── Pied de menu
+│           └── Bouton "Se déconnecter"
+│
+├── 3. <main> Contenu principal
+│     └── Section d'accueil (p-5 bg-light-subtle)
+│           ├── Avatar utilisateur (image ronde)
+│           ├── Titre de bienvenue
+│           │     ├── "Bienvenue {username}"
+│           │     └── Sous-titre : "Outils pour gérer votre blog"
+│           ├── Texte de présentation
+│           └── Grille d'accès rapide (3 colonnes)
+│                 ├── Carte "Articles"
+│                 │     ├── Icône
+│                 │     ├── Titre
+│                 │     └── Texte descriptif
+│                 ├── Carte "Commentaires"
+│                 │     ├── Icône
+│                 │     ├── Titre
+│                 │     └── Texte descriptif
+│                 └── Carte "Utilisateurs"
+│                       ├── Icône
+│                       ├── Titre
+│                       └── Texte descriptif
+│
+└── 4. Fin de page
+      ├── $content = ob_get_clean()
+      └── require('../templates/layout-backend.php')
+-->
+
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -67,16 +120,14 @@ use App\Core\Auth;
     </div>
 </aside>
 
-
-
 <main>
     <section class="container-fluid p-5 bg-light-subtle ">
         <div class="container spacing-col-padding-top-100 spacing-col-padding-bottom-150">
             <div class="d-table position-relative mx-auto spacing-element-marging-bottom-20">
-                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="d-block rounded-circle" width="100" alt="">
+                <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="100" alt="">
             </div>
             <div class="text-center spacing-content-marging-bottom-40">
-                <h1 class="titre-section">Bienvenue <?= Auth::get('auth', 'username'); ?></h1>
+                <h1 class="titre-section">Bienvenue <?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8'); ?></h1>
                 <h2 class="titre-h3">Outils pour gérer votre blog</h2>
                 <p class="running-text pb-4 mb-2 mb-lg-3">Mise en place d’une interface vous accordant la possibilité de gérer
                     tout le contenu publié du blog.</p>
@@ -91,7 +142,6 @@ use App\Core\Auth;
                             <h3 class="titre-h5 mt-0">Articles</h3>
                             <p class="running-text">Créez, modifier et gérer les contenus publiés du blog</p>
                         </div>
-
                     </a>
                 </div>
                 <div class="col">
@@ -103,7 +153,6 @@ use App\Core\Auth;
                             <h3 class="titre-h5 mt-0">Commentaires</h3>
                             <p class="running-text">Supprimer ou valider les commentaires de vos utilisateurs</p>
                         </div>
-
                     </a>
                 </div>
                 <div class="col">

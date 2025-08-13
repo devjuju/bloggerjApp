@@ -8,6 +8,53 @@ $title = "Articles";
 ob_start();
 ?>
 
+<!-- 
+- Fichier Articles (Vue Backend)
+
+├── Déclaration PHP, use (Auth, DateFormatter), $title, ob_start()
+│
+├── <aside> (Menu latéral fixe)
+│   ├── Header desktop (logo + nom)
+│   ├── Header mobile (titre + bouton fermer)
+│   ├── Menu liens principaux (Dashboard, Blog)
+│   ├── Section utilisateur connecté (avatar, username, email)
+│   ├── Menu secondaire (Articles [actif], Commentaires, Utilisateurs)
+│   └── Bouton déconnexion
+│
+├── <main>
+│   ├── Section breadcrumb + titre
+│   │   ├── Fil d'Ariane (Dashboard > Les articles)
+│   │   └── Titre principal "Les articles"
+│   │
+│   ├── Section principale (conteneur)
+│       ├── <div class="row gy-4">
+│       │   ├── Colonne gauche (7 colonnes)
+│       │   │   ├── Grille articles (2 colonnes responsive)
+│       │   │   ├── Boucle foreach sur $posts
+│       │   │   │   ├── <article class="card card-article">
+│       │   │   │   │   ├── Image + statut (badge)
+│       │   │   │   │   ├── Catégorie, titre (lien vers article)
+│       │   │   │   │   ├── Auteur + date formatée (DateFormatter::enFrancais)
+│       │   │   │   │   ├── Extrait (excerpt)
+│       │   │   │   │   ├── Footer avec :
+│       │   │   │   │       ├── Boutons activer/désactiver selon statut
+│       │   │   │   │       ├── Bouton modifier
+│       │   │   │   │       └── Bouton supprimer
+│       │   │   │
+│       │   └── Colonne droite (5 colonnes)
+│       │       ├── Carte info "Articles" (icône + titre + description)
+│       │       ├── Carte présentation blog
+│       │       │   ├── Titre + description
+│       │       │   ├── Bouton vers blog en direct
+│       │       │   └── Bouton "Ajouter un article"
+│
+├── Fin main
+│
+├── Fin buffering avec $content = ob_get_clean()
+└── Inclusion du template layout-backend.php
+
+
+-->
 
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
@@ -93,27 +140,27 @@ ob_start();
                             <div class="col pb-3">
                                 <article class="card card-article border-0 ">
                                     <div class="position-relative">
-                                        <span class="badge bg-primary text-white position-absolute top-0 start-0 zindex-5 me-3 mt-3 running-text"><?= $post->status ?></span>
-                                        <img src="uploads/<?= $post->image ?>" class="card-img-top" alt="Image">
+                                        <span class="badge bg-primary text-white position-absolute top-0 start-0 zindex-5 me-3 mt-3 running-text"><?= htmlspecialchars($post->status, ENT_QUOTES, 'UTF-8') ?></span>
+                                        <img src="uploads/<?= htmlspecialchars($post->image, ENT_QUOTES, 'UTF-8') ?>" class="card-img-top" alt="Image">
                                     </div>
                                     <div class="card-body">
                                         <div class="marging-top-20 marging-bottom-10">
-                                            <span class="fs-sm text-primary"><?= $post->category ?></span>
+                                            <span class="fs-sm text-primary"><?= htmlspecialchars($post->category, ENT_QUOTES, 'UTF-8') ?></span>
                                         </div>
                                         <h3>
-                                            <a class="card-post-title" href="index.php?action=post&id=<?= $post->id ?>"><?= $post->title ?></a>
+                                            <a class="card-post-title" href="index.php?action=post&id=<?= (int) $post->id ?>"><?= htmlspecialchars($post->title, ENT_QUOTES, 'UTF-8') ?></a>
                                         </h3>
                                         <div class="d-flex flex-row bd-highlight mb-3">
                                             <div class="meta-content-blog bd-highlight">
                                                 <i class="bi bi-person-fill fs-base me-1"></i>
-                                                <span class="fs-sm"><?= $post->author ?></span>
+                                                <span class="fs-sm"><?= htmlspecialchars($post->author, ENT_QUOTES, 'UTF-8') ?></span>
                                             </div>
                                             <div class="meta-content-blog bd-highlight">
                                                 <i class="bi bi-clock-fill fs-base me-1"></i>
                                                 <span class="fs-sm"><?= DateFormatter::enFrancais($post->created_at); ?></span>
                                             </div>
                                         </div>
-                                        <p class="running-text"><?= $post->excerpt ?></p>
+                                        <p class="running-text"><?= htmlspecialchars($post->excerpt, ENT_QUOTES, 'UTF-8') ?></p>
                                     </div>
                                     <div class="card-footer">
                                         <div class="d-flex">
@@ -121,32 +168,25 @@ ob_start();
                                                 <div class="box-show-icon">
                                                     <i class="bi bi-eye-slash"></i>
                                                 </div>
-                                                <a href="index.php?action=active_post&id=<?= $post->id ?>" class="box-hide-outline-icon">
+                                                <a href="index.php?action=active_post&id=<?= (int) $post->id ?>" class="box-hide-outline-icon">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
                                             <?php else: ?>
                                                 <div class="box-show-outline-icon">
                                                     <i class="bi bi-eye"></i>
                                                 </div>
-                                                <a href="index.php?action=desactive_post&id=<?= $post->id ?>" class="box-hide-icon">
+                                                <a href="index.php?action=desactive_post&id=<?= (int) $post->id ?>" class="box-hide-icon">
                                                     <i class="bi bi-eye-slash"></i>
                                                 </a>
                                             <?php endif; ?>
 
-                                            <a href="index.php?action=update_post&id=<?= $post->id ?>" class="btn btn-icon-primary">
+                                            <a href="index.php?action=update_post&id=<?= (int) $post->id ?>" class="btn btn-icon-primary">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <a href="index.php?action=delete_post&id=<?= $post->id ?>" class="btn btn-icon-secondary">
+                                            <a href="index.php?action=delete_post&id=<?= (int) $post->id ?>" class="btn btn-icon-secondary">
                                                 <i class="bi bi-trash3"></i>
                                             </a>
                                         </div>
-                                        <br>
-                                        <form action="" method="POST">
-                                            <div class="mb-3 visually-hidden">
-                                                <label for="id" class="form-label">Identifiant de la recette</label>
-                                                <input type="hidden" class="form-control" id="id" name="id" value="">
-                                            </div>
-                                        </form>
                                     </div>
                                 </article>
                             </div>
