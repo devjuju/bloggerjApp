@@ -205,14 +205,16 @@ PAGE "Créer un utilisateur"
                         <!-- Sécurité du compte -->
                         <div class="row g-4 pt-5">
                             <h3 class="titre-h5">Sécurité du compte</h3>
-                            <div class="col-sm-12 form-group-style">
-                                <div class="col-sm-12 form-group-style">
-                                    <div class="form-group-password"> <label for="password" class="form-label fs-base">Mot de passe</label>
-                                        <input type="password" id="password" name="create_user[password]" value="<?= isset($createUser) ? htmlspecialchars($createUser->getPassword(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                            <div class="col-12 mb-4 form-group-style">
+                                <label for="password" class="form-label fs-base">Mot de passe</label>
+                                <input type="password" id="password" name="create_user[password]" value="<?= isset($createUser) ? htmlspecialchars($createUser->getPassword(), ENT_QUOTES, 'UTF-8') : '' ?>">
 
-                                        <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
-                                    </div>
-                                </div>
+                                <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                            </div>
+                            <div class="col-12 mb-4 form-group-style">
+                                <label for="confirm_password" class="form-label fs-base">Confirmer le mot de passe</label>
+                                <input type="password" id="confirm_password" name="confirm_password">
+                                <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["confirm_password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                             </div>
                         </div>
                     </div>

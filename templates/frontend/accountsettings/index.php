@@ -36,7 +36,7 @@ $title = "Réglages du compte"; ?>
                         </div>
                     </div>
                 </a>
-                <a href="index.php?action=account_profil&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_profil&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-person-circle"></i>
@@ -58,7 +58,7 @@ $title = "Réglages du compte"; ?>
                         </div>
                     </div>
                 </div>
-                <a href="index.php?action=account_security&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_security&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-lock-fill"></i>
@@ -86,24 +86,28 @@ $title = "Réglages du compte"; ?>
                             <div class="row g-4">
                                 <div class="col-sm-6 form-group-style2">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
-                                    <input class="form-control" type="text" id="lastname" name="account_settings[lastname]" value="<?= isset($updateUserSettings) ? $updateUserSettings->getLastname() : $settings->lastname ?>">
-                                    <?= isset($controle['lastname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
+                                    <input class="form-control" type="text" id="lastname" name="account_settings[lastname]" value="<?= htmlspecialchars(isset($updateUserSettings) ? $updateUserSettings->getLastname() : $settings->lastname, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <?= isset($controle['lastname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["lastname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-6 form-group-style2">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
-                                    <input class="form-control" type="text" id="firstname" name="account_settings[firstname]" value="<?= isset($updateUserSettings) ? $updateUserSettings->getFirstname() : $settings->firstname ?>">
-                                    <?= isset($controle['firstname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
+                                    <input class="form-control" type="text" id="firstname" name="account_settings[firstname]" value="<?= htmlspecialchars(isset($updateUserSettings) ? $updateUserSettings->getFirstname() : $settings->firstname, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <?= isset($controle['firstname']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["firstname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style2">
                                     <label class="form-label fs-base" for="username">Pseudo</label>
-                                    <input class="form-control" type="text" id="username" name="account_settings[username]" value="<?= isset($updateUserSettings) ? $updateUserSettings->getUsername() : $settings->username ?>">
-                                    <?= isset($controle['username']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["username"] . "</p>" : '' ?>
+                                    <input class="form-control" type="text" id="username" name="account_settings[username]" value="<?= htmlspecialchars(isset($updateUserSettings) ? $updateUserSettings->getUsername() : $settings->username, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <?= isset($controle['username']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["username"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style2">
                                     <label class="form-label fs-base" for="email">Email</label>
-                                    <input class="form-control" type="email" id="email" name="account_settings[email]" value="<?= isset($updateUserSettings) ? $updateUserSettings->getEmail() : $settings->email ?>">
-                                    <?= isset($controle['email']) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
+                                    <input class="form-control" type="email" id="email" name="account_settings[email]" value="<?= htmlspecialchars(isset($updateUserSettings) ? $updateUserSettings->getEmail() : $settings->email, ENT_QUOTES, 'UTF-8'); ?>">
+                                    <?= isset($controle['email']) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="d-grid gap-2">
                                     <a href="index.php?action=account" class="btn btn-outline-primary mb-3">
                                         Annuler

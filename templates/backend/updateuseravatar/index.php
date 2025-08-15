@@ -168,13 +168,15 @@ PAGE "Modifier la photo de profil de l'utilisateur"
                                                         <input type="hidden" name="update_user_avatar[form]" value="ok">
                                                         <label for="image" class="form-label"> Photo de profil</label>
                                                         <input type="file" id="image" name="image">
+
+                                                        <?= isset($controle["image"])
+                                                            ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . '</p>'
+                                                            : ''
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?= isset($controle["image"])
-                                                ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . '</p>'
-                                                : ''
-                                            ?>
+
                                         </div>
                                     </div>
                                 </div>

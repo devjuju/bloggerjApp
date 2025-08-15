@@ -146,7 +146,7 @@ Page : Modifier les infos de l'utilisateur
                                 <a href="index.php?action=update_user_pass&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-lock-fill fs-lg me-2"></i>
                                     Sécurité</a>
-                                <a href="index.php?action=update_user_avatar&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
+                                <a href="index.php?action=update_image_user&id=<?= (int) $user->id ?>" class="btn btn-outline-primary me-2 mb-2">
                                     <i class="bi bi-person-circle fs-lg me-2"></i>
                                     Avatar</a>
                             </div>

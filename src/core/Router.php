@@ -34,6 +34,17 @@ class Router
                         $blog->blog();
                         break;
 
+
+                    case 'blog_posts_web':
+                        $blog = new PostsController();
+                        $blog->blogPostsWeb();
+                        break;
+
+                    case 'blog_posts_apps':
+                        $blog = new PostsController();
+                        $blog->blogPostsApps();
+                        break;
+
                     case 'post':
                         $post = new PostsController();
                         $post->post($request->get('id'));
@@ -125,37 +136,6 @@ class Router
                         break;
 
 
-
-
-
-
-
-
-
-
-                    case 'account':
-                        $account = new UsersController;
-                        $account->account();
-                        break;
-
-                    case 'account_settings':
-                        $accountSettings = new UsersController;
-                        $accountSettings->accountSettings($request->get('id'));
-                        break;
-
-
-                    case 'account_profil':
-                        $accountProfil = new UsersController;
-                        $accountProfil->accountProfil($request->get('id'));
-                        break;
-
-
-                    case 'account_security':
-                        $accountSecurity = new UsersController;
-                        $accountSecurity->accountSecurity($request->get('id'));
-                        break;
-
-
                     case 'users':
                         $users = new UsersController();
                         $users->users();
@@ -166,40 +146,10 @@ class Router
                         $createUser->create();
                         break;
 
-
                     case 'update_user':
-                        $updateUser = new UsersController();
-                        $updateUser->update($request->get('id'));
+                        $UpdateUser = new UsersController();
+                        $UpdateUser->update($request->get('id'));
                         break;
-
-                    case 'update_user_infos':
-                        $updateUser = new UsersController();
-                        $updateUser->update_user_infos($request->get('id'));
-                        break;
-
-
-                    case 'update_user_pass':
-                        $updateUser = new UsersController();
-                        $updateUser->update_user_pass($request->get('id'));
-                        break;
-
-
-                    case 'update_user_avatar':
-                        $updateUser = new UsersController();
-                        $updateUser->update_user_avatar($request->get('id'));
-                        break;
-
-
-                    case 'change_role_user':
-                        $changeRoleUser = new UsersController();
-                        $changeRoleUser->changeRoleUser($request->get('id'));
-                        break;
-
-                    case 'change_role_admin':
-                        $changeRoleUser = new UsersController();
-                        $changeRoleUser->changeRoleAdmin($request->get('id'));
-                        break;
-
 
                     case 'delete_user':
                         $deleteUser = new UsersController();

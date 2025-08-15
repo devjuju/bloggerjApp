@@ -42,13 +42,16 @@ $title = "Se connecter"; ?>
                             <div class="row g-4">
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
-                                    <input type="email" placeholder="" id="email" name="login[email]" value="<?= isset($login) ? $login->getEmail() : '' ?>">
-                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
+                                    <input type="email" placeholder="" id="email" name="login[email]"
+                                        value="<?= isset($login) ? htmlspecialchars($login->getEmail(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
                                 <div class="col-sm-12 form-group-style">
-                                    <div class="form-group-password"> <label for="password" class="form-label fs-base">Mot de passe</label>
-                                        <input type="password" id="password" name="login[password]" value="<?= isset($login) ? $login->getPassword() : '' ?>">
-                                        <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
+                                    <div class="form-group-password">
+                                        <label for="password" class="form-label fs-base">Mot de passe</label>
+                                        <input type="password" id="password" name="login[password]"
+                                            value="<?= isset($login) ? htmlspecialchars($login->getPassword(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                        <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 pt-4">

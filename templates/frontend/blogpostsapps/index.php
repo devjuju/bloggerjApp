@@ -3,7 +3,7 @@
 use App\Core\Auth;
 use App\Core\DateFormatter;
 
-$title = "Blog"; ?>
+$title = "Développement d'applications web"; ?>
 <?php ob_start();
 ?>
 
@@ -14,11 +14,11 @@ $title = "Blog"; ?>
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=home"><i class="bi bi-house-door fs-lg me-1"></i>Accueil</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            <li class="breadcrumb-item active" aria-current="page">Développement d'applications web</li>
         </ol>
     </nav>
     <div class="container">
-        <h1 class="titre-page">Blog</h1>
+        <h1 class="titre-page">Développement d'applications web</h1>
     </div>
 </section>
 
@@ -75,9 +75,9 @@ $title = "Blog"; ?>
 
                     <ul class="list-unstyled mb-0">
                         <li class="pb-2 mb-2">
-                            <div class="blog-postlist-content">
-                                <span class="blog-postlist-title-active">Tous</span>
-                            </div>
+                            <a href="index.php?action=blog" class="blog-postlist-content">
+                                <span class="blog-postlist-title">Tous</span>
+                            </a>
                         </li>
                         <li class="pb-2 mb-2">
                             <a href="index.php?action=blog_posts_web" class="blog-postlist-content">
@@ -86,10 +86,12 @@ $title = "Blog"; ?>
                         </li>
 
                         <li class="pb-2 mb-2">
-                            <a href="index.php?action=blog_posts_apps" class="blog-postlist-content">
-                                <span class="blog-postlist-title">Développement d'applications web</span>
-                            </a>
+                            <div class="blog-postlist-content">
+                                <span class="blog-postlist-title-active">Développement d'applications web </span>
+                            </div>
                         </li>
+
+
                     </ul>
                 </div>
             </div>

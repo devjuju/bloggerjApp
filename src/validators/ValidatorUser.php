@@ -17,9 +17,6 @@ class ValidatorUser extends Validator
     }
 
 
-
-
-
     // Typage de la méthode pour retourner un tableau d'erreurs ou un booléen
     public function checkDataLogin(): array|bool
     {
@@ -37,9 +34,6 @@ class ValidatorUser extends Validator
         }
     }
 
-
-
-
     public function checkDataRegister(): bool|array
     {
         $resultUsername = $this->checkUsername($this->data->getUsername());
@@ -49,7 +43,21 @@ class ValidatorUser extends Validator
         $resultPassword = $this->checkPassword($this->data->getPassword());
         $resultImage = $this->checkImage($this->data->getImage());
 
-        if ($resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultImage === true) {
+
+        // Récupérer le champ confirm_password depuis le POST
+        $request = new Request();
+        $confirmPassword = $request->post('confirm_password');
+
+        $resultConfirm = true;
+
+        // Vérifie si les mots de passe correspondent
+        if ($this->data->getPassword() !== $confirmPassword) {
+            $resultConfirm = "Les mots de passe ne correspondent pas.";
+        }
+
+
+
+        if ($resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultConfirm === true && $resultImage === true) {
             return true;
         } else {
             return [
@@ -58,6 +66,7 @@ class ValidatorUser extends Validator
                 'firstname' => $resultFirstname,
                 'email' => $resultEmail,
                 'password' => $resultPassword,
+                'confirm_password' => $resultConfirm,
                 'image' => $resultImage,
             ];
         }
@@ -73,64 +82,12 @@ class ValidatorUser extends Validator
         $resultPassword = $this->checkPassword($this->data->getPassword());
         $resultImage = $this->checkImage($this->data->getImage());
 
-        if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultImage === true) {
-            return true;
-        } else {
-            return [
-                'role' => $resultRole,
-                'username' => $resultUsername,
-                'lastname' => $resultLastname,
-                'firstname' => $resultFirstname,
-                'email' => $resultEmail,
-                'password' => $resultPassword,
-                'image' => $resultImage,
-            ];
-        }
-    }
-
-
-
-    public function checkDataUpdate(): bool|array
-    {
-        $resultRole = $this->checkRole($this->data->getRole());
-        $resultUsername = $this->checkUsername($this->data->getUsername());
-        $resultLastname = $this->checkLastname($this->data->getLastName());
-        $resultFirstname = $this->checkFirstname($this->data->getFirstname());
-        $resultEmail = $this->checkEmail($this->data->getEmail());
-        $resultPassword = $this->checkPassword($this->data->getPassword());
-
-        $resultImage = true;
-
-        if (isset($_FILES["image"])) {
-            $resultImage = $this->checkImage($this->data->getImage());
-        }
-
-        if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true) {
-            return true;
-        } else {
-            return [
-                'role' => $resultRole,
-                'username' => $resultUsername,
-                'lastname' => $resultLastname,
-                'firstname' => $resultFirstname,
-                'email' => $resultEmail,
-                'password' => $resultPassword,
-                'image' => $resultImage,
-            ];
-        }
-    }
-
-
-    public function checkDataUpdatePass(): bool|array
-    {
-        $resultPassword = $this->checkPassword($this->data->getPassword());
 
         // Récupérer le champ confirm_password depuis le POST
         $request = new Request();
         $confirmPassword = $request->post('confirm_password');
 
         $resultConfirm = true;
-
 
         // Vérifie si les mots de passe correspondent
         if ($this->data->getPassword() !== $confirmPassword) {
@@ -139,81 +96,7 @@ class ValidatorUser extends Validator
 
 
 
-        $resultImage = true;
-
-        if (isset($_FILES["image"])) {
-            $resultImage = $this->checkImage($this->data->getImage());
-        }
-
-        if ($resultPassword === true && $resultConfirm === true) {
-            return true;
-        } else {
-            return [
-
-                'password' => $resultPassword,
-                'confirm_password' => $resultConfirm,
-                'image' => $resultImage,
-            ];
-        }
-    }
-
-
-    public function checkDataUpdatePass2(): bool|array
-    {
-        $resultPassword = $this->checkPassword($this->data->getPassword());
-        $resultConfirm = $this->confirmField('password', 'confirm_password');
-
-        if ($resultPassword === true && $resultConfirm === true) {
-            return true;
-        } else {
-            return [
-                'password' => $resultPassword,
-                'confirm_password' => $resultConfirm,
-            ];
-        }
-    }
-
-    public function checkDataUpdateSettings(): bool|array
-    {
-        $resultUsername = $this->checkUsername($this->data->getUsername());
-        $resultLastname = $this->checkLastname($this->data->getLastName());
-        $resultFirstname = $this->checkFirstname($this->data->getFirstname());
-        $resultEmail = $this->checkEmail($this->data->getEmail());
-
-        $resultImage = true;
-
-        if (isset($_FILES["image"])) {
-            $resultImage = $this->checkImage($this->data->getImage());
-        }
-
-        if ($resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true) {
-            return true;
-        } else {
-            return [
-                'username' => $resultUsername,
-                'lastname' => $resultLastname,
-                'firstname' => $resultFirstname,
-                'email' => $resultEmail,
-                'image' => $resultImage,
-            ];
-        }
-    }
-
-    public function checkDataUpdateInfos(): bool|array
-    {
-        $resultRole = $this->checkRole($this->data->getRole());
-        $resultUsername = $this->checkUsername($this->data->getUsername());
-        $resultLastname = $this->checkLastname($this->data->getLastName());
-        $resultFirstname = $this->checkFirstname($this->data->getFirstname());
-        $resultEmail = $this->checkEmail($this->data->getEmail());
-
-        $resultImage = true;
-
-        if (isset($_FILES["image"])) {
-            $resultImage = $this->checkImage($this->data->getImage());
-        }
-
-        if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true) {
+        if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultConfirm === true && $resultImage === true) {
             return true;
         } else {
             return [
@@ -222,40 +105,35 @@ class ValidatorUser extends Validator
                 'lastname' => $resultLastname,
                 'firstname' => $resultFirstname,
                 'email' => $resultEmail,
-
+                'password' => $resultPassword,
+                'confirm_password' => $resultConfirm,
                 'image' => $resultImage,
             ];
         }
     }
 
-
-    public function checkDataUpdateAvatar(): bool|array
+    // transformer l'utilisateur en admin
+    public function checkDataUpdate()
     {
-        $resultImage = $this->checkImage($this->data->getImage());
+        $resultRole = $this->checkRole($this->data->getRole());
 
-        if ($resultImage === true) {
-            echo 'ok';
+        $resultImage = true;
+
+        if (isset($_FILES["image"])) {
+            $resultImage = $this->checkImage($this->data->getImage());
+        }
+
+        if ($resultRole === true) {
             return true;
         } else {
             return [
+                'role' => $resultRole,
                 'image' => $resultImage,
             ];
         }
     }
 
-    public function checkDataUpdateImage(): bool|array
-    {
-        $resultImage = $this->checkImage($this->data->getImage());
-
-        if ($resultImage === true) {
-            echo 'ok';
-            return true;
-        } else {
-            return [
-                'image' => $resultImage,
-            ];
-        }
-    }
+    // validations
 
     public function checkRole(string $role): string|bool
     {
@@ -350,7 +228,7 @@ class ValidatorUser extends Validator
 
 
 
-    public function checkImage(mixed $image): string|bool
+    public function checkImage(mixed $image): true|string
     {
 
         $target_dir = "uploads/";

@@ -48,40 +48,51 @@
                                                     <img src="images/avatar-image-register.svg" class="img-fluid rounded-circle" width="100" alt="Image">
                                                     <div class="ps-3">
                                                         <label for="image" class="form-label"> Photo de profil</label>
-                                                        <input type="file" id="image" name="image" value="<?= isset($registerUser) ? $registerUser->getImage() : '' ?>">
+                                                        <input type="file" id="image" name="image" value="<?= isset($register) ? htmlspecialchars($register->getImage(), ENT_QUOTES, 'UTF-8') : '' ?>">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
+                                        <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
-                                    <input type="text" id="lastname" name="register[lastname]" placeholder="Entrer un nom" value="<?= isset($register) ? $register->getLastname() : '' ?>">
-                                    <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
+                                    <input type="text" id="lastname" name="register[lastname]" placeholder="Entrer un nom" value="<?= isset($register) ? htmlspecialchars($register->getLastname(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["lastname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
-                                    <input type="text" id="firstname" name="register[firstname]" placeholder="" value="<?= isset($register) ? $register->getFirstname() : '' ?>">
-                                    <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
+                                    <input type="text" id="firstname" name="register[firstname]" value="<?= isset($register) ? htmlspecialchars($register->getFirstname(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["firstname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="sujet">Pseudo</label>
-                                    <input type="text" placeholder="" id="sujet" name="register[username]" value="<?= isset($register) ? $register->getUsername() : '' ?>">
-                                    <?= isset($controle["username"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["username"] . "</p>" : '' ?>
+                                    <input type="text" id="sujet" name="register[username]" value="<?= isset($register) ? htmlspecialchars($register->getUsername(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["username"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["username"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
-                                    <input type="email" placeholder="" id="email" name="register[email]" value="<?= isset($register) ? $register->getEmail() : '' ?>">
-                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
+                                    <input type="email" id="email" name="register[email]" value="<?= isset($register) ? htmlspecialchars($register->getEmail(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-                                <div class="col-sm-12 form-group-style">
-                                    <div class="form-group-password"> <label for="password" class="form-label fs-base">Mot de passe</label>
-                                        <input type="password" id="password" name="register[password]" value="<?= isset($register) ? $register->getPassword() : '' ?>">
-                                        <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
-                                    </div>
+
+                                <div class="col-12 mb-4 form-group-style">
+                                    <label for="password" class="form-label fs-base">Mot de passe</label>
+                                    <input type="password" id="password" name="register[password]" value="<?= isset($register) ? htmlspecialchars($register->getPassword(), ENT_QUOTES, 'UTF-8') : '' ?>">
+
+                                    <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+                                <div class="col-12 mb-4 form-group-style">
+                                    <label for="confirm_password" class="form-label fs-base">Confirmer le mot de passe</label>
+                                    <input type="password" id="confirm_password" name="confirm_password">
+                                    <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["confirm_password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
+                                </div>
+
                                 <div class="col-sm-12 pt-4">
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Envoyer</button>

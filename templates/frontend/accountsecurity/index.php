@@ -37,7 +37,7 @@ $title = "Sécurité du compte"; ?>
                         </div>
                     </div>
                 </a>
-                <a href="index.php?action=account_profil&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_profil&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-person-circle"></i>
@@ -48,7 +48,7 @@ $title = "Sécurité du compte"; ?>
                         </div>
                     </div>
                 </a>
-                <a href="index.php?action=account_settings&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_settings&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-gear-fill"></i>
@@ -88,12 +88,12 @@ $title = "Sécurité du compte"; ?>
                                 <div class="col-12 mb-4 form-group-style">
                                     <label for="password" class="form-label fs-base">Nouveau mot de passe</label>
                                     <input type="password" id="password" name="account_security[password]" value="">
-                                    <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["password"] . "</p>" : '' ?>
+                                    <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
                                 <div class="col-12 mb-4 form-group-style">
                                     <label for="confirm_password" class="form-label fs-base">Confirmer le mot de passe</label>
                                     <input type="password" id="confirm_password" name="confirm_password">
-                                    <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["confirm_password"] . "</p>" : '' ?>
+                                    <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["confirm_password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <a href="index.php?action=account" class="btn btn-outline-primary mb-3">

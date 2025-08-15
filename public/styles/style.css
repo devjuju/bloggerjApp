@@ -2629,6 +2629,15 @@ a[class*=bg-]:not(.btn) {
   color: #19154B;
   font-weight: 700;
 }
+.blog-postlist-content .blog-postlist-title:hover {
+  color: #986df8;
+}
+.blog-postlist-content .blog-postlist-title-active {
+  font-family: "Mulish", sans-serif;
+  font-size: 18px;
+  color: #986df8;
+  font-weight: 700;
+}
 .blog-postlist-content .blog-postlist-intro {
   font-family: "Hind Siliguri", sans-serif;
   font-size: 16px;

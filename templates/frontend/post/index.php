@@ -16,15 +16,15 @@ $title = "Post"; ?>
             <li class="breadcrumb-item">
                 <a class="breadcrumb-links" href="index.php?action=blog">Blog</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $post->title ?></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($post->title, ENT_QUOTES, 'UTF-8') ?></li>
         </ol>
     </nav>
     <div class="container">
-        <h1 class="titre-page"> <?= $post->title ?></h1>
+        <h1 class="titre-page"> <?= htmlspecialchars($post->title, ENT_QUOTES, 'UTF-8') ?></h1>
         <div class="d-flex flex-row bd-highlight mb-3 spacing-content-marging-top-40">
             <div class="meta-list-blog bd-highlight">
                 <i class="bi bi-person-fill fs-base me-1"></i>
-                <span class="fs-sm"><?= $post->author ?></span>
+                <span class="fs-sm"><?= htmlspecialchars($post->author, ENT_QUOTES, 'UTF-8') ?></span>
             </div>
             <div class="meta-list-blog bd-highlight">
                 <i class="bi bi-clock-fill fs-base me-1"></i>
@@ -37,13 +37,13 @@ $title = "Post"; ?>
 <section class="container py-5 my-1 my-md-4 my-lg-5">
     <div class="row">
         <div class="col-lg-7  mb-lg-0">
-            <img src="uploads/<?= $post->image ?>" class="img-fluid featured-image-post" alt="image">
+            <img src="uploads/<?= htmlspecialchars($post->image, ENT_QUOTES, 'UTF-8') ?>" class="img-fluid featured-image-post" alt="image">
             <div class="content-post-blog spacing-content-padding-top-40">
                 <h2 class="titre-h4">A propos du projet</h2>
                 <p class="highlighted-text">
-                    <?= $post->excerpt ?>
+                    <?= htmlspecialchars($post->excerpt, ENT_QUOTES, 'UTF-8') ?>
                 </p>
-                <p class="running-text"><?= $post->content ?></p>
+                <p class="running-text"><?= htmlspecialchars($post->content, ENT_QUOTES, 'UTF-8') ?></p>
             </div>
             <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3  spacing-content-padding-top-40">
                 <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
@@ -53,7 +53,7 @@ $title = "Post"; ?>
                     <div class="d-flex flex-row bd-highlight mb-3">
                         <div class="bd-highlight">
 
-                            <span class="fs-sm text-primary text-bold"><?= $post->category ?> </span>
+                            <span class="fs-sm text-primary text-bold"><?= htmlspecialchars($post->category, ENT_QUOTES, 'UTF-8') ?> </span>
                         </div>
                     </div>
                 </div>
@@ -82,9 +82,9 @@ $title = "Post"; ?>
                     <div class="py-4">
                         <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
                             <div class="d-flex align-items-center me-3">
-                                <img src="uploads/<?= $comment->avatar ?>" class="rounded-circle" width="48" alt="Avatar">
+                                <img src="uploads/<?= htmlspecialchars($comment->avatar, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
                                 <div class="ps-3">
-                                    <h6 class="titre-h6 mb-0"><?= $comment->author ?></h6>
+                                    <h6 class="titre-h6 mb-0"><?= htmlspecialchars($comment->author, ENT_QUOTES, 'UTF-8') ?></h6>
                                     <span class="running-text fs-sm text-muted">
                                         <?= DateFormatter::enFrancais($comment->created_at); ?>
                                     </span>
@@ -102,7 +102,7 @@ $title = "Post"; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <p class="running-text mb-0"><?= $comment->content ?></p><br>
+                        <p class="running-text mb-0"><?= htmlspecialchars($comment->content, ENT_QUOTES, 'UTF-8') ?></p><br>
                     </div>
                 <?php endforeach; ?>
                 <?php
@@ -123,16 +123,16 @@ $title = "Post"; ?>
                                     <div class="row g-4">
                                         <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
                                             <div class="d-flex align-items-center me-3">
-                                                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                                                <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
                                                 <div class="ps-3">
-                                                    <h6 class="titre-h6 mb-0"><?= Auth::get('auth', 'username'); ?></h6>
+                                                    <h6 class="titre-h6 mb-0"><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8') ?></h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 form-group-style2">
                                             <label class="form-label fs-base" for="content">Commentaire</label>
-                                            <textarea class="form-control" rows="6" placeholder="" name="add_comment[content]" id="content"><?= isset($addComment) ? $addComment->getContent() : '' ?></textarea>
-                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
+                                            <textarea class="form-control" rows="6" name="add_comment[content]" id="content"><?= isset($addComment) ? htmlspecialchars($addComment->getContent(), ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["content"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         </div>
                                         <div class="col-sm-12 pt-4">
                                             <div class="d-grid gap-2">
@@ -155,16 +155,16 @@ $title = "Post"; ?>
                                     <div class="row g-4">
                                         <div class="d-flex align-items-center justify-content-between pb-2 mb-1">
                                             <div class="d-flex align-items-center me-3">
-                                                <img src="uploads/<?= Auth::get('auth', 'image') ?>" class="rounded-circle" width="48" alt="Avatar">
+                                                <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
                                                 <div class="ps-3">
-                                                    <h6 class="titre-h6 mb-0"><?= Auth::get('auth', 'username'); ?></h6>
+                                                    <h6 class="titre-h6 mb-0"><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8') ?></h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 form-group-style2">
                                             <label class="form-label fs-base" for="content">Commentaire</label>
-                                            <textarea class="form-control" rows="6" placeholder="" name="add_comment[content]" id="content"><?= isset($addComment) ? $addComment->getContent() : '' ?></textarea>
-                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["content"] . "</p>" : '' ?>
+                                            <textarea class="form-control" rows="6" name="add_comment[content]" id="content"><?= isset($addComment) ? htmlspecialchars($addComment->getContent(), ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+                                            <?= isset($controle["content"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["content"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         </div>
                                         <div class="col-sm-12 pt-4">
                                             <div class="d-grid gap-2">
@@ -188,9 +188,9 @@ $title = "Post"; ?>
                         <?php foreach ($relatedPosts as $relatedPost): ?>
                             <li class="pb-3 mb-3">
                                 <a href="#" class="blog-postlist-content">
-                                    <span class="blog-postlist-title"><?= $relatedPost->title ?></span>
+                                    <span class="blog-postlist-title"><?= htmlspecialchars($relatedPost->title, ENT_QUOTES, 'UTF-8') ?></span>
                                     <p class="blog-postlist-intro">
-                                        <?= $relatedPost->excerpt ?>
+                                        <?= htmlspecialchars($relatedPost->excerpt, ENT_QUOTES, 'UTF-8') ?>
                                     </p>
                                     <div class="meta-lists"><span class="meta-date"><i aria-hidden="true" class="bi bi-clock-fill"></i><?= DateFormatter::enFrancais($relatedPost->created_at); ?></span> </div>
                                 </a>

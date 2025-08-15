@@ -57,10 +57,7 @@ if (Auth::get('auth', 'role')) {
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=account">Compte</a>
 
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=dashboard">Tableau de bord</a>
@@ -152,10 +149,6 @@ if (Auth::get('auth', 'role')) {
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=account">Compte</a>
-
-                        </li>
 
 
 

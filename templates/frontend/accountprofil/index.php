@@ -47,7 +47,7 @@ $title = "Profil du compte"; ?>
                         </div>
                     </div>
                 </div>
-                <a href="index.php?action=account_settings&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_settings&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-gear-fill"></i>
@@ -58,7 +58,7 @@ $title = "Profil du compte"; ?>
                         </div>
                     </div>
                 </a>
-                <a href="index.php?action=account_security&id=<?= Auth::get('auth', 'id'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
+                <a href="index.php?action=account_security&id=<?= htmlspecialchars(Auth::get('auth', 'id'), ENT_QUOTES, 'UTF-8'); ?>" class="card card-shadow-account spacing-content-marging-top-40">
                     <div class="d-flex align-items-start ">
                         <div class="box-icon flex-shrink-0 fs-3 lh-1 p-3">
                             <i class="bi bi-lock-fill"></i>
@@ -95,7 +95,7 @@ $title = "Profil du compte"; ?>
                                                     <input type="file" id="image" name="image">
                                                 </div>
                                             </div>
-                                            <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["image"] . "</p>" : '' ?>
+                                            <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                         </div>
                                     </div>
                                 </div>

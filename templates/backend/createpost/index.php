@@ -165,7 +165,7 @@ PAGE "Ajouter un article"
                                 <label class="form-label fs-base" for="category">Catégorie</label>
                                 <select class="form-select" id="category" name="create_post[category]">
                                     <option><?= htmlspecialchars("Développement de sites web", ENT_QUOTES, 'UTF-8') ?></option>
-                                    <option><?= htmlspecialchars("Développement d'application web", ENT_QUOTES, 'UTF-8') ?></option>
+                                    <option><?= htmlspecialchars("Développement d'applications web", ENT_QUOTES, 'UTF-8') ?></option>
                                 </select>
                                 <!-- Messages d’erreurs $controle[] -->
                                 <?= isset($controle["category"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["category"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>

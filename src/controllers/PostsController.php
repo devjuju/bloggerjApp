@@ -23,6 +23,27 @@ class PostsController
         require('../templates/frontend/blog/index.php');
     }
 
+    public function blogPostsWeb(): void
+    {
+        $post = new Posts();
+        $posts = $post->findBy([
+            'active' => 1,
+            'category' => "Développement de sites web"
+        ]);
+        require('../templates/frontend/blogpostsweb/index.php');
+    }
+
+    public function blogPostsApps(): void
+    {
+        $post = new Posts();
+        $posts = $post->findBy([
+            'active' => 1,
+            'category' => "Développement d'applications web"
+        ]);
+        require('../templates/frontend/blogpostsapps/index.php');
+    }
+
+
     public function post(int $id): void
     {
         // On instancie le modèle
@@ -87,10 +108,11 @@ class PostsController
     {
 
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         $post = new Posts();
         $posts = $post->findAll();
@@ -102,10 +124,11 @@ class PostsController
     public function create(): void
     {
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         $request = new Request();
         $submit = $request->post('create_post');
@@ -161,10 +184,11 @@ class PostsController
     public function update(int $id): void
     {
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         $posts = new Posts();
         $post = $posts->find($id);
@@ -201,10 +225,11 @@ class PostsController
     {
 
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         // On instancie le modèle
         $postModel = new Posts();
@@ -217,17 +242,7 @@ class PostsController
             $updateImagePost = new Posts();
             $formCreatePost = new FormPost($updateImagePost);
             $controle = $formCreatePost->validate3();
-            //  echo '<pre>';
 
-            // nouveau post vide
-            // print_r($updateImagePost);
-
-            // article complet en cours de modification (original sans modif d'image)
-            // print_r($post);
-
-            // image uploadé
-            // print_r($_FILES);
-            // die;
             if ($controle === true) {
 
                 if (unlink("uploads/$post->image")) {
@@ -265,10 +280,11 @@ class PostsController
     public function activate(int $id): void
     {
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         $post = new Posts();
         $post->setId($id);
@@ -287,10 +303,11 @@ class PostsController
     public function desactivate(int $id): void
     {
         // Sécurité
-        if (Auth::get('auth', 'role') != 'administrateur') {
+        if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
         }
+
 
         $post = new Posts();
         $post->setId($id);

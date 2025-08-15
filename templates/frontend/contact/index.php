@@ -74,29 +74,38 @@
                             <div class="row g-4">
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
-                                    <input type="text" id="lastname" name="contact[lastname]" placeholder="Entrer un nom" value="<?= isset($contact) ? $contact->getLastname() : '' ?>">
-                                    <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["lastname"] . "</p>" : '' ?>
+                                    <input type="text" id="lastname" name="contact[lastname]" placeholder=""
+                                        value="<?= isset($contact) ? htmlspecialchars($contact->getLastname(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["lastname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
-                                    <input type="text" id="firstname" name="contact[firstname]" placeholder="" value="<?= isset($contact) ? $contact->getFirstname() : '' ?>">
-                                    <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["firstname"] . "</p>" : '' ?>
+                                    <input type="text" id="firstname" name="contact[firstname]" placeholder=""
+                                        value="<?= isset($contact) ? htmlspecialchars($contact->getFirstname(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["firstname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
-                                    <input type="email" placeholder="" id="email" name="contact[email]" value="<?= isset($contact) ? $contact->getEmail() : '' ?>">
-                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["email"] . "</p>" : '' ?>
+                                    <input type="email" placeholder="" id="email" name="contact[email]"
+                                        value="<?= isset($contact) ? htmlspecialchars($contact->getEmail(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="sujet">Sujet</label>
-                                    <input type="text" placeholder="" id="sujet" name="contact[sujet]" value="<?= isset($contact) ? $contact->getSubject() : '' ?>">
-                                    <?= isset($controle["sujet"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["sujet"] . "</p>" : '' ?>
+                                    <input type="text" placeholder="" id="sujet" name="contact[sujet]"
+                                        value="<?= isset($contact) ? htmlspecialchars($contact->getSubject(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <?= isset($controle["sujet"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["sujet"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="message">Message</label>
-                                    <textarea rows="6" placeholder="Enter your message here..." name="contact[message]" id="message"><?= isset($contact) ? $contact->getMessage() : '' ?></textarea>
-                                    <?= isset($controle["message"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . $controle["message"] . "</p>" : '' ?>
+                                    <textarea rows="6" placeholder="" name="contact[message]" id="message"><?= isset($contact) ? htmlspecialchars($contact->getMessage(), ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+                                    <?= isset($controle["message"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["message"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
+
                                 <div class="col-sm-12 pt-4">
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -104,6 +113,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ class Users extends Model
 
         $this->setId($data['id'] ?? null);
         $this->setImage($data['image'] ?? null);
-        $this->setUsername($data['username'] ?? 'null');
+        $this->setUsername($data['username'] ?? null);
         $this->setLastname($data['lastname'] ?? null);
         $this->setFirstname($data['firstname'] ?? null);
         $this->setRole($data['role'] ?? null);

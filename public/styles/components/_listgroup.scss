@@ -1,22 +1,35 @@
 /* list group */
 
-.blog-postlist-content{
+.blog-postlist-content {
     text-decoration: none;
-    .blog-postlist-title{
+
+    .blog-postlist-title {
         font-family: $font-title;
         font-size: 18px;
         color: $colour-title;
         font-weight: $font-bold;
+
+        &:hover {
+            color: $colour-primary;
+        }
     }
-    .blog-postlist-intro{
+
+    .blog-postlist-title-active {
+        font-family: $font-title;
+        font-size: 18px;
+        color: $colour-primary;
+        font-weight: $font-bold;
+    }
+
+    .blog-postlist-intro {
         font-family: $font-text;
         font-size: 16px;
         color: $colour-text;
         font-weight: $font-medium;
     }
 
-    .meta-lists{
-       
+    .meta-lists {
+
         font-family: $font-text;
         color: $colour-subtitle;
         font-weight: $font-regular;
@@ -34,7 +47,7 @@
 }
 
 /* list group compte */
-.list-group-flush{
+.list-group-flush {
     .list-group-item {
         position: relative;
         display: block;
@@ -44,7 +57,8 @@
         background-color: $colour-body;
         border: 0px solid $colour-body;
         box-shadow: $box-shadow;
-        .box-icon-account{
+
+        .box-icon-account {
             margin-right: 20px;
             padding-top: 5px;
             padding-left: 10px;
@@ -53,18 +67,20 @@
             border-radius: 10px;
             border: 1px solid $colour-light-secondary;
             background-color: $colour-light-secondary;
-           & i{
-               font-size: 18px;
-               color: $colour-secondary;
-           }
-       }
 
-       &:hover{
-        color: $colour-secondary;
-        background-color: $colour-light-secondary;
-        border: 0px solid $colour-light-secondary;
-       }
+            & i {
+                font-size: 18px;
+                color: $colour-secondary;
+            }
+        }
+
+        &:hover {
+            color: $colour-secondary;
+            background-color: $colour-light-secondary;
+            border: 0px solid $colour-light-secondary;
+        }
     }
+
     .list-group-item-action {
         font-family: $font-text;
         font-size: 18px;
@@ -84,7 +100,7 @@
         box-shadow: $box-shadow;
         font-weight: $font-medium;
 
-        .box-icon-account{
+        .box-icon-account {
             margin-right: 20px;
             padding-top: 5px;
             padding-left: 10px;
@@ -93,12 +109,13 @@
             border-radius: 10px;
             border: 1px solid $colour-body;
             background-color: $colour-body;
-           & i{
-               font-size: 18px;
-               color: $colour-primary;
-           }
-       
-       }
+
+            & i {
+                font-size: 18px;
+                color: $colour-primary;
+            }
+
+        }
     }
 
     .list-group-item.exit-account {
@@ -109,7 +126,7 @@
         box-shadow: none;
         font-weight: $font-medium;
 
-        .box-icon-account{
+        .box-icon-account {
             margin-right: 20px;
             padding-top: 0px;
             padding-left: 0px;
@@ -118,20 +135,21 @@
             border-radius: 0;
             border: 0px solid $colour-body;
             background-color: $colour-none;
-           & i{
-               font-size: 18px;
-               font-weight: 700;
-               color: $colour-primary;
-           }
-       
-       }
-       &:hover{
-        color:$colour-primary;
-       }
+
+            & i {
+                font-size: 18px;
+                font-weight: 700;
+                color: $colour-primary;
+            }
+
+        }
+
+        &:hover {
+            color: $colour-primary;
+        }
     }
 
 
 
 
 }
-

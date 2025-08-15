@@ -127,29 +127,33 @@ $title = "Utilisateurs"; ?>
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
             <div class="row gy-4">
                 <div class="col-lg-7">
+
+
+                    <h2> Les comptes des utilisateurs inscrits </h2>
+
+
                     <?php foreach ($users as $user): ?>
-                        <div class="d-flex flex-sm-row flex-column pt-2">
-                            <div class="d-flex-users d-flex align-items-center me-3">
-                                <img src="uploads/<?= htmlspecialchars($user->image, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
-                                <div class="ps-3">
-                                    <h6 class="titre-h6 mb-0"><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></h6>
-                                    <span class="running-text"><?= htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8') ?></span>
+                        <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3 padding-bottom-20 padding-top-20">
+                            <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
+                                <div class="d-flex align-items-center me-3">
+                                    <img src="uploads/<?= htmlspecialchars($user->image, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
+                                    <div class="ps-3">
+                                        <h6 class="titre-h6 mb-0"><?= htmlspecialchars($user->username, ENT_QUOTES, 'UTF-8') ?></h6>
+                                        <div class="meta-comment bd-highlight ">
+                                            <span class="fs-sm"><?= htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8') ?></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <?php if ($user->role  === "administrateur"): ?>
-                                    <a href="#" class="btn btn-dark me-2 mb-2">administrateur</a>
-                                <?php else: ?>
-                                    <a href="index.php?action=change_role_admin&id=<?= (int) $user->id ?>" class="btn btn-outline-dark me-2 mb-2">administrateur</a>
-                                <?php endif; ?>
-
-                                <?php if ($user->role  === "utilisateur"): ?>
-                                    <a href="#" class="btn btn-dark me-2 mb-2">utilisateur</a>
-                                <?php else: ?>
-                                    <a href="index.php?action=change_role_user&id=<?= (int) $user->id ?>" class="btn btn-outline-dark me-2 mb-2">utilisateur</a>
-                                <?php endif; ?>
-                                <a href="index.php?action=update_user_infos&id=<?= (int) $user->id ?>" class="btn btn-icon-rounded-primary  me-2 mb-2"> <i class="bi bi-pencil-fill"></i></a>
-                                <a href="index.php?action=delete_user&id=<?= (int) $user->id ?>" class="btn btn-icon-rounded-secondary  me-2 mb-2"> <i class="bi bi-trash3-fill"></i></a>
+                            <div class="d-flex align-items-center position-relative ps-md-3  mb-2">
+                                <div class="d-flex">
+                                    <a href="index.php?action=update_user&id=<?= (int) $user->id ?>" class="btn btn-icon-primary">
+                                        <i class="bi bi-door-closed"></i>
+                                    </a>
+                                    <a href="index.php?action=delete_user&id=<?= (int) $user->id ?>" class="btn btn-icon-secondary">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <hr>
@@ -174,12 +178,9 @@ $title = "Utilisateurs"; ?>
                                 <br>
                                 <div class="text-center">
                                     <h5><?= htmlspecialchars(Auth::get('auth', 'username'), ENT_QUOTES, 'UTF-8') ?></h5>
-                                    <p><?= Auth::get('auth', 'email'); ?></p>
+                                    <p><i class="bi bi-key"></i> <?= Auth::get('auth', 'role'); ?></p>
                                 </div>
-                                <a href="index.php?action=account" class="d-grid gap-2 btn btn-outline-primary mb-3">
-                                    Voir mon compte
-                                </a>
-                                <a href="index.php?action=create_user" class="d-grid gap-2 btn btn-primary">
+                                <a href="index.php?action=create_user" class="d-grid gap-2 btn btn-outline-primary">
                                     Ajouter un utilisateur
                                 </a>
                             </div>

@@ -30,8 +30,6 @@ class FormUser
         return $result;
     }
 
-
-
     public function validateRegister(): array|bool
     {
         $validator = new ValidatorUser($this->data);
@@ -61,84 +59,11 @@ class FormUser
         return $result;
     }
 
+
     public function validateUpdate(): array|bool
     {
         $validator = new ValidatorUser($this->data);
         $result = $validator->checkDataUpdate();
-        print_r($result);
-
-        foreach ($result as $key => $value) {
-            if ($value === true) {
-                unset($result[array_search($key, $result)]);
-            }
-        }
-        return $result;
-    }
-
-    public function validateUpdateSettings(): array|bool
-    {
-        $validator = new ValidatorUser($this->data);
-        $result = $validator->checkDataUpdateSettings();
-        print_r($result);
-
-        foreach ($result as $key => $value) {
-            if ($value === true) {
-                unset($result[array_search($key, $result)]);
-            }
-        }
-        return $result;
-    }
-
-
-    public function validateUpdateInfos(): array|bool
-    {
-        $validator = new ValidatorUser($this->data);
-        $result = $validator->checkDataUpdateInfos();
-        print_r($result);
-
-        foreach ($result as $key => $value) {
-            if ($value === true) {
-                unset($result[array_search($key, $result)]);
-            }
-        }
-        return $result;
-    }
-
-    public function validateUpdatePass(): array|bool
-    {
-        $validator = new ValidatorUser($this->data);
-        $result = $validator->checkDataUpdatePass();
-        print_r($result);
-
-        foreach ($result as $key => $value) {
-            if ($value === true) {
-                unset($result[$key]);
-            }
-        }
-        return $result;
-    }
-
-
-    public function validateUpdatePass2(): array|bool
-    {
-        $validator = new ValidatorUser($this->data);
-        $result = $validator->checkDataUpdatePass2();
-        print_r($result);
-
-        foreach ($result as $key => $value) {
-            if ($value === true) {
-                unset($result[$key]);
-            }
-        }
-        return $result;
-    }
-
-
-
-    public function validateUpdateImage(): array|bool
-    {
-        $validator = new ValidatorUser($this->data);
-        $result = $validator->checkDataUpdateImage();
         print_r($result);
 
         foreach ($result as $key => $value) {
