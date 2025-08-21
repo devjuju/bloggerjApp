@@ -23,7 +23,7 @@ class CommentsController
      */
     public function comments(): void
     {
-        // Vérification du rôle (seul "administrateur" peut supprimer)
+        // Vérification du rôle
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
             return;
@@ -43,7 +43,7 @@ class CommentsController
      */
     public function delete(int $id): void
     {
-        // Vérification du rôle (seul "administrateur" peut supprimer)
+        // Vérification du rôle
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
             return;
@@ -67,7 +67,7 @@ class CommentsController
      */
     public function validate(int $id): void
     {
-        // Vérification du rôle (seul "administrateur" peut supprimer)
+        // Vérification du rôle
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
             return;
@@ -95,7 +95,7 @@ class CommentsController
      */
     public function reject(int $id): void
     {
-        // Vérification du rôle (seul "administrateur" peut supprimer)
+        // Vérification du rôle
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
             return;
