@@ -29,13 +29,18 @@ en offrant une plateforme sécurisée et réactive pour la publication de conten
 
 ---
 
-## 🛠️ Technologies & Tools
-- **Language:** PHP 8.x
+## 🛠️ Technologies & outils
+- **Langage:** PHP 8.x
 - **Database:** MySQL
 - **Frontend:** HTML5, CSS3, Bootstrap 5
-- **Dependency Manager:** Composer
+- **Gestionnaire de dépendances:** Composer
 - **Version Control:** Git & GitHub
-- **Quality Analysis:**  Codacy B
+- **Analyse de la qualités:** Codacy badge B 
+
+lien vers l'analyse de qualité du blog par Codacy
+```bash
+git https://app.codacy.com/gh/devjuju/bloggerjApp/dashboard
+```
 
 ---
 
