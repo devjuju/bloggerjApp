@@ -10,7 +10,7 @@ $title = "Développement d'applications web";
 
 <!-- 1. Section breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
-    <!-- 1.1 nav breadcrumb -->
+    <!-- 1.1 navigation -->
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">

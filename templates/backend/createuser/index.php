@@ -97,7 +97,6 @@ $title = "Créer un utilisateur";
             <h1 class="title-dasboard">Ajouter un utilisateur</h1>
         </div>
     </section>
-
     <!-- 2.2 section user creation form  -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">

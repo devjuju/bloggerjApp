@@ -8,8 +8,9 @@ $title = "Développement de sites web";
 
 <?php ob_start(); ?>
 
-<!-- Section breadcrumb -->
+<!-- 1. Section breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <!-- 1.1 navigation -->
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -20,6 +21,7 @@ $title = "Développement de sites web";
             <li class="breadcrumb-item active" aria-current="page">Développement de sites web</li>
         </ol>
     </nav>
+    <!-- 1.2 page title -->
     <div class="container">
         <h1 class="titre-page">Développement de sites web</h1>
     </div>

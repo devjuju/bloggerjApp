@@ -36,6 +36,7 @@ $title = "Ajouter un article"; ?>
         <!-- 1.3 user info & navigations links -->
         <div class="offcanvas-body w-100 p-4 ">
             <div class="list-group list-group-flush">
+                <!-- 1.3.1 user info -->
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
                     <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
                     <div class="avatar-offcanvas">
@@ -43,6 +44,7 @@ $title = "Ajouter un article"; ?>
                         <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </div>
+                <!-- 1.3.2 navigations links -->
                 <div class="list-group-item list-group-item-action d-flex align-items-center active">
                     <div class="box-icon-account">
                         <i class="bi bi-pin-fill"></i>
@@ -93,7 +95,6 @@ $title = "Ajouter un article"; ?>
             <h1 class="title-dasboard">Ajouter un article</h1>
         </div>
     </section>
-
     <!-- 2.2 section article creation form  -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container spacing-col-padding-top-50 spacing-col-padding-bottom-50">

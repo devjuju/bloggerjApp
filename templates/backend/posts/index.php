@@ -93,9 +93,7 @@ ob_start();
         <div class="container spacing-col-padding-bottom-50">
             <h1 class="title-dasboard">Les articles</h1>
         </div>
-
     </section>
-
     <!-- 2.2 Section articles -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
