@@ -23,6 +23,12 @@ class CommentsController
      */
     public function comments(): void
     {
+        // Vérification du rôle (seul "administrateur" peut supprimer)
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
         $comment = new Comments();
         $comments = $comment->findAll();
 
@@ -37,9 +43,13 @@ class CommentsController
      */
     public function delete(int $id): void
     {
-        // On instancie le modèle
+        // Vérification du rôle (seul "administrateur" peut supprimer)
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
         $comment = new Comments();
-        // On va chercher 1 commentaire et on le supprime
         $comment->delete($id);
 
         Auth::set('message', 'class', 'success');
@@ -57,6 +67,12 @@ class CommentsController
      */
     public function validate(int $id): void
     {
+        // Vérification du rôle (seul "administrateur" peut supprimer)
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
         $comment = new Comments();
         $comment->setId($id);
         $comment->setStatus('approuvé');
@@ -79,6 +95,12 @@ class CommentsController
      */
     public function reject(int $id): void
     {
+        // Vérification du rôle (seul "administrateur" peut supprimer)
+        if (Auth::get('auth', 'role') != 'administrateur') {
+            header('Location: index.php');
+            return;
+        }
+
         $comment = new Comments();
         $comment->setId($id);
         $comment->setStatus('rejeté');
