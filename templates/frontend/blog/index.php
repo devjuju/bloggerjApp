@@ -7,8 +7,9 @@ $title = "Blog"; ?>
 <?php ob_start();
 ?>
 
-
+<!-- 1. Section breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <!-- 1.1 nav breadcrumb -->
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -17,13 +18,16 @@ $title = "Blog"; ?>
             <li class="breadcrumb-item active" aria-current="page">Blog</li>
         </ol>
     </nav>
+    <!-- 1.2 page title -->
     <div class="container">
         <h1 class="titre-page">Blog</h1>
     </div>
 </section>
 
+<!-- 2. Section content -->
 <section class="container spacing-col-padding-top-50">
     <div class="row">
+        <!-- 2.1 list of posts -->
         <div class="col-lg-7  mb-lg-0">
             <div class="row row-cols-lg-2 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
                 <?php foreach ($posts as $post): ?>
@@ -67,12 +71,11 @@ $title = "Blog"; ?>
                 <?php endforeach; ?>
             </div>
         </div>
+        <!-- 2.2 posts categories & social networks -->
         <div class="col-lg-5 col-xl-4 offset-xl-1 border-start-lg">
             <div class="card card-shadow">
                 <div class="card-body">
-
                     <h4 class=" titre-h4">Catégories</h4>
-
                     <ul class="list-unstyled mb-0">
                         <li class="pb-2 mb-2">
                             <div class="blog-postlist-content">
@@ -84,7 +87,6 @@ $title = "Blog"; ?>
                                 <span class="blog-postlist-title">Développement de sites web</span>
                             </a>
                         </li>
-
                         <li class="pb-2 mb-2">
                             <a href="index.php?action=blog_posts_apps" class="blog-postlist-content">
                                 <span class="blog-postlist-title">Développement d'applications web</span>
@@ -98,17 +100,16 @@ $title = "Blog"; ?>
                     <h4 class="titre-h4">Suivez-moi !</h4>
                     <p class="running-text">Retrouver les dernières nouvelles et inspirations sur le blog.</p>
                     <div class="d-flex">
-                        <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
+                        <a href="https://www.facebook.com/?locale=fr_FR" class="btn btn-icon-social-secondary">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
-                            <i class="bi bi-twitter"></i>
+                        <a href="https://fr.pinterest.com/" class="btn btn-icon-social-secondary">
+                            <i class="bi bi-pinterest"></i>
                         </a>
-                        <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
-                            <i class="bi bi-instagram"></i>
+                        <a href="https://fr.linkedin.com/" class="btn btn-icon-social-secondary">
+                            <i class="bi bi-linkedin"></i>
                         </a>
                     </div>
-
                 </div>
             </div>
         </div>

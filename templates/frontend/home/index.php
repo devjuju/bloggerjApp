@@ -5,7 +5,7 @@ use App\Core\Auth;
 
 <?php ob_start(); ?>
 
-
+<!-- 1. Section homepage content -->
 <section class="container-fluid bg-light-subtle">
     <div class="container pb-4 mt-n1 mt-lg-0">
         <div class="row">

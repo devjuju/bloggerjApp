@@ -6,57 +6,17 @@ $title = "Utilisateurs"; ?>
 <?php ob_start();
 ?>
 
-<!-- 
- - Fichier Utilisateurs (Vue Backend)
-
-├── Déclaration PHP et configuration (use, $title)
-├── Buffering sortie avec ob_start()
-│
-├── <aside> (Menu latéral fixe)
-│   ├── Header desktop (logo + nom)
-│   ├── Header mobile (bouton fermer)
-│   ├── Menu liens (Dashboard, Blog)
-│   ├── Section utilisateur connecté (image, username, email)
-│   ├── Menu liens secondaires (Articles, Commentaires, Utilisateurs)
-│   └── Bouton déconnexion
-│
-├── <main>
-│   ├── Section breadcrumb + titre
-│   │   ├── Fil d'Ariane (Dashboard > Utilisateurs)
-│   │   └── Titre principal "Les utilisateurs"
-│   │
-│   ├── Section principale (conteneur)
-│       ├── <div class="row gy-4">
-│       │   ├── Colonne gauche (7 colonnes)
-│       │   │   ├── Boucle foreach sur $users
-│       │   │   │   ├── <div> Utilisateur
-│       │   │   │   │   ├── Avatar + username + email
-│       │   │   │   │   ├── Boutons rôle (admin/utilisateur) dynamiques
-│       │   │   │   │   ├── Boutons modifier & supprimer utilisateur
-│       │   │   │   └── <hr>
-│       │   │
-│       │   └── Colonne droite (5 colonnes)
-│       │       ├── Carte info utilisateurs (icône, titre, description)
-│       │       ├── Carte profil utilisateur connecté
-│       │       │   ├── Avatar
-│       │       │   ├── Username + email
-│       │       │   ├── Bouton "Voir mon compte"
-│       │       │   └── Bouton "Ajouter un utilisateur"
-│
-├── Fin main
-│
-├── Fin buffering avec $content = ob_get_clean()
-└── Inclusion layout-backend.php (template principal)
-
--->
+<!-- 1. ASIDE / SIDE MENU -->
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
+        <!-- 1.1 DIV OFFCANVAS-HEADER / LOGO & TITLE -->
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
             <a href="index.php?action=dashboard" class="navbar-brand text-dark d-none d-lg-flex py-0">
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
         </div>
+        <!-- 1.2 DIV OFFCANVAS-HEADER / MENU MOBILE -->
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="d-lg-none mb-0">Menu</h5>
@@ -73,8 +33,10 @@ $title = "Utilisateurs"; ?>
                 </a>
             </div>
         </div>
+        <!-- 1.3 DIV OFFCANVAS-BODY / USER INFOS & NAVIGATIONS LINKS -->
         <div class="offcanvas-body w-100 p-4 ">
             <div class="list-group list-group-flush">
+                <!-- 1.3.1 DIV / USER INFOS -->
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
                     <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
                     <div class="avatar-offcanvas">
@@ -82,6 +44,7 @@ $title = "Utilisateurs"; ?>
                         <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </div>
+                <!-- 1.3.2 A / NAVIGATIONS LINKS -->
                 <a href="index.php?action=posts" class="list-group-item list-group-item-action d-flex align-items-center">
                     <div class="box-icon-account">
                         <i class="bi bi-pin-fill"></i>
@@ -94,14 +57,15 @@ $title = "Utilisateurs"; ?>
                     </div>
                     Commentaires
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">
+                <div class="list-group-item list-group-item-action d-flex align-items-center active">
                     <div class="box-icon-account">
                         <i class="bi bi-person-fill"></i>
                     </div>
                     Utilisateurs
-                </a>
+                </div>
             </div>
         </div>
+        <!-- 1.4 DIV OFFCANVAS-HEADER / LOGOUT BUTTON -->
         <div class="offcanvas-header border-top">
             <a href="index.php?action=logout" class="btn btn-primary w-100">
                 Se déconnecter
@@ -109,8 +73,12 @@ $title = "Utilisateurs"; ?>
         </div>
     </div>
 </aside>
+
+<!-- 2. Main content -->
 <main>
+    <!-- 2.1 section breadcrumb -->
     <section class="container-fluid bg-light-subtle px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
+        <!-- 2.1.1 navigation -->
         <nav class="container spacing-col-padding-top-50" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -119,19 +87,19 @@ $title = "Utilisateurs"; ?>
                 <li class="breadcrumb-item active" aria-current="page">Les utilisateurs</li>
             </ol>
         </nav>
+        <!-- 2.1.2 page title -->
         <div class="container spacing-col-padding-bottom-50">
             <h1 class="title-dasboard">Les utilisateurs</h1>
         </div>
     </section>
+
+    <!-- 2.2 section users -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
             <div class="row gy-4">
+                <!-- 2.2.1 list of users -->
                 <div class="col-lg-7">
-
-
                     <h2> Les comptes des utilisateurs inscrits </h2>
-
-
                     <?php foreach ($users as $user): ?>
                         <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-3 padding-bottom-20 padding-top-20">
                             <div class="d-flex align-items-center flex-wrap text-muted mb-md-0 mb-4">
@@ -159,6 +127,7 @@ $title = "Utilisateurs"; ?>
                         <hr>
                     <?php endforeach; ?>
                 </div>
+                <!-- 2.2.2 additional information -->
                 <div class="col-lg-5 position-relative">
                     <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
                         <div class="card card-light-shadow mb-5">

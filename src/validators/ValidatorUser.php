@@ -5,19 +5,41 @@ namespace App\Validators;
 use App\Core\Request;
 use App\Core\Validator;
 
+/**
+ * Classe ValidatorUser
+ *
+ * Valide les données liées aux utilisateurs :
+ * - login
+ * - inscription
+ * - création (par admin)
+ * - mise à jour (par admin ou utilisateur)
+ *
+ * Hérite de la classe Validator (fonctions utilitaires de validation).
+ */
+
 class ValidatorUser extends Validator
 {
+    /**
+     * Données de l'utilisateur à valider.
+     * Généralement un DTO ou un objet User.
+     */
     public object $data;
 
-
-
+    /**
+     * Constructeur : initialise le validateur avec les données utilisateur.
+     *
+     * @param object $data Objet contenant les getters (email, password, etc.)
+     */
     public function __construct(object $data)
     {
         $this->data = $data;
     }
 
-
-    // Typage de la méthode pour retourner un tableau d'erreurs ou un booléen
+    /**
+     * Vérifie les données de connexion (login).
+     *
+     * @return true|array Retourne true si valide, sinon un tableau d'erreurs.
+     */
     public function checkDataLogin(): array|bool
     {
         $resultEmail = $this->checkEmail($this->data->getEmail());
@@ -34,6 +56,11 @@ class ValidatorUser extends Validator
         }
     }
 
+    /**
+     * Vérifie les données lors de l'inscription d'un utilisateur.
+     *
+     * @return true|array Retourne true si valide, sinon un tableau d'erreurs.
+     */
     public function checkDataRegister(): bool|array
     {
         $resultUsername = $this->checkUsername($this->data->getUsername());
@@ -43,19 +70,15 @@ class ValidatorUser extends Validator
         $resultPassword = $this->checkPassword($this->data->getPassword());
         $resultImage = $this->checkImage($this->data->getImage());
 
-
-        // Récupérer le champ confirm_password depuis le POST
+        // Vérification du champ confirm_password
         $request = new Request();
         $confirmPassword = $request->post('confirm_password');
 
         $resultConfirm = true;
 
-        // Vérifie si les mots de passe correspondent
         if ($this->data->getPassword() !== $confirmPassword) {
             $resultConfirm = "Les mots de passe ne correspondent pas.";
         }
-
-
 
         if ($resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultConfirm === true && $resultImage === true) {
             return true;
@@ -72,6 +95,11 @@ class ValidatorUser extends Validator
         }
     }
 
+    /**
+     * Vérifie les données lors de la création d’un utilisateur (par admin).
+     *
+     * @return true|array Retourne true si valide, sinon un tableau d'erreurs.
+     */
     public function checkDataCreate(): bool|array
     {
         $resultRole = $this->checkRole($this->data->getRole());
@@ -82,19 +110,15 @@ class ValidatorUser extends Validator
         $resultPassword = $this->checkPassword($this->data->getPassword());
         $resultImage = $this->checkImage($this->data->getImage());
 
-
-        // Récupérer le champ confirm_password depuis le POST
+        // Vérification du champ confirm_password
         $request = new Request();
         $confirmPassword = $request->post('confirm_password');
 
         $resultConfirm = true;
 
-        // Vérifie si les mots de passe correspondent
         if ($this->data->getPassword() !== $confirmPassword) {
             $resultConfirm = "Les mots de passe ne correspondent pas.";
         }
-
-
 
         if ($resultRole === true && $resultUsername === true && $resultLastname === true && $resultFirstname === true && $resultEmail === true && $resultPassword === true && $resultConfirm === true && $resultImage === true) {
             return true;
@@ -112,7 +136,11 @@ class ValidatorUser extends Validator
         }
     }
 
-    // transformer l'utilisateur en admin
+    /**
+     * Vérifie les données lors de la mise à jour (rôle, image).
+     *
+     * @return true|array Retourne true si valide, sinon un tableau d'erreurs.
+     */
     public function checkDataUpdate()
     {
         $resultRole = $this->checkRole($this->data->getRole());
@@ -133,8 +161,7 @@ class ValidatorUser extends Validator
         }
     }
 
-    // validations
-
+    /** Vérifie que le rôle est présent. */
     public function checkRole(string $role): string|bool
     {
         if (empty($role)) {
@@ -144,23 +171,25 @@ class ValidatorUser extends Validator
         }
     }
 
+    /** Vérifie que le pseudo est présent et >= 5 caractères. */
     public function checkUsername(string $username): string|bool
     {
         if (empty($username)) {
-            return "Entrer le pseudo";
+            return "Veuillez entrer un nom d'utilisateur.";
         } elseif ($this->isSmallerThan($username, 5)) {
-            return "c'est plus petit que 5 caractères";
+            return "Le nom d'utilisateur doit contenir au moins 5 caractères.";
         } else {
             return true;
         }
     }
 
+    /** Vérifie que le nom est présent, >= 5 caractères et uniquement alphabétique. */
     public function checkLastname(string $lastname): string|bool
     {
         if (empty($lastname)) {
-            return "Entrer le nom";
+            return "Veuillez entrer votre nom.";
         } elseif ($this->isSmallerThan($lastname, 5)) {
-            return "c'est plus petit que 5 caractères";
+            return "Le nom doit contenir au moins 5 caractères.";
         } elseif ($this->isPatternInvalid($lastname)) {
             return "Le nom doit contenir seulement des caractères";
         } else {
@@ -168,12 +197,13 @@ class ValidatorUser extends Validator
         }
     }
 
+    /** Vérifie que le prénom est présent, >= 5 caractères et uniquement alphabétique. */
     public function checkFirstname(string $firstname): string|bool
     {
         if (empty($firstname)) {
-            return "Entrer le prénom";
+            return "Veuillez entrer votre prénom.";
         } elseif ($this->isSmallerThan($firstname, 5)) {
-            return "c'est plus petit que 5 caractères";
+            return "Le prénom doit contenir au moins 5 caractères.";
         } elseif ($this->isPatternInvalid($firstname)) {
             return "Le prénom doit contenir seulement des caractères";
         } else {
@@ -181,56 +211,40 @@ class ValidatorUser extends Validator
         }
     }
 
+    /** Vérifie la validité de l’adresse email. */
     public function checkEmail(string $email): string|bool
     {
         if (empty($email)) {
-            return "Entrer une adresse email ";
+            return "Veuillez entrer une adresse e-mail. ";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return "Adresse email invalide";
+            return "Veuillez entrer une adresse e-mail valide.";
         } else {
             return true;
         }
     }
 
-
-    // Confirmer le mot de passe
-
+    /** Vérifie la validité du mot de passe (>= 10 caractères). */
     public function checkPassword(string $password): string|bool
     {
         if (empty($password)) {
-            return "Entrer le mot de passe ";
+            return "Veuillez entrer un mot de passe.";
         } elseif ($this->isSmallerThan($password, 10)) {
-            return "10 caractères minimum";
+            return "Le mot de passe doit contenir au moins 10 caractères.";
         } else {
             return true;
         }
     }
 
-
-
-    public function confirmField(string $field1, string $field2): string|bool
-    {
-        $request = new Request();
-        $value1 = $request->post($field1);
-        $value2 = $request->post($field2);
-
-        if ($value1 !== $value2) {
-            return "Les champs $field1 et $field2 ne correspondent pas.";
-        }
-
-        return true;
-    }
-
-
-
-
-
-
-
-
+    /**
+     * Vérifie qu'une image uploadée est valide :
+     * - taille <= 500Ko
+     * - extension JPG/JPEG/PNG
+     *
+     * @param mixed $image Nom ou objet image (non utilisé directement car $_FILES est vérifié)
+     * @return true|string True si valide, sinon message d’erreur
+     */
     public function checkImage(mixed $image): true|string
     {
-
         $target_dir = "uploads/";
         $image = $target_dir . basename($_FILES["image"]["name"]);
         $img_ex = pathinfo($image, PATHINFO_EXTENSION);
@@ -242,17 +256,15 @@ class ValidatorUser extends Validator
         $error = $_FILES['image']['error'] ?? 4;
 
         if ($error === 4) {
-            return "Veillez choisir une image";
+            return "Veuillez choisir une image.";
         } elseif ($error === 0) {
             if ($img_size > 500000) {
-                return "Désolé, votre fichier est trop volumineux.";
+                return "Le fichier est trop volumineux (max 500 Ko).";
             } elseif (!in_array($img_ex_lc, $allowed_exs)) {
-                return "Désolé, seuls les fichiers JPG, JPEG, et PNG sont autorisés.";
+                return "Le format de l'image est invalide (formats autorisés : JPG, JPEG, PNG).";
             }
-
             return true;
         }
-
-        return "erreur lors de l'upload du fichier";
+        return "Une erreur est survenue lors du téléchargement de l'image.";
     }
 }

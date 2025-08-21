@@ -3,7 +3,9 @@ $title = "Se connecter"; ?>
 <?php ob_start();
 ?>
 
+<!-- 1. Section breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <!-- 1.1 navigation-->
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -12,14 +14,17 @@ $title = "Se connecter"; ?>
             <li class="breadcrumb-item active" aria-current="page">Se connecter</li>
         </ol>
     </nav>
+    <!-- 1.2 page title -->
     <div class="container">
         <h1 class="titre-page">Se connecter</h1>
     </div>
 </section>
 
+<!-- 2. Section content -->
 <section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
     <div class="container">
         <div class="row">
+            <!-- 2.2 page info -->
             <div class="col-xl-4 col-lg-5 ">
                 <h2 class="titre-section">
                     Accéder à votre compte</h2>
@@ -29,6 +34,7 @@ $title = "Se connecter"; ?>
                 </p>
                 <img src="images/featured-image-login.svg" class="img-fluid featured-image-post" alt="image">
             </div>
+            <!-- 2.1 login form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
                 <div class="card-shadow">
                     <div class="card-header">

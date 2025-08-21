@@ -4,22 +4,38 @@ namespace App\Validators;
 
 use App\Core\Validator;
 
+/**
+ * Classe ValidatorPost
+ *
+ * Valide les données liées aux articles (posts) :
+ * - création
+ * - mise à jour
+ * - mise à jour uniquement de l'image
+ */
 class ValidatorPost extends Validator
 {
     /**
-     * @var object
+     * Données du post à valider
      */
     public object $data;
 
+    /**
+     * Constructeur : initialise avec les données du post.
+     *
+     * @param object $data Objet contenant les getters (title, content, etc.)
+     */
     public function __construct(object $data)
     {
         $this->data = $data;
     }
 
+
     /**
-     * @return true|array<string, string>
+     * Vérifie les données lors de la création d’un article.
+     *
+     * @return true|array True si tout est valide, sinon un tableau d'erreurs.
      */
-    public function checkData(): true|array
+    public function checkDataCreate(): true|array
     {
         $resultTitle = $this->checkTitle($this->data->getTitle());
         $resultCategory = $this->checkCategory($this->data->getCategory());
@@ -47,9 +63,13 @@ class ValidatorPost extends Validator
     }
 
     /**
-     * @return true|array<string, string>
+     * Vérifie les données lors de la mise à jour d’un article.
+     *
+     * ⚠️ L’image est optionnelle (ne doit pas bloquer si non changée).
+     *
+     * @return true|array
      */
-    public function checkData2(): true|array
+    public function checkDataUpdate(): true|array
     {
         $resultTitle = $this->checkTitle($this->data->getTitle());
         $resultCategory = $this->checkCategory($this->data->getCategory());
@@ -81,9 +101,11 @@ class ValidatorPost extends Validator
     }
 
     /**
-     * @return true|array<string, string>
+     * Vérifie uniquement l’image (cas mise à jour de l’image d’un article).
+     *
+     * @return true|array
      */
-    public function checkData3(): true|array
+    public function checkDataUpdateImage(): true|array
     {
         $resultImage = $this->checkImage($this->data->getImage());
 
@@ -96,62 +118,55 @@ class ValidatorPost extends Validator
         ];
     }
 
-    /**
-     * @param string|null $title
-     * @return true|string
-     */
+    /** Vérifie le titre (obligatoire, min 5 caractères). */
     public function checkTitle(?string $title): true|string
     {
         if (empty($title)) {
-            return "Entrer un titre";
+            return "Veuillez entrer un titre.";
         } elseif ($this->isSmallerThan($title, 5)) {
-            return "5 caractères minimum";
+            return "Le titre doit contenir au moins 5 caractères.";
         }
 
         return true;
     }
 
-    /**
-     * @param string|null $category
-     * @return true|string
-     */
+    /** Vérifie la catégorie (obligatoire). */
     public function checkCategory(?string $category): true|string
     {
-        return empty($category) ? "Veillez choisir une catégorie" : true;
+        return empty($category) ? "Veuillez choisir la catégorie" : true;
     }
 
-    /**
-     * @param string|null $excerpt
-     * @return true|string
-     */
+    /** Vérifie l'extrait (obligatoire, min 10 caractères). */
     public function checkExcerpt(?string $excerpt): true|string
     {
         if (empty($excerpt)) {
-            return "Entrer un extrait";
+            return "Veuillez entrer un extrait.";
         } elseif ($this->isSmallerThan($excerpt, 10)) {
-            return "10 caractères minimum";
+            return "L'extrait doit contenir au moins 10 caractères.";
         }
 
         return true;
     }
 
-    /**
-     * @param string|null $content
-     * @return true|string
-     */
+    /** Vérifie le contenu (obligatoire, min 15 caractères). */
     public function checkContent(?string $content): true|string
     {
         if (empty($content)) {
-            return "Entrer une description";
+            return "Veuillez entrer une description.";
         } elseif ($this->isSmallerThan($content, 15)) {
-            return "15 caractères minimum";
+            return "La description doit contenir au moins 15 caractères.";
         }
 
         return true;
     }
 
     /**
-     * @param mixed $image
+     * Vérifie une image uploadée :
+     * - doit exister
+     * - taille <= 500Ko
+     * - extension parmi JPG/JPEG/PNG
+     *
+     * @param mixed $image Nom ou chemin (mais $_FILES est vérifié directement)
      * @return true|string
      */
     public function checkImage(mixed $image): true|string
@@ -167,17 +182,17 @@ class ValidatorPost extends Validator
         $error = $_FILES['image']['error'] ?? 4;
 
         if ($error === 4) {
-            return "Veillez choisir une image";
+            return "Veuillez choisir une image.";
         } elseif ($error === 0) {
             if ($img_size > 500000) {
-                return "Désolé, votre fichier est trop volumineux.";
+                return "Le fichier est trop volumineux (max 500 Ko).";
             } elseif (!in_array($img_ex_lc, $allowed_exs)) {
-                return "Désolé, seuls les fichiers JPG, JPEG, et PNG sont autorisés.";
+                return "Le format de l'image est invalide (formats autorisés : JPG, JPEG, PNG).";
             }
 
             return true;
         }
 
-        return "erreur lors de l'upload du fichier";
+        return "Une erreur est survenue lors du téléchargement de l'image.";
     }
 }

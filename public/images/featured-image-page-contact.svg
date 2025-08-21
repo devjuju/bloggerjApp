@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: $$$/GeneralStr/196=Adobe Illustrator 27.6.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 425.5 162.2" style="enable-background:new 0 0 425.5 162.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FAE6DB;}
+	
+		.st1{clip-path:url(#SVGID_00000145762972690604782470000002961058825993184658_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st2{clip-path:url(#SVGID_00000109752552639937793840000012203509182580733833_);}
+	.st3{fill:#FFFFFF;stroke:#1B2939;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#1B2939;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st5{fill:#19154B;}
+	.st6{clip-path:url(#SVGID_00000063626018269017960670000000121550458821178793_);}
+	.st7{fill:#8F6FF1;}
+</style>
+<rect y="0" class="st0" width="425.5" height="162.2"/>
+<g>
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="54.6" y="0" width="341.9" height="170.9"/>
+		</defs>
+		<clipPath id="SVGID_00000047018945799024083880000003315740831451439779_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<path style="clip-path:url(#SVGID_00000047018945799024083880000003315740831451439779_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;" d="
+			M134.6-14.4c3.2-3.2,36.8,59.8,98.5,66.5c71,7.8,37.7-60.4,39.5-28.9c1.8,31,77.2,25.9,64.5-54"/>
+	</g>
+	<g>
+		<defs>
+			<rect id="SVGID_00000138572506614443872000000017967396887354002330_" x="54.6" y="0" width="341.9" height="170.9"/>
+		</defs>
+		<clipPath id="SVGID_00000163776126235711296310000003392570212517067708_">
+			<use xlink:href="#SVGID_00000138572506614443872000000017967396887354002330_"  style="overflow:visible;"/>
+		</clipPath>
+		<g style="clip-path:url(#SVGID_00000163776126235711296310000003392570212517067708_);">
+			<path class="st3" d="M348.9,122.9c0,6.1,5,11.1,11.1,11.1s11.1-5,11.1-11.1s-5-11.1-11.1-11.1S348.9,116.8,348.9,122.9z"/>
+			<line class="st4" x1="360.5" y1="112" x2="360.5" y2="-132.5"/>
+			<path class="st3" d="M368.3,70h-16c-1.2,0-2.2,1-2.2,2.2V102c0,1.2,1,2.2,2.2,2.2h16c1.2,0,2.2-1,2.2-2.2V72.2
+				C370.6,71,369.6,70,368.3,70z"/>
+			<path class="st5" d="M395.1,122.9h-71.6c2.3-11.2,17.5-26.1,35.8-26.1C377.6,96.8,392.8,111.7,395.1,122.9z"/>
+		</g>
+	</g>
+	<g>
+		<defs>
+			<rect id="SVGID_00000144300345947010739930000002435406530201358487_" x="54.6" y="0" width="341.9" height="170.9"/>
+		</defs>
+		<clipPath id="SVGID_00000070809449777571398060000013528871285726014120_">
+			<use xlink:href="#SVGID_00000144300345947010739930000002435406530201358487_"  style="overflow:visible;"/>
+		</clipPath>
+		<g style="clip-path:url(#SVGID_00000070809449777571398060000013528871285726014120_);">
+			<path class="st7" d="M133.8,19c0,2.2-1.8,4-4,4s-4-1.8-4-4s1.8-4,4-4S133.8,16.8,133.8,19z"/>
+			<path class="st3" d="M251,28.8c0,2.2-1.8,4-4,4s-4-1.8-4-4s1.8-4,4-4C249.3,24.8,251,26.6,251,28.8z"/>
+		</g>
+	</g>
+</g>
+</svg>

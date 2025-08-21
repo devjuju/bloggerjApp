@@ -3,8 +3,9 @@
 
 ?>
 
-
+<!-- Section breadcrumb -->
 <section class="container-fluid bg-light-subtle spacing-col-padding-top-50 spacing-col-padding-bottom-50">
+    <!-- 1.2 navigation -->
     <nav class="container" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -13,28 +14,33 @@
             <li class="breadcrumb-item active" aria-current="page">S'inscrire</li>
         </ol>
     </nav>
+    <!-- 1.2 page title -->
     <div class="container">
         <h1 class="titre-page">Créer un compte</h1>
     </div>
 </section>
 
+<!-- 2. Section content -->
 <section class="pt-5 py-5 my-1 my-md-4 my-lg-5">
     <div class="container">
         <div class="row">
+            <!-- 2.1 page info -->
             <div class="col-xl-4 col-lg-5">
                 <h2 class="titre-section">S'inscrire</h2>
                 <p class="running-text fs-5">
-                    Entrez vos coordonnées pour créer votre compte
+                    Vous avez déjà un compte ?
+                    <a href="index.php?action=login" class="color-link-primary">Connecter vous !</a>
                 </p>
-                <img src="images/featured-image-register.svg" class="img-fluid featured-image-post" alt="image">
+                <img src="images/featured-image-register-1.svg" class="img-fluid featured-image-post" alt="image">
+                <img src="images/featured-image-register-2.svg" class="img-fluid featured-image-post marging-top-20 marging-bottom-20" alt="image">
             </div>
+            <!-- 2.2 register form -->
             <div class="col-xl-6 col-lg-7 offset-xl-2">
                 <div class="card-shadow">
                     <div class="card-header">
                         <h2 class="titre-h3">Formulaire d'inscription</h2>
                         <p class="running-text fs-5">
-                            Vous avez déjà un compte ?
-                            <a href="index.php?action=login" class="color-link-primary">Connecter vous !</a>
+                            Entrez vos coordonnées pour créer votre compte
                         </p>
                     </div>
                     <div class="card-body">
@@ -56,35 +62,29 @@
                                         <?= isset($controle["image"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["image"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                     </div>
                                 </div>
-
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="lastname">Nom</label>
                                     <input type="text" id="lastname" name="register[lastname]" placeholder="Entrer un nom" value="<?= isset($register) ? htmlspecialchars($register->getLastname(), ENT_QUOTES, 'UTF-8') : '' ?>">
                                     <?= isset($controle["lastname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["lastname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-
                                 <div class="col-sm-6 form-group-style">
                                     <label class="form-label fs-base" for="firstname">Prénom</label>
                                     <input type="text" id="firstname" name="register[firstname]" value="<?= isset($register) ? htmlspecialchars($register->getFirstname(), ENT_QUOTES, 'UTF-8') : '' ?>">
                                     <?= isset($controle["firstname"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["firstname"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-
                                 <div class="col-sm-12 form-group-style">
-                                    <label class="form-label fs-base" for="sujet">Pseudo</label>
-                                    <input type="text" id="sujet" name="register[username]" value="<?= isset($register) ? htmlspecialchars($register->getUsername(), ENT_QUOTES, 'UTF-8') : '' ?>">
+                                    <label class="form-label fs-base" for="username">Pseudo</label>
+                                    <input type="text" id="username" name="register[username]" value="<?= isset($register) ? htmlspecialchars($register->getUsername(), ENT_QUOTES, 'UTF-8') : '' ?>">
                                     <?= isset($controle["username"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["username"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-
                                 <div class="col-sm-12 form-group-style">
                                     <label class="form-label fs-base" for="email">Email</label>
                                     <input type="email" id="email" name="register[email]" value="<?= isset($register) ? htmlspecialchars($register->getEmail(), ENT_QUOTES, 'UTF-8') : '' ?>">
                                     <?= isset($controle["email"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["email"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-
                                 <div class="col-12 mb-4 form-group-style">
                                     <label for="password" class="form-label fs-base">Mot de passe</label>
                                     <input type="password" id="password" name="register[password]" value="<?= isset($register) ? htmlspecialchars($register->getPassword(), ENT_QUOTES, 'UTF-8') : '' ?>">
-
                                     <?= isset($controle["password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
                                 <div class="col-12 mb-4 form-group-style">
@@ -92,7 +92,6 @@
                                     <input type="password" id="confirm_password" name="confirm_password">
                                     <?= isset($controle["confirm_password"]) ? '<p><i class="bi bi-arrow-right-short"></i>' . htmlspecialchars($controle["confirm_password"], ENT_QUOTES, 'UTF-8') . "</p>" : '' ?>
                                 </div>
-
                                 <div class="col-sm-12 pt-4">
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Envoyer</button>

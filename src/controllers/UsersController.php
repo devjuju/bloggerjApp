@@ -5,42 +5,54 @@ namespace App\Controllers;
 use App\Core\Request;
 use App\Models\Users;
 use App\Core\Auth;
-
 use App\Forms\FormUser;
 
+/**
+ * Contrôleur UsersController
+ * 
+ * Gère l’inscription, la connexion et la gestion des utilisateurs.
+ * Séparé en deux parties :
+ * - Frontend : register, login, logout
+ * - Backend : gestion CRUD des utilisateurs
+ */
 class UsersController
 {
-    /* Frontend */
 
+    /* ====================== FRONTEND ====================== */
+
+    /**
+     * Inscription d’un nouvel utilisateur
+     *
+     * - Validation du formulaire
+     * - Upload d’image de profil
+     * - Hashage du mot de passe
+     * - Création du compte en base
+     */
     public function register(): void
     {
         $request = new Request();
         $submit = $request->post('register');
         if (isset($submit)) {
-            // test image
             $register = new Users($request->post('register'));
             $formRegister = new FormUser($register);
             $controle = $formRegister->validateRegister();
 
             if ($controle === true) {
 
-                // photo de profil
+                // Gestion de l’upload image
                 $img_name = $_FILES['image']['name'];
                 $tmp_name = $_FILES['image']['tmp_name'];
                 $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
                 $img_ex_lc = strtolower($img_ex);
 
-
                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
                 $img_upload_path = 'uploads/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
 
-                // Insert into Database
+                // Enregistrement utilisateur
                 $register->setImage($new_img_name);
-                $register->setRole('administrateur');
+                $register->setRole('utilisateur');
                 $register->setStatus('1');
-
-                // On chiffre le mot de passe
                 $register->setPassword(password_hash($register->getPassword(), PASSWORD_BCRYPT));
 
                 $register->create();
@@ -55,6 +67,13 @@ class UsersController
         require('../templates/frontend/register/index.php');
     }
 
+    /**
+     * Connexion utilisateur
+     *
+     * - Validation du formulaire
+     * - Vérification email + mot de passe
+     * - Stockage des infos utilisateur dans la session
+     */
     public function login(): void
     {
         $request = new Request();
@@ -66,21 +85,11 @@ class UsersController
             $controle = $formLogin->validateLogin();
 
             if ($controle === true) {
-
-
                 $user = $login->findOneByEmail();
-
-                // Si l'utilisateur n'existe pas
                 if ($user) {
-
-                    // faire en sorte que l'adresse email reste dans le formulaire -> index.php de la vue
-                    // par contre pas le mot de passe
                     if (password_verify($login->getPassword(), $user->password)) {
-                        // Le mot de passe est bon
-                        echo 'pass ok';
-                        print_r($user);
-
                         if ($user->status == '1') {
+                            // Stockage des infos utilisateur dans la session
                             Auth::set('auth', 'id', $user->id);
                             Auth::set('auth', 'role', $user->role);
                             Auth::set('auth', 'image', $user->image);
@@ -89,37 +98,29 @@ class UsersController
                             Auth::set('auth', 'email', $user->email);
                             Auth::set('auth', 'username', $user->username);
 
-
-
-
-
-
-
-
-
+                            // Message qui s'affiche en cas de succès
                             Auth::set('message', 'class', 'success');
                             Auth::set('message', 'content', "Vous êtes connecté");
 
+                            // Redirection selon le rôle
                             if (Auth::get('auth', 'role') === 'administrateur') {
                                 header('Location: index.php?action=dashboard');
                             } else {
                                 header('Location: index.php');
                             }
-                        } else { // statut = 0
+                        } else {
                             $controle = [
                                 'email' => 'Compte non validé'
                             ];
                         }
                     } else {
                         // Mauvais mot de passe
-
                         $controle = [
                             'email' => 'Identifiants incorrects'
                         ];
                     }
                 } else {
                     // Utilisateur n'existe pas
-
                     $controle = [
                         'email' => 'Identifiants incorrects'
                     ];
@@ -129,19 +130,22 @@ class UsersController
         require('../templates/frontend/login/index.php');
     }
 
+    /**
+     * Déconnexion (destruction de la session)
+     */
     public function logout(): void
     {
-
         Auth::destroy(); //unset($_SESSION);  session_destroy();
         header('Location: index.php');
     }
 
+    /* ====================== BACKEND ====================== */
 
-    /* Backend */
+    /**
+     * Liste les utilisateurs (réservé admin)
+     */
     public function users(): void
     {
-
-        // Sécurité
         if (Auth::get('auth', 'role') != 'administrateur' && Auth::get('auth', 'role') != 'master administrateur') {
             header('Location: index.php');
             return;
@@ -160,55 +164,40 @@ class UsersController
             'role' => "utilisateur"
         ]);
 
-
-
-
-
         require('../templates/backend/users/index.php');
     }
 
 
-
+    /**
+     * Création d’un utilisateur (réservé admin)
+     */
     public function create(): void
     {
-        // Sécurité
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
             return;
         }
-
-
-        // Ajouter l'utilisateur
-
         $request = new Request();
         $submit = $request->post('create_user');
         if (isset($submit)) {
-            // test image
             $createUser = new Users($request->post('create_user'));
             $formCreateUser = new FormUser($createUser);
             $controle = $formCreateUser->validateCreate();
-
-            //echo '</pre>';
-            //print_r($_FILES);
-            //die;
             if ($controle === true) {
 
-                // ajouter l'image
+                // Upload image
                 $img_name = $_FILES['image']['name'];
                 $tmp_name = $_FILES['image']['tmp_name'];
                 $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
                 $img_ex_lc = strtolower($img_ex);
 
-
                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
                 $img_upload_path = 'uploads/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
 
-                // Insert into Database
                 $createUser->setImage($new_img_name);
                 $createUser->setStatus('1');
 
-                // On chiffre le mot de passe
                 $createUser->setPassword(password_hash($createUser->getPassword(), PASSWORD_BCRYPT));
 
                 $createUser->create();
@@ -223,9 +212,12 @@ class UsersController
         require('../templates/backend/createuser/index.php');
     }
 
-
-
-    public function update($id): void
+    /**
+     * Mise à jour d’un utilisateur (réservé admin)
+     *
+     * @param int $id ID de l’utilisateur à modifier
+     */
+    public function update(int $id): void
     {
         if (Auth::get('auth', 'role') != 'administrateur') {
             header('Location: index.php');
@@ -257,7 +249,12 @@ class UsersController
         require('../templates/backend/updateuser/index.php');
     }
 
-    public function delete($id): void
+    /**
+     * Suppression d’un utilisateur (réservé admin)
+     *
+     * @param int $id ID de l’utilisateur à supprimer
+     */
+    public function delete(int $id): void
     {
         // Sécurité
         if (Auth::get('auth', 'role') != 'administrateur') {
@@ -265,9 +262,7 @@ class UsersController
             return;
         }
 
-        // On instancie le modèle
         $user = new Users();
-        // On va chercher 1 annonce
         $user->delete($id);
 
         Auth::set('message', 'class', 'success');

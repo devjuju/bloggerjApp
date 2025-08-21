@@ -4,22 +4,54 @@ namespace App\Models;
 
 use App\Models\Model;
 
+/**
+ * Classe représentant un article de blog.
+ *
+ * Cette classe mappe les colonnes de la table `posts` 
+ * et fournit des getters/setters pour manipuler les données.
+ */
 class Posts extends Model
 {
+    /** Identifiant unique du post */
     protected int|string|null $id = null;
+
+    /** Identifiant de l’utilisateur auteur */
     protected int|string|null $users_id = null;
+
+    /** Nom de l’auteur */
     protected ?string $author = null;
+
+    /** Titre de l’article */
     protected ?string $title = null;
+
+    /** Catégorie de l’article */
     protected ?string $category = null;
+
+    /** Extrait (résumé du contenu) */
     protected ?string $excerpt = null;
+
+    /** Contenu complet de l’article */
     protected ?string $content = null;
+
+    /** Nom/chemin de l’image associée */
     protected ?string $image = null;
+
+    /** Date de création */
     protected ?string $created_at = null;
+
+    /** Date de dernière modification */
+    protected ?string $updated_at = null;
+
+    /** État actif/inactif (1, 0 ou null) */
     protected int|bool|null $active = null;
+
+    /** Statut de l’article (ex: 'draft', 'published') */
     protected ?string $status = null;
 
     /**
-     * @param array|null $data
+     * Constructeur
+     *
+     * @param array|null $data Données initiales pour hydrater l'objet
      */
     public function __construct(?array $data = null)
     {
@@ -34,6 +66,7 @@ class Posts extends Model
         $this->setContent($data['content'] ?? null);
         $this->setImage($data['image'] ?? null);
         $this->setCreatedAt($data['created_at'] ?? null);
+        $this->setUpdatedAt($data['updated_at'] ?? null);
         $this->setActive($data['active'] ?? null);
         $this->setStatus($data['status'] ?? null);
     }
@@ -126,6 +159,16 @@ class Posts extends Model
     public function setCreatedAt(?string $created_at): void
     {
         $this->created_at = $created_at;
+    }
+
+    public function getUpdatedAt(): ?string
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?string $updated_at): void
+    {
+        $this->updated_at = $updated_at;
     }
 
     public function getActive(): int|bool|null

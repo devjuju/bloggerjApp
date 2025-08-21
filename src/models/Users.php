@@ -4,21 +4,46 @@ namespace App\Models;
 
 use App\Models\Model;
 
+/**
+ * Représente un utilisateur du site (table `users`).
+ *
+ * Contient les propriétés principales d’un utilisateur
+ * ainsi que les méthodes d’accès et de recherche.
+ */
 class Users extends Model
 {
-
+    /** Identifiant unique de l’utilisateur */
     protected int|string|null $id = null;
+
+    /** Rôle de l’utilisateur (ex: admin, user) */
     protected ?string $role = null;
+
+    /** Image de profil (URL/chemin) */
     protected ?string $image = null;
+
+    /** Nom d’utilisateur (login) */
     protected ?string $username = null;
+
+    /** Nom de famille */
     protected ?string $lastname = null;
+
+    /** Prénom */
     protected ?string $firstname = null;
+
+    /** Adresse email */
     protected ?string $email = null;
+
+    /** Mot de passe (haché) */
     protected ?string $password = null;
+
+    /** Statut de l’utilisateur (ex: actif, suspendu) */
     protected ?string $status = null;
 
-
-
+    /**
+     * Hydrate un objet User à partir d’un tableau associatif.
+     *
+     * @param array|null $data Données initiales
+     */
     public function __construct(?array $data = null)
     {
         $this->table = 'users';
@@ -34,6 +59,11 @@ class Users extends Model
         $this->setStatus($data['status'] ?? null);
     }
 
+    /**
+     * Recherche un utilisateur par son email.
+     *
+     * @return object|null L’utilisateur trouvé ou null si aucun
+     */
     public function findOneByEmail(): ?object
     {
         return $this->requete("SELECT * FROM {$this->table} WHERE email = ?", [$this->getEmail()])->fetch();

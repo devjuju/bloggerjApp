@@ -2,13 +2,25 @@
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Models\Comments;
 
+/**
+ * Contrôleur CommentsController
+ * 
+ * Gère les actions liées aux commentaires :
+ * - Affichage
+ * - Suppression
+ * - Validation
+ * - Rejet
+ */
 class CommentsController
 {
-
-
-    // Méthode pour afficher tous les commentaires
+    /**
+     * Affiche la liste de tous les commentaires
+     *
+     * @return void
+     */
     public function comments(): void
     {
         $comment = new Comments();
@@ -17,10 +29,12 @@ class CommentsController
         require('../templates/backend/comments/index.php');
     }
 
-
-
-
-    // Méthode pour supprimer un commentaire
+    /**
+     * Supprime un commentaire par son identifiant
+     *
+     * @param int $id Identifiant du commentaire à supprimer
+     * @return void
+     */
     public function delete(int $id): void
     {
         // On instancie le modèle
@@ -28,11 +42,19 @@ class CommentsController
         // On va chercher 1 commentaire et on le supprime
         $comment->delete($id);
 
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Commentaire supprimé");
         header('Location: index.php?action=comments');
+        exit();
     }
 
 
-    // Méthode pour valider un commentaire
+    /**
+     * Valide un commentaire (changement de statut et isValid=1)
+     *
+     * @param int $id Identifiant du commentaire à valider
+     * @return void
+     */
     public function validate(int $id): void
     {
         $comment = new Comments();
@@ -42,11 +64,19 @@ class CommentsController
 
         $comment->update();
 
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Commentaire validé");
         header('Location: index.php?action=comments');
+        exit();
     }
 
 
-    // Méthode pour rejeter un commentaire
+    /**
+     * Rejette un commentaire (changement de statut et isValid=0)
+     *
+     * @param int $id Identifiant du commentaire à rejeter
+     * @return void
+     */
     public function reject(int $id): void
     {
         $comment = new Comments();
@@ -56,6 +86,9 @@ class CommentsController
 
         $comment->update();
 
+        Auth::set('message', 'class', 'success');
+        Auth::set('message', 'content', "Commentaire rejeté");
         header('Location: index.php?action=comments');
+        exit();
     }
 }

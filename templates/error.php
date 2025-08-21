@@ -3,6 +3,8 @@
 ob_start();
 
 ?>
+
+<!-- Section error -->
 <section class="container-fluid position-relative px-0">
     <div class="row g-0">
         <div class="col-xl-6 col-lg-5 pe-lg-5">

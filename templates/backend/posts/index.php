@@ -8,62 +8,17 @@ $title = "Articles";
 ob_start();
 ?>
 
-<!-- 
-- Fichier Articles (Vue Backend)
-
-├── Déclaration PHP, use (Auth, DateFormatter), $title, ob_start()
-│
-├── <aside> (Menu latéral fixe)
-│   ├── Header desktop (logo + nom)
-│   ├── Header mobile (titre + bouton fermer)
-│   ├── Menu liens principaux (Dashboard, Blog)
-│   ├── Section utilisateur connecté (avatar, username, email)
-│   ├── Menu secondaire (Articles [actif], Commentaires, Utilisateurs)
-│   └── Bouton déconnexion
-│
-├── <main>
-│   ├── Section breadcrumb + titre
-│   │   ├── Fil d'Ariane (Dashboard > Les articles)
-│   │   └── Titre principal "Les articles"
-│   │
-│   ├── Section principale (conteneur)
-│       ├── <div class="row gy-4">
-│       │   ├── Colonne gauche (7 colonnes)
-│       │   │   ├── Grille articles (2 colonnes responsive)
-│       │   │   ├── Boucle foreach sur $posts
-│       │   │   │   ├── <article class="card card-article">
-│       │   │   │   │   ├── Image + statut (badge)
-│       │   │   │   │   ├── Catégorie, titre (lien vers article)
-│       │   │   │   │   ├── Auteur + date formatée (DateFormatter::enFrancais)
-│       │   │   │   │   ├── Extrait (excerpt)
-│       │   │   │   │   ├── Footer avec :
-│       │   │   │   │       ├── Boutons activer/désactiver selon statut
-│       │   │   │   │       ├── Bouton modifier
-│       │   │   │   │       └── Bouton supprimer
-│       │   │   │
-│       │   └── Colonne droite (5 colonnes)
-│       │       ├── Carte info "Articles" (icône + titre + description)
-│       │       ├── Carte présentation blog
-│       │       │   ├── Titre + description
-│       │       │   ├── Bouton vers blog en direct
-│       │       │   └── Bouton "Ajouter un article"
-│
-├── Fin main
-│
-├── Fin buffering avec $content = ob_get_clean()
-└── Inclusion du template layout-backend.php
-
-
--->
-
+<!-- 1. Side menu -->
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
+        <!-- 1.1 logo & title -->
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
             <a href="index.php?action=dashboard" class="navbar-brand text-dark d-none d-lg-flex py-0">
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
         </div>
+        <!-- 1.2 menu mobile -->
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="d-lg-none mb-0">Menu</h5>
@@ -80,8 +35,10 @@ ob_start();
                 </a>
             </div>
         </div>
+        <!-- 1.3 user info & navigations links -->
         <div class="offcanvas-body w-100 p-4 ">
             <div class="list-group list-group-flush">
+                <!-- 1.3.1 user info -->
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
                     <img src="uploads/<?= htmlspecialchars(Auth::get('auth', 'image'), ENT_QUOTES, 'UTF-8'); ?>" class="d-block rounded-circle" width="120" alt="">
                     <div class="avatar-offcanvas">
@@ -89,12 +46,13 @@ ob_start();
                         <p><?= htmlspecialchars(Auth::get('auth', 'email'), ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
                 </div>
-                <a href="" class="list-group-item list-group-item-action d-flex align-items-center active">
+                <!-- 1.3.2 navigations links -->
+                <div class="list-group-item list-group-item-action d-flex align-items-center active">
                     <div class="box-icon-account">
                         <i class="bi bi-pin-fill"></i>
                     </div>
                     Articles
-                </a>
+                </div>
                 <a href="index.php?action=comments" class="list-group-item list-group-item-action d-flex align-items-center">
                     <div class="box-icon-account">
                         <i class="bi bi-chat-square-dots-fill"></i>
@@ -109,6 +67,7 @@ ob_start();
                 </a>
             </div>
         </div>
+        <!-- 1.4 logout button -->
         <div class="offcanvas-header border-top">
             <a href="index.php?action=logout" class="btn btn-primary w-100">
                 Se déconnecter
@@ -117,8 +76,11 @@ ob_start();
     </div>
 </aside>
 
+<!-- 2. Main content -->
 <main>
+    <!-- 2.1 section breadcrumb -->
     <section class="container-fluid bg-light-subtle px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
+        <!-- 2.1.1 navigation -->
         <nav class="container spacing-col-padding-top-50" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -127,13 +89,18 @@ ob_start();
                 <li class="breadcrumb-item active" aria-current="page">Les articles</li>
             </ol>
         </nav>
+        <!-- 2.1.2 page title -->
         <div class="container spacing-col-padding-bottom-50">
             <h1 class="title-dasboard">Les articles</h1>
         </div>
+
     </section>
+
+    <!-- 2.2 Section articles -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
         <div class="container  spacing-col-padding-top-50 spacing-col-padding-bottom-50">
             <div class="row gy-4">
+                <!-- 2.2.1 list of articles -->
                 <div class="col-lg-7">
                     <div class="row row-cols-lg-2 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
                         <?php foreach ($posts as $post): ?>
@@ -193,6 +160,7 @@ ob_start();
                         <?php endforeach; ?>
                     </div>
                 </div>
+                <!-- 2.2.2 additional information -->
                 <div class="col-lg-5 position-relative">
                     <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
                         <div class="card card-light-shadow mb-5">

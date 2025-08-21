@@ -1,3 +1,4 @@
+<!-- Footer -->
 <footer class="footer py-5 bg-dark">
     <div class="container pt-lg-4">
         <div class="row pb-5">
@@ -8,18 +9,16 @@
                     </span>
                     <span>blogger J</span>
                 </a>
-                <br>
-                <br>
                 <p>Une développeuse web passionnée et créative en vue d’évolution </p>
                 <div class="d-flex">
-                    <a href="#" class="btn btn-icon-social-secondary btn-facebook" aria-label="Facebook">
+                    <a href="https://www.facebook.com/?locale=fr_FR" class="btn btn-icon-social-secondary">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="#" class="btn btn-icon-social-secondary btn-twitter" aria-label="Twitter">
-                        <i class="bi bi-twitter"></i>
+                    <a href="https://fr.pinterest.com/" class="btn btn-icon-social-secondary">
+                        <i class="bi bi-pinterest"></i>
                     </a>
-                    <a href="#" class="btn btn-icon-social-secondary btn-instagram" aria-label="Instagram">
-                        <i class="bi bi-instagram"></i>
+                    <a href="https://fr.linkedin.com/" class="btn btn-icon-social-secondary">
+                        <i class="bi bi-linkedin"></i>
                     </a>
                 </div>
             </div>

@@ -7,56 +7,17 @@ $title = "Commentaires"; ?>
 <?php ob_start();
 ?>
 
-<!--
-PAGE COMMENTAIRES (back-office)
-│
-├── MENU LATÉRAL (<aside>)
-│   ├── Logo + Titre
-│   ├── Menu mobile
-│   ├── Avatar + Infos utilisateur
-│   ├── Liens de navigation
-│   └── Bouton déconnexion
-│
-└── CONTENU PRINCIPAL (<main>)
-    │
-    ├── Bandeau titre
-    │   └── Fil d’Ariane (breadcrumb)
-    │
-    └── Section "Liste des commentaires"
-        │
-        ├── Colonne de gauche (commentaires)
-        │   ├── Boucle sur $comments
-        │   │   ├── Carte commentaire
-        │   │   │   ├── En-tête
-        │   │   │   │   ├── Avatar auteur
-        │   │   │   │   ├── Nom auteur
-        │   │   │   │   ├── Date formatée
-        │   │   │   │   └── Boutons (rejeter, approuver, supprimer)
-        │   │   │   └── Contenu du commentaire + statut
-        │   │   └── (répété pour chaque commentaire)
-        │
-        └── Colonne de droite (informations)
-            ├── Carte descriptive (titre, icône, texte)
-            └── Carte infos supplémentaires
-                ├── Texte explicatif
-                ├── Bouton "Voir le blog"
-                └── Bouton "Voir les utilisateurs"
-
-PIED DE PAGE
-└── Inclusion du layout backend avec $content
--->
-
-<!-- ===================== MENU LATÉRAL ===================== -->
+<!-- 1. Side menu -->
 <aside data-bs-theme="dark">
     <div id="componentsNav" class="offcanvas-lg offcanvas-start d-flex flex-column position-fixed top-0 start-0 vh-100 bg-dark border-end-lg" style="width: 21rem; z-index: 1045;">
-        <!-- Logo + titre -->
+        <!-- 1.1 logo & title -->
         <div class="offcanvas-header d-none d-lg-flex justify-content-start">
             <a href="index.php?action=dashboard" class="navbar-brand text-dark d-none d-lg-flex py-0">
                 <img src="images/logo-negatif.png" class="img-fluid" alt="Blogger">
                 <span>blogger J</span>
             </a>
         </div>
-        <!-- Menu mobile -->
+        <!-- 1.2 menu mobile -->
         <div class="offcanvas-header d-block d-lg-none border-bottom">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="d-lg-none mb-0">Menu</h5>
@@ -73,7 +34,7 @@ PIED DE PAGE
                 </a>
             </div>
         </div>
-        <!-- Avatar + liens de navigation -->
+        <!-- 1.3 user info & navigations links -->
         <div class="offcanvas-body w-100 p-4 ">
             <div class="list-group list-group-flush">
                 <div class="d-table mx-auto spacing-col-padding-top-50 spacing-col-padding-bottom-50">
@@ -89,12 +50,12 @@ PIED DE PAGE
                     </div>
                     Articles
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">
+                <div class="list-group-item list-group-item-action d-flex align-items-center active">
                     <div class="box-icon-account">
                         <i class="bi bi-chat-square-dots-fill"></i>
                     </div>
                     Commentaires
-                </a>
+                </div>
                 <a href="index.php?action=users" class="list-group-item list-group-item-action d-flex align-items-center ">
                     <div class="box-icon-account">
                         <i class="bi bi-person-fill"></i>
@@ -103,7 +64,7 @@ PIED DE PAGE
                 </a>
             </div>
         </div>
-        <!-- Bouton déconnexion -->
+        <!-- 1.4 logout button -->
         <div class="offcanvas-header border-top">
             <a href="index.php?action=logout" class="btn btn-primary w-100">
                 Se déconnecter
@@ -112,10 +73,11 @@ PIED DE PAGE
     </div>
 </aside>
 
-<!-- ===================== CONTENU PRINCIPAL ===================== -->
+<!-- 2. Main content -->
 <main>
-    <!-- Bandeau titre + breadcrumb -->
+    <!-- 2.1 section breadcrumb -->
     <section class="container-fluid bg-light-subtle px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4">
+        <!-- 2.1.1 navigation-->
         <nav class="container spacing-col-padding-top-50" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -124,15 +86,17 @@ PIED DE PAGE
                 <li class="breadcrumb-item active" aria-current="page">Les commentaires</li>
             </ol>
         </nav>
+        <!-- 2.1.2 page title -->
         <div class="container spacing-col-padding-bottom-50">
             <h1 class="title-dasboard">Les commentaires</h1>
         </div>
     </section>
-    <!-- Liste des commentaires -->
+
+    <!-- 2.2 section comment -->
     <section class="container-fluid px-xxl-5 px-lg-4 pt-4 pt-lg-5 pb-2 pb-lg-4 ">
         <div class="container spacing-col-padding-top-50 spacing-col-padding-bottom-50">
             <div class="row gy-4">
-                <!-- Colonne commentaires -->
+                <!-- 2.2.1 list of comments -->
                 <div class="col-lg-7">
                     <?php foreach ($comments as $comment): ?>
                         <div class="py-4">
@@ -142,10 +106,7 @@ PIED DE PAGE
                                         <img src="uploads/<?= htmlspecialchars($comment->avatar, ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle" width="48" alt="Avatar">
                                         <div class="ps-3">
                                             <h6 class="titre-h6 mb-0"><?= htmlspecialchars($comment->author, ENT_QUOTES, 'UTF-8') ?></h6>
-                                            <div class="meta-comment bd-highlight ">
-                                                <i class="bi bi-clock-fill fs-base me-1"></i>
-                                                <span class="fs-sm"><?= DateFormatter::enFrancais($comment->created_at); ?></span>
-                                            </div>
+                                            <p class="running-text"><?= htmlspecialchars($comment->email, ENT_QUOTES, 'UTF-8') ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -179,9 +140,16 @@ PIED DE PAGE
                                 <div class="row g-0">
                                     <div class="col-md-12">
                                         <div class="card-body">
-                                            <p class="running-text"><?= htmlspecialchars($comment->content, ENT_QUOTES, 'UTF-8') ?></p>
+                                            <div class="d-flex flex-row bd-highlight mb-3">
+                                                <div class="meta-comment bd-highlight">
+                                                    <i class="bi bi-pin-fill fs-base me-1"></i>
+                                                    <span class="fs-sm">Avis sur: <strong><?= htmlspecialchars($comment->title, ENT_QUOTES, 'UTF-8') ?></strong></span>
+                                                </div>
+                                            </div>
+                                            <p class="running-text">
+                                                <?= htmlspecialchars($comment->content, ENT_QUOTES, 'UTF-8') ?></p>
                                             <hr>
-                                            <p class="running-text">Le commentaire est : <strong><?= htmlspecialchars($comment->status, ENT_QUOTES, 'UTF-8') ?> </strong> </p>
+                                            <p class="running-text">Le commentaire publié le <?= DateFormatter::enFrancais($comment->created_at); ?> est <strong><?= htmlspecialchars($comment->status, ENT_QUOTES, 'UTF-8') ?> </strong>. </p>
                                         </div>
                                     </div>
                                 </div>
@@ -189,20 +157,18 @@ PIED DE PAGE
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <!-- Colonne d'infos -->
+                <!-- 2.2.2 additional information -->
                 <div class="col-lg-5 position-relative">
                     <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 105px !important;">
-                        <!-- Carte descriptive -->
                         <div class="card card-light-shadow mb-5">
                             <div class="card-body pb-0">
                                 <div class="d-table flex-shrink-0 icon-box">
                                     <i class="bi bi-chat-square"></i>
                                 </div>
                                 <h3 class="titre-h5 mt-0">Commentaires</h3>
-                                <p class="running-text">Supprimer ou valider les commentaires de vos utilisateurs</p>
+                                <p class="running-text">Supprimer, valider ou rejeter les commentaires de vos utilisateurs</p>
                             </div>
                         </div>
-                        <!-- Carte infos supplémentaires -->
                         <div class="card card-background">
                             <div class="card-body">
                                 <h4 class="titre-h4">Infos</h4>
@@ -211,7 +177,6 @@ PIED DE PAGE
                                 <a href="index.php?action=blog" class="d-grid gap-2 btn btn-outline-primary mb-3">
                                     Voir le blog en direct
                                 </a>
-
                                 <a href="index.php?action=users" class="d-grid gap-2 btn btn-primary">
                                     Voir les utilisateurs
                                 </a>
@@ -224,7 +189,7 @@ PIED DE PAGE
     </section>
 </main>
 
-<!-- ===================== PIED DE PAGE ===================== -->
+
 
 <?php $content = ob_get_clean(); ?>
 <?php require('../templates/layout-backend.php') ?>

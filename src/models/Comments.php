@@ -4,19 +4,52 @@ namespace App\Models;
 
 use App\Models\Model;
 
+/**
+ * Représente un commentaire d’un article (table `comments`).
+ *
+ * Cette classe contient les propriétés principales d’un commentaire,
+ * ainsi que les getters et setters pour manipuler ses données.
+ */
 class Comments extends Model
 {
+    /** Identifiant unique du commentaire */
     protected int|string|null $id = null;
+
+    /** Identifiant de l’utilisateur auteur (si connecté) */
     protected int|string|null $users_id = null;
+
+    /** Identifiant du post associé */
     protected int|string|null $posts_id = null;
+
+    /** Avatar de l’auteur (URL/chemin) */
     protected ?string $avatar = null;
+
+    /** Nom de l’auteur */
     protected ?string $author = null;
+
+    /** Email de l’auteur */
+    protected ?string $email = null;
+
+    /** Titre du commentaire */
     protected ?string $title = null;
+
+    /** Contenu du commentaire */
     protected ?string $content = null;
+
+    /** Date de création */
     protected ?string $created_at = null;
+
+    /** Validation du commentaire (1, 0 ou null) */
     protected int|bool|null $is_valid = null;
+
+    /** Statut du commentaire (ex: 'pending', 'approved') */
     protected ?string $status = null;
 
+    /**
+     * Hydrate un objet Comment à partir d’un tableau associatif.
+     *
+     * @param array|null $data Données initiales
+     */
     public function __construct(?array $data = null)
     {
         $this->table = 'comments';
@@ -26,6 +59,7 @@ class Comments extends Model
         $this->setPostsId($data['posts_id'] ?? null);
         $this->setAvatar($data['avatar'] ?? null);
         $this->setAuthor($data['author'] ?? null);
+        $this->setEmail($data['email'] ?? null);
         $this->setTitle($data['title'] ?? null);
         $this->setContent($data['content'] ?? null);
         $this->setCreatedAt($data['created_at'] ?? null);
@@ -81,6 +115,16 @@ class Comments extends Model
     public function setAuthor(?string $author): void
     {
         $this->author = $author;
+    }
+
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
     }
 
     public function getTitle(): ?string
